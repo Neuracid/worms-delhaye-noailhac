@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ "$1" == "-h" ]; then
+  echo "Ce script prépare la compilation"
+  exit 2
+fi
+
+#mkdir -p bin
 mkdir -p build
 cd build
 cmake ..

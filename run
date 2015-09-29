@@ -1,4 +1,9 @@
 #!/bin/bash
 
-cd build
+if [ "$1" == "-h" ]; then
+  echo "Ce script lance le programme"
+  exit 2
+fi
+
+cd bin
 ./Main
