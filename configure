@@ -4,9 +4,10 @@ if [ "$1" == "-h" ]; then
   echo "Ce script prépare la compilation"
   exit 2
 fi
+
 mkdir -p lib
 cd lib
-git clone https://github.com/SFML/SFML.git
+git clone https://github.com/SFML/SFML.git || echo "failed to clone SFML"
 
 cd ..
 #mkdir -p bin
