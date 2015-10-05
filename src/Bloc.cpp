@@ -1,8 +1,8 @@
 #include "Bloc.hpp"
 //Constructeur
 Bloc::Bloc(int x,int y){
-position_x=x;
-position_y=y;
+  position_x=x;
+  position_y=y;
 }
 
 int getPosition_x(){
