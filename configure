@@ -1,16 +1,78 @@
-#!/bin/bash
+#! /bin/bash
 
 if [ "$1" == "-h" ]; then
   echo "Ce script prépare la compilation"
   exit 2
 fi
 
-mkdir -p lib
-cd lib
-git clone https://github.com/SFML/SFML.git || echo "failed to clone SFML"
 
-cd ..
-#mkdir -p bin
+mkdir -p lib
 mkdir -p build
+
+OS=`uname -a`
+
+if [[ $OS == *"debian"* ]]
+then
+	echo -e "[ ok ] debian"
+	SFML=`dpkg-query -W -f='${Status} ${Version}\n' libsfml-dev 2>/dev/null`
+	if [[ $SFML == *"install ok installed"* ]]
+	then
+		echo -e "[\x1B[01;32m  ok\x1B[0m ] libsfml"
+	else
+		echo -e "[\x1B[01;31m no\x1B[0m ] libsfml"
+		echo -e "\tlibsfml is not present to install enter the following command:"
+		echo -e "\t\tsudo apt-get install libsfml-dev"
+		exit
+	fi
+fi
+
+if [[ $OS == *"ubuntu"* ]]
+then
+	echo -e "[\x1B[01;32m  ok\x1B[0m ] ubuntu"
+	SFML=`dpkg-query -W -f='${Status} ${Version}\n' libsfml-dev 2>/dev/null`
+	if [[ $SFML == *"install ok installed"* ]]
+	then
+		echo -e "[\x1B[01;32m  ok\x1B[0m ] libsfml"
+	else
+		echo -e "[\x1B[01;31m no\x1B[0m ] libsfml"
+		echo -e "\tlibsfml is not present to install enter the following command:"
+		echo -e "\t\tsudo apt-get install libsfml-dev"
+		exit
+	fi
+fi
+
+if [[ $OS == *"kali"* ]]
+then
+	echo -e "[\x1B[01;32m  ok\x1B[0m ] kali"
+	SFML=`dpkg-query -W -f='${Status} ${Version}\n' libsfml-dev 2>/dev/null`
+	if [[ $SFML == *"install ok installed"* ]]
+	then
+		echo -e "[\x1B[01;32m  ok\x1B[0m ] libsfml"
+	else
+		echo -e "[\x1B[01;31m no\x1B[0m ] libsfml"
+		echo -e "\tlibsfml is not present to install enter the following command:"
+		echo -e "\t\tsudo apt-get install libsfml-dev"
+		exit
+	fi
+fi
+
+if [[ $OS == *"Darwin"* ]]
+then
+	echo -e "[\x1B[01;32m  ok\x1B[0m ] mac os"
+	echo -e "Y to install SFML: "
+	read QUESTION
+	if [[ $QUESTION == 'Y' ]]
+	then
+		cd lib
+		git clone https://github.com/SFML/SFML.git || echo "failed to clone SFML"
+		cd ./SFML/
+		cmake ./
+		make
+		sudo make install
+		cd ..
+		cd ..
+	fi
+fi
+
 cd build
 cmake ..
