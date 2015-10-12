@@ -11,6 +11,27 @@ mkdir -p build
 
 OS=`uname -a`
 
+if [[ $OS == *"Darwin"* ]]
+then
+	echo -e "[\x1B[01;32m  ok\x1B[0m ] mac os"
+	echo -e "Y to install SFML: "
+	read QUESTION
+	if [[ $QUESTION == 'Y' ]]
+	then
+		cd lib
+		git clone https://github.com/SFML/SFML.git || echo "failed to clone SFML"
+		cd ./SFML/
+		cmake ./
+		make
+		sudo make install
+		cd ..
+		cd ..
+	fi
+fi
+
+cd build
+cmake ..
+
 if [[ $OS == *"debian"* ]]
 then
 	echo -e "[ ok ] debian"
@@ -55,24 +76,3 @@ then
 		exit
 	fi
 fi
-
-if [[ $OS == *"Darwin"* ]]
-then
-	echo -e "[\x1B[01;32m  ok\x1B[0m ] mac os"
-	echo -e "Y to install SFML: "
-	read QUESTION
-	if [[ $QUESTION == 'Y' ]]
-	then
-		cd lib
-		git clone https://github.com/SFML/SFML.git || echo "failed to clone SFML"
-		cd ./SFML/
-		cmake ./
-		make
-		sudo make install
-		cd ..
-		cd ..
-	fi
-fi
-
-cd build
-cmake ..

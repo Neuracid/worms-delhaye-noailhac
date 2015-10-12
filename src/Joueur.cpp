@@ -1,9 +1,9 @@
 #include "Joueur.hpp"
 
-Joueur(Team a){
+Joueur::Joueur(Team a){
   team=a;
 }
 
-~Joueur(){
+Joueur::~Joueur(){
 
 }

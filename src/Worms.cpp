@@ -11,10 +11,10 @@ Worms::Worms(int x,int y){
 Worms::~Worms(){
 }
 
-int getVie(){
+int Worms::getVie(){
   return vie;
 }
 
-setVie(int x){
+Worms::setVie(int x){
   vie=x;
 }

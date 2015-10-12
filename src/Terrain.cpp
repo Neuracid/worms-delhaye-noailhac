@@ -10,10 +10,10 @@ Terrain::Terrain(int x,int y,Type s){
 Terrain::~Terrain(){
 }
 
-Type getType(){
+Type Terrain::getType(){
   return type;
 }
 
-setType(Type s){
+Terrain::setType(Type s){
   type=s;
 }
