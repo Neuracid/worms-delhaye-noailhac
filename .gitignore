@@ -2,4 +2,6 @@ build/*
 bin/*
 lib/*
 
+res/musiques/*.mp3
+
 CMakeListstest.txt
