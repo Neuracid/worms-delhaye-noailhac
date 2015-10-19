@@ -10,8 +10,8 @@ public:
   int getPosition_y();
 
 private:
-  int position_x,position_y;
+
 
 protected:
-
+  int position_x,position_y;
 };

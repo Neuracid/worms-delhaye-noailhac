@@ -1,10 +1,8 @@
 #include "Worms.hpp"
 //Constructeur
-Worms::Worms(int x,int y){
-  position_x=x;
-  position_y=y;
+Worms::Worms(int x,int y):Bloc(x,y){
   vie=100;
-  status=1;
+  status=vivant;
 }
 
 //Destructeur
@@ -15,6 +13,6 @@ int Worms::getVie(){
   return vie;
 }
 
-Worms::setVie(int x){
+void Worms::setVie(int x){
   vie=x;
 }

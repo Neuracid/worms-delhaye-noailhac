@@ -1,8 +1,6 @@
 #include "Terrain.hpp"
 //Constructeur
-Terrain::Terrain(int x,int y,Type s){
-  position_x=x;
-  position_y=y;
+Terrain::Terrain(int x,int y,Type s):Bloc(x,y){
   type=s;
 }
 
@@ -10,10 +8,10 @@ Terrain::Terrain(int x,int y,Type s){
 Terrain::~Terrain(){
 }
 
-Type Terrain::getType(){
+Terrain::Type Terrain::getType(){
   return type;
 }
 
-Terrain::setType(Type s){
+void Terrain::setType(Type s){
   type=s;
 }

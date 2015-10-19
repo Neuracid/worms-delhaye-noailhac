@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "Joueur.hpp"
 
 
 
@@ -9,7 +10,7 @@ public:
 
 private:
   std::vector<Joueur> tabjoueur;
-  
+
 
 protected:
 

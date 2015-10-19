@@ -1,3 +1,4 @@
+#include "Bloc.hpp"
 class Worms:public Bloc{
 public:
   enum Status{mort=0,vivant=1,empoisonné=2};
@@ -5,7 +6,7 @@ public:
   ~Worms();
 
   int getVie();
-  setVie(int x);
+  void setVie(int x);
 
 private:
   int vie;

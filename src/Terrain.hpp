@@ -1,3 +1,4 @@
+#include "Bloc.hpp"
 class Terrain:public Bloc{
 
 public:
@@ -7,7 +8,7 @@ public:
   ~Terrain();
 
   Type getType();
-  setType(Type);
+  void setType(Type);
 
 private:
   Type type;
