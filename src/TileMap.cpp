@@ -1,12 +1,12 @@
 #include "TileMap.hpp"
 
-
 //Constructeur , destructeur
-TileMap::TileMap(sf::VertexArray m_vertice,sf::Texture m_tilese){
-  VertexArray m_vertices = m_vertice;
-  Texture m_tileset = m_tilese;
-}
+TileMap::TileMap(){
 
+}
+TileMap::~TileMap(){
+
+}
 
 //Méthodes
 bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
@@ -50,7 +50,7 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int*
 }
 
 
-virtual void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     // on applique la transformation
     states.transform *= getTransform();

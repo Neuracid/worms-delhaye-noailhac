@@ -7,7 +7,11 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)
 
 # Define sources and executable
 set(EXECUTABLE_NAME "Main")
-add_executable(${EXECUTABLE_NAME} src/main.cpp)
+file(GLOB SOURCES
+    "src/*.h"
+    "src/*.cpp"
+)
+add_executable(${EXECUTABLE_NAME} ${SOURCES})
 
 
 # Detect and add SFML

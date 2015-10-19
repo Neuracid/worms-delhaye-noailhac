@@ -10,15 +10,15 @@ int Bloc::getPosition_x(){
 }
 
 int Bloc::getPosition_y(){
-  return position_y;Ò
+  return position_y;
 }
 
-Bloc::setPosition_x(int x){
+void Bloc::setPosition_x(int x){
   position_x=x;
 }
 
-Bloc::setPosition_y(int y){
-  position_y=y.
+void Bloc::setPosition_y(int y){
+  position_y=y;
 }
 
 //Destructeur

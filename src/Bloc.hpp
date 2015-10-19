@@ -3,8 +3,8 @@ public:
    Bloc(int x,int y);
    ~Bloc();
 
-  setPosition_y(int y);
-  setPosition_x(int x);
+  void setPosition_y(int y);
+  void setPosition_x(int x);
 
   int getPosition_x();
   int getPosition_y();
