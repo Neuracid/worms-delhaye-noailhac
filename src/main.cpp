@@ -10,7 +10,7 @@ using namespace std;
 
 
 int main() {
-  sf::VideoMode videoMode(512,256);
+  sf::VideoMode videoMode(1024,512);
   sf::RenderWindow window(videoMode, "Worms");
   window.setFramerateLimit(30); // un appel suffit, après la création de la fenêtre
 
@@ -26,6 +26,20 @@ int main() {
       2, 2, 2, 3, 3, 3, 3, 2, 2, 3, 3, 3, 3, 3, 2, 2,
       2, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 2, 2,
   };
+
+  // on définit l'emplacement des joueurs à l'aide de numéro de tuiles
+  const int player[] =
+  {
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  };
+
 
 
   //fond
@@ -52,7 +66,11 @@ int main() {
 
   // on crée la tilemap avec le niveau précédemment défini
   TileMap map;
-  if (!map.load("../res/blocs/terrain.png", sf::Vector2u(32, 32), level, 16, 8))
+  if (!map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), level, 16, 8))
+      return -1;
+
+  TileMap perso;
+  if (!perso.load("../res/WormsGeneral/Worms/waccuse11.png", sf::Vector2u(64, 64), player, 16, 8))
       return -1;
 
   // on fait tourner la boucle principale
@@ -78,11 +96,12 @@ int main() {
               }
           }
       }
-      
+
       // on dessine le niveau
       window.clear();
       window.draw(spriteFond);
       window.draw(map);
+      window.draw(perso);
       window.display();
   }
 
