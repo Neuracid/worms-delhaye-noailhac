@@ -62,11 +62,11 @@ int main() {
 
 
   // on crée la tilemap avec le niveau précédemment défini
-  TileMap map;
+  RenduMap map;
   if (!map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), level, 16, 8))
       return -1;
 
-  TileMap perso;
+  RenduMap perso;
   if (!perso.load("../res/WormsGeneral/Worms/waccuse11.png", sf::Vector2u(64, 64), player, 16, 8))
       return -1;
 

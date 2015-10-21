@@ -1,15 +1,15 @@
 #include "RenduMap.hpp"
 
 //Constructeur , destructeur
-TileMap::TileMap(){
+RenduMap::RenduMap(){
 
 }
-TileMap::~TileMap(){
+RenduMap::~RenduMap(){
 
 }
 
 //Méthodes
-bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
+bool RenduMap::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
 {
     // on charge la texture du tileset
     if (!m_tileset.loadFromFile(tileset))
@@ -50,7 +50,7 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int*
 }
 
 
-void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     // on applique la transformation
     states.transform *= getTransform();

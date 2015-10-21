@@ -3,12 +3,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-class TileMap : public sf::Drawable, public sf::Transformable
+class RenduMap : public sf::Drawable, public sf::Transformable
 {
 public:
 
-  TileMap();
-  ~TileMap();
+  RenduMap();
+  ~RenduMap();
   bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
 
 private:
