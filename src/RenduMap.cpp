@@ -1,4 +1,4 @@
-#include "TileMap.hpp"
+#include "RenduMap.hpp"
 
 //Constructeur , destructeur
 TileMap::TileMap(){

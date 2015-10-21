@@ -2,11 +2,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "TileMap.hpp"
+#include "RenduMap.hpp"
 
-
-using namespace sf;
-using namespace std;
 
 
 int main() {
@@ -80,17 +77,17 @@ int main() {
       sf::Event event;
       while (window.pollEvent(event))
       {
-          if(event.type == sf::Event::Closed || ((event.type == Event::KeyPressed) && (event.key.code==Keyboard::Escape)) )
+          if(event.type == sf::Event::Closed || ((event.type == sf::Event::KeyPressed) && (event.key.code==sf::Keyboard::Escape)) )
               window.close();
           else
           {
-              if (event.type == Event::KeyPressed)
+              if (event.type == sf::Event::KeyPressed)
               {
                   switch(event.key.code)
                   {
-                      case Keyboard::Up: music2.stop(); music1.play();
+                      case sf::Keyboard::Up: music2.stop(); music1.play();
                       break;
-                      case Keyboard::Down: music1.stop(); music2.play();
+                      case sf::Keyboard::Down: music1.stop(); music2.play();
                       break;
                   }
               }
