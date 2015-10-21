@@ -61,3 +61,24 @@ void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     // et on dessine enfin le tableau de vertex
     target.draw(m_vertices, states);
 }
+
+int* RenduMap::parseTxt(std::string cheminTxt){
+  ifstream fichier(cheminTxt, ios::in);
+  if(fichier)
+  {
+    int hauteur, largeur;
+    fichier >> largeur >> hauteur;  /*on lit jusqu'à l'espace et on stocke ce qui est lu dans la variable indiquée */
+    int tabMap[hauteur*largeur];
+    int rec;
+    for(int i=0; i<hauteur*largeur; i++){
+      fichier >> rec;
+      tabMap[i]=rec;
+    }
+    fichier.close();
+    return tabMap;
+  }
+  else
+  {
+    cerr << "Impossible d'ouvrir le fichier !" << endl;
+  }
+}

@@ -63,12 +63,13 @@ int main() {
 
   // on crée la tilemap avec le niveau précédemment défini
   RenduMap map;
-  if (!map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), level, 16, 8))
+  int* level2=map.parseTxt("../res/txt/map.txt");
+  if (!map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), level2, 16, 8))
       return -1;
 
-  RenduMap perso;
-  if (!perso.load("../res/WormsGeneral/Worms/waccuse11.png", sf::Vector2u(64, 64), player, 16, 8))
-      return -1;
+  // RenduMap perso;
+  // if (!perso.load("../res/WormsGeneral/Worms/waccuse11.png", sf::Vector2u(64, 64), player, 16, 8))
+  //     return -1;
 
   // on fait tourner la boucle principale
   while (window.isOpen())
@@ -98,7 +99,7 @@ int main() {
       window.clear();
       window.draw(spriteFond);
       window.draw(map);
-      window.draw(perso);
+      //window.draw(perso);
       window.display();
   }
 

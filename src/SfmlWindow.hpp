@@ -4,10 +4,10 @@
 #include <SFML/Audio.hpp>
 
 //Constructeur , destructeur
-SfmlWidonw::SfmlWidonw(){
-
-}
-
-SfmlWidonw::~SfmlWidonw(){
-
-}
+// SfmlWidonw::SfmlWidonw(){
+//
+// }
+//
+// SfmlWidonw::~SfmlWidonw(){
+//
+// }
