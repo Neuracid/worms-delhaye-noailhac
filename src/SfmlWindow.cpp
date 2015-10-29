@@ -23,6 +23,7 @@ void SfmlWindow::displayWindow(){
       // on dessine le niveau
       window.clear();
       window.draw(spriteFond);
+      window.draw(map);
       window.display();
   }
 }

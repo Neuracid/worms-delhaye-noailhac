@@ -4,6 +4,8 @@
 RenduMap::RenduMap(int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
+parseTxt();
+load("../res/blocs/terrain.png", sf::Vector2u(64, 64), 16, 8);
 }
 
 RenduMap::~RenduMap(){
