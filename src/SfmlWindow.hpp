@@ -13,6 +13,7 @@ public:
   SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit);
 
   void setFond();
+  void setMap();
   void displayWindow();
 
 protected:
@@ -21,7 +22,7 @@ protected:
   sf::RenderWindow window;
 
   //map
-  //RenduMap map(largeurGrille,hauteurGrille);
+  RenduMap map;
 
   //fond
   sf::Texture textureFond;
