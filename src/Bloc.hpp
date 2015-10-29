@@ -1,4 +1,5 @@
 class Bloc {
+
 public:
    Bloc(int x,int y);
    ~Bloc();

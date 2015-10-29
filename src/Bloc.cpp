@@ -1,4 +1,5 @@
 #include "Bloc.hpp"
+
 //Constructeur
 Bloc::Bloc(int x,int y){
   position_x=x;
