@@ -9,8 +9,4 @@ int main() {
   window.setFond();
   window.displayWindow();
 
-
-
-
-
 }

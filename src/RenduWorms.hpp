@@ -16,7 +16,15 @@ public:
 
 private:
 
+<<<<<<< Updated upstream
   //virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+=======
+<<<<<<< HEAD
+//  virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+=======
+  //virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
   sf::Texture m_tileset;
 };
