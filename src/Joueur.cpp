@@ -8,6 +8,6 @@ Joueur::~Joueur(){
 
 }
 
-Team Joueur::getTeam(){
+Joueur::Team Joueur::getTeam(){
   return team;
 }

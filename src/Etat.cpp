@@ -1,26 +1,26 @@
 #include "Etat.hpp"
 
-Etat::Etat(int nombreJoueur,int nombreWorms,int hauteur,int largeur):grille( hauteur, largeur),listeBloc(hauteur,largeur){
+Etat::Etat(int nombreJoueur,int nombreWorms,int hauteur,int largeur):grille( hauteur, largeur)/*,listeBloc(hauteur,largeur)*/{
 }
 
 void Etat::parseOutMap(){
-    std::ofstream fichier("../res/MapOut.txt", std::ios::out | std::ios::trunc);
-    int largeur,hauteur,valeur;
-    largeur=this->grille.getLargeur();
-    hauteur=this->grille.getHauteur();
-
-    if(fichier){
-      fichier<<hauteur<<' '<<largeur<<std::endl;
-      for(int i=0;i<hauteur;i++){
-        for(int j=0;j<largeur;j++)
-        valeur=j+i*largeur;
-        fichier<<this->listeBloc[valeur]<<' ';
-        fichier<<std::endl;
-      }
-       fichier.close();
-    }
-    else
-            std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+    // std::ofstream fichier("../res/MapOut.txt", std::ios::out | std::ios::trunc);
+    // int largeur,hauteur,valeur;
+    // largeur=this->grille.getLargeur();
+    // hauteur=this->grille.getHauteur();
+    //
+    // if(fichier){
+    //   fichier<<hauteur<<' '<<largeur<<std::endl;
+    //   for(int i=0;i<hauteur;i++){
+    //     for(int j=0;j<largeur;j++)
+    //     valeur=j+i*largeur;
+    //     fichier<<this->listeBloc[valeur]<<' ';
+    //     fichier<<std::endl;
+    //   }
+    //    fichier.close();
+    // }
+    // else
+    //         std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
 }
 
 void Etat::parseOutWorms(){
