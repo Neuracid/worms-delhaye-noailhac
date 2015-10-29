@@ -43,5 +43,10 @@ void Etat::parseOutJoueurs(){
     fichier<<joueurs[i].getTeam()<<' '<<joueurs[i].getVie()<<' '<<std::endl;
   }
   fichier.close();
+}
 
+void Etat::parseGrille(){
+  std::ofstream fichier("../res/Grille.txt", std::ios::out | std::ios::trunc);
+  fichier<<grille.getLargeur()<<' '<<grille.getHauteur()<<' '<<v.size();
+  fichier.close();
 }

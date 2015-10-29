@@ -17,6 +17,7 @@ public:
   void parseOutMap();
   void parseOutWorms();
   void parseOutJoueurs();
+  void parseGrille();
 protected:
 
 private:

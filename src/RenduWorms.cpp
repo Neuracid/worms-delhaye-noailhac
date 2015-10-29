@@ -30,20 +30,22 @@ bool RenduWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigne
   return true;
 }
 
- int* parseTxt(){
+ int** parseTxt(){
    std::ifstream fichier("../res/txt/WormsOut.txt", std::ios::in);
    if(fichier)
    { int nombre;
      fichier>>nombre;
      int x,y,pv,etat,team;
-     int tabMap[nombre][5];
+     int **tabMap;
+     tabMap=new int* [nombre];
      for(int i=0; i<nombre; i++){
        fichier >>x>>y>>pv>>etat>>team;
-       tabMap[i][1]=x;
-       tabMap[i][2]=y;
-       tabMap[i][3]=pv;
-       tabMap[i][4]=etat;
-       tabMap[i][5]=team;
+       tabMap[i]=new int[5];
+       tabMap[i][0]=x;
+       tabMap[i][1]=y;
+       tabMap[i][2]=pv;
+       tabMap[i][3]=etat;
+       tabMap[i][4]=team;
      }
      fichier.close();
      return tabMap;
