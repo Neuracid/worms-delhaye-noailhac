@@ -13,7 +13,6 @@ public:
   SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit);
 
   void setFond();
-  void setMap();
   void displayWindow();
 
 protected:
