@@ -9,14 +9,7 @@
 class Etat{
 public:
   std::vector<WormsJoueur> v;
-
-<<<<<<< Updated upstream
-
   //ListeBloc listeBloc;
-=======
-//ListeBloc listeBloc;
->>>>>>> Stashed changes
-
   Grille grille;
   //std::time_t result = std::time(NULL);
   Etat(int hauteur,int largeur);
