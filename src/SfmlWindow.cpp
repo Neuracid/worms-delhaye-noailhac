@@ -1,6 +1,6 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(int largeurPix,int hauteurPix, std::string name, int frameRateLimit) : videoMode(largeurPix,hauteurPix),window(videoMode, name){
+SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit) : videoMode(windowProperties->largeurGrille*64,windowProperties->hauteurGrille*64),window(videoMode, name){
   this->window.setFramerateLimit(frameRateLimit);
 }
 
@@ -24,18 +24,5 @@ void SfmlWindow::displayWindow(){
       window.clear();
       window.draw(spriteFond);
       window.display();
-  }
-}
-
-void SfmlWindow::parseGrille(){
-  std::ifstream fichier("../res/txt/Grille.txt", std::ios::in);
-  if(fichier)
-  {
-    fichier>>largeurGrille>>hauteurGrille>>nombreWorms;
-    fichier.close();
-  }
-  else
-  {
-    std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
   }
 }

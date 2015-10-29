@@ -3,29 +3,24 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "RenduMap.hpp"
+#include "SfmlWindowProperties.hpp"
 
 class SfmlWindow{
 
 public:
   //Constructeur , destructeur
-  SfmlWindow(int largeurPix,int hauteurPix, std::string name, int frameRateLimit);
+  SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit);
 
   void setFond();
   void displayWindow();
-  void parseGrille();
 
 protected:
-
-
-  int largeurGrille;
-  int hauteurGrille;
-  int nombreWorms;
 
   sf::VideoMode videoMode;
   sf::RenderWindow window;
 
   //map
-  RenduMap map;
+  //RenduMap map(largeurGrille,hauteurGrille);
 
   //fond
   sf::Texture textureFond;
