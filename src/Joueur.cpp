@@ -7,3 +7,7 @@ Joueur::Joueur(Team a){
 Joueur::~Joueur(){
 
 }
+
+Team Joueur::getTeam(){
+  return team;
+}

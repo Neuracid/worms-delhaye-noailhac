@@ -7,6 +7,7 @@ public:
 
   int getVie();
   void setVie(int x);
+  Status getStatus();
 
 private:
   int vie;

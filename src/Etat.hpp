@@ -11,9 +11,11 @@ public:
   std::vector<WormsJoueur> v;
   ListeBloc listeBloc;
   Grille grille;
-  std::time_t result = std::time(NULL);
+  //std::time_t result = std::time(NULL);
   Etat(int nombreWorms,int nombreJoueur,int hauteur,int largeur);
   void parseOutMap();
+  void parseOutWorms();
+  void parseOutJoueurs();
 protected:
 
 private:

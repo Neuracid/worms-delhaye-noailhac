@@ -16,3 +16,7 @@ int Worms::getVie(){
 void Worms::setVie(int x){
   vie=x;
 }
+
+Status Worms::getStatus(){
+  return status;
+}
