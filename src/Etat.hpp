@@ -9,7 +9,7 @@
 class Etat{
 public:
   std::vector<WormsJoueur> v;
-//  ListeBloc listeBloc;
+ ListeBloc listeBloc;
   Grille grille;
   //std::time_t result = std::time(NULL);
   Etat(int nombreWorms,int nombreJoueur,int hauteur,int largeur);
