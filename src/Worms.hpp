@@ -7,7 +7,7 @@ public:
 
   int getVie();
   void setVie(int x);
-  Status getStatus();
+  int getType() override;
 
 private:
   int vie;

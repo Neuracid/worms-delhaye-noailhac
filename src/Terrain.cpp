@@ -8,8 +8,8 @@ Terrain::Terrain(int x,int y,Type s):Bloc(x,y){
 Terrain::~Terrain(){
 }
 
-Terrain::Type Terrain::getType(){
-  return type;
+int Terrain::getType(){
+  return static_cast<int>(type);
 }
 
 void Terrain::setType(Type s){

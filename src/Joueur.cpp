@@ -11,3 +11,7 @@ Joueur::~Joueur(){
 Joueur::Team Joueur::getTeam(){
   return team;
 }
+
+int Joueur::getVie(){
+  return vieEquipe;
+}

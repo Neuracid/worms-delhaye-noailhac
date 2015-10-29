@@ -7,7 +7,7 @@ public:
   Terrain(int x,int y,Type type);
   ~Terrain();
 
-  Type getType();
+  int getType() override;
   void setType(Type);
 
 private:

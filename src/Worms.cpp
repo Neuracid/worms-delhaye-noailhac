@@ -17,6 +17,6 @@ void Worms::setVie(int x){
   vie=x;
 }
 
-Worms::Status Worms::getStatus(){
-  return status;
+int Worms::getType(){
+  return static_cast<int>(status);
 }

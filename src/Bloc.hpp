@@ -9,7 +9,7 @@ public:
 
   int getPosition_x();
   int getPosition_y();
-
+  virtual int getType()=0;
 private:
 
 

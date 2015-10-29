@@ -5,6 +5,7 @@ public:
   Joueur(Team a);
   ~Joueur();
  Team getTeam();
+ int getVie();
 private:
   int vieEquipe;
   Team team;
