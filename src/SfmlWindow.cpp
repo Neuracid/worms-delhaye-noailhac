@@ -1,6 +1,6 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit) : map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
+SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit) : worms(windowProperties.largeurGrille,windowProperties.hauteurGrille), map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
   this->window.setFramerateLimit(frameRateLimit);
 }
 
@@ -24,6 +24,7 @@ void SfmlWindow::displayWindow(){
       window.clear();
       window.draw(spriteFond);
       window.draw(map);
+      window.draw(worms);
       window.display();
   }
 }

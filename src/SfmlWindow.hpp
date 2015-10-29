@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "RenduMap.hpp"
+#include "RenduWorms.hpp"
 #include "SfmlWindowProperties.hpp"
 #include <string>
 
@@ -13,7 +14,7 @@ public:
   SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit);
 
   void setFond();
-  void setMap();
+  //void setMap();
   void displayWindow();
 
 protected:
@@ -23,6 +24,9 @@ protected:
 
   //map
   RenduMap map;
+
+  //worms
+  RenduWorms worms;
 
   //fond
   sf::Texture textureFond;
