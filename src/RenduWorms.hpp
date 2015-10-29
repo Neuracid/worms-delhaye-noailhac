@@ -8,13 +8,22 @@ class RenduWorms : public sf::Drawable, public sf::Transformable
 {
 public:
 
-  RenduWorms();
+  RenduWorms(int largeur, int hauteur);
   ~RenduWorms();
-  bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int position, unsigned int x, unsigned int y);
+  bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int x, unsigned int y);
 
-  int** parseTxt();
+  int* tab;
+  int nombre;
+  int** parseTxt1();
+  void parseTxt();
 
 private:
 
+<<<<<<< HEAD
+=======
+  virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+  sf::VertexArray m_vertices;
+>>>>>>> origin/master
   sf::Texture m_tileset;
 };
