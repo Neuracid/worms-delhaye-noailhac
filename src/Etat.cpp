@@ -24,7 +24,7 @@ void Etat::parseOutMap(){
 }
 
 void Etat::parseOutWorms(){
-<<<<<<< Updated upstream
+
   std::ofstream fichier("../res/WormsOut.txt", std::ios::out | std::ios::trunc);
   fichier<<v.size()<<std::endl;
   for(int i=0; i<v.size();i++){
