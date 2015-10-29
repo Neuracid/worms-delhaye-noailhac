@@ -12,6 +12,7 @@ public:
 
   int setFond();
   void displayWindow();
+  void parseGrille();
 
 protected:
 
@@ -19,7 +20,7 @@ protected:
   int largeurGrille;
   int hauteurGrille;
   int nombreWorms;
-  
+
   sf::VideoMode videoMode;
   sf::RenderWindow window;
 

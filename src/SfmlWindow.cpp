@@ -31,3 +31,16 @@ void SfmlWindow::displayWindow(){
       window.display();
   }
 }
+
+void SfmlWindow::parseGrille(){
+  ifstream fichier("../res/txt/Grille.txt", ios::in);
+  if(fichier)
+  {
+    fichier>>largeurGrille>>hauteurGrille>>nombreWorms;
+    fichier.close();
+  }
+  else
+  {
+    cerr << "Impossible d'ouvrir le fichier !" << endl;
+  }
+}
