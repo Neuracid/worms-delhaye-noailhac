@@ -10,10 +10,16 @@ public:
   //Constructeur , destructeur
   SfmlWindow(int largeurPix,int hauteurPix, std::string name, int frameRateLimit);
 
+  int setFond();
   void displayWindow();
 
 protected:
 
+
+  int largeurGrille;
+  int hauteurGrille;
+  int nombreWorms;
+  
   sf::VideoMode videoMode;
   sf::RenderWindow window;
 
@@ -21,7 +27,7 @@ protected:
   RenduMap map;
 
   //fond
-  sf::Texture texture;
+  sf::Texture textureFond;
   sf::Sprite spriteFond;
 
 
