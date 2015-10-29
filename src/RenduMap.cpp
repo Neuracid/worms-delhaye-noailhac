@@ -62,8 +62,8 @@ void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_vertices, states);
 }
 
-int* RenduMap::parseTxt(std::string cheminTxt){
-  ifstream fichier(cheminTxt, ios::in);
+int* RenduMap::parseTxt(){
+  ifstream fichier("../res/txt/map.txt", ios::in);
   if(fichier)
   {
     int hauteur, largeur;

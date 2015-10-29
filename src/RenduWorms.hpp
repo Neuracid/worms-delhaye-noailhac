@@ -10,7 +10,8 @@ public:
   RenduWorms();
   ~RenduWorms();
   bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int position, unsigned int x, unsigned int y);
-  void parseTxt(std::string cheminTxt);
+
+  int* parseTxt();
 
 private:
 
