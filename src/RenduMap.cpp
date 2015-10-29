@@ -1,15 +1,16 @@
 #include "RenduMap.hpp"
 
 //Constructeur , destructeur
-RenduMap::RenduMap(){
-
+RenduMap::RenduMap(int largeur, int hauteur){
+nombre=largeur*hauteur;
+tab=new int[nombre];
 }
-RenduMap::~RenduMap(){
 
+RenduMap::~RenduMap(){
 }
 
 //Méthodes
-bool RenduMap::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
+bool RenduMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
 {
     // on charge la texture du tileset
     if (!m_tileset.loadFromFile(tileset))
@@ -24,7 +25,7 @@ bool RenduMap::load(const std::string& tileset, sf::Vector2u tileSize, const int
         for (unsigned int j = 0; j < height; ++j)
         {
             // on récupère le numéro de tuile courant
-            int tileNumber = tiles[i + j * width];
+            int tileNumber = tab[i + j * width];
 
             // on en déduit sa position dans la texture du tileset
             int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
@@ -62,20 +63,17 @@ void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_vertices, states);
 }
 
-int* RenduMap::parseTxt(){
+void RenduMap::parseTxt(){
   ifstream fichier("../res/txt/map.txt", ios::in);
   if(fichier)
   {
-    int hauteur, largeur;
-    fichier >> largeur >> hauteur;  /*on lit jusqu'à l'espace et on stocke ce qui est lu dans la variable indiquée */
-    int tabMap[hauteur*largeur];
+
     int rec;
-    for(int i=0; i<hauteur*largeur; i++){
+    for(int i=0; i<nombre; i++){
       fichier >> rec;
-      tabMap[i]=rec;
+      tab[i]=rec;
     }
     fichier.close();
-    return tabMap;
   }
   else
   {

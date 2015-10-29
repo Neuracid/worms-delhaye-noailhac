@@ -28,25 +28,28 @@ bool RenduWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigne
   quad[3].texCoords = sf::Vector2f(0, 50);
 
   return true;
-
-
 }
- int* parseTxt(){
-  //  ifstream fichier("../res/txt/WormsOut.txt", ios::in);
-  //  if(fichier)
-  //  { int nombre;
-  //    fichier>>nombre;
-  //    int tabMap[nombre][4];
-  //    for(int i=0; i<hauteur*largeur; i++){
-  //      fichier >> rec;
-  //      tabMap[i]=rec;
-  //    }
-  //    fichier.close();
-  //    return tabMap;
-  //  }
-  //  else
-  //  {
-  //    cerr << "Impossible d'ouvrir le fichier !" << endl;
-  //  }
 
+ int* parseTxt(){
+   std::ifstream fichier("../res/txt/WormsOut.txt", std::ios::in);
+   if(fichier)
+   { int nombre;
+     fichier>>nombre;
+     int x,y,pv,etat,team;
+     int tabMap[nombre][5];
+     for(int i=0; i<nombre; i++){
+       fichier >>x>>y>>pv>>etat>>team;
+       tabMap[i][1]=x;
+       tabMap[i][2]=y;
+       tabMap[i][3]=pv;
+       tabMap[i][4]=etat;
+       tabMap[i][5]=team;
+     }
+     fichier.close();
+     return tabMap;
+   }
+   else
+   {
+     std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+   }
  }

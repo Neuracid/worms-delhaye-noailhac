@@ -11,12 +11,12 @@ class RenduMap : public sf::Drawable, public sf::Transformable
 {
 public:
 
-  RenduMap();
+  RenduMap(int largeur,int hauteur);
   ~RenduMap();
-  bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
-  int* parseTxt();
-  int getLargeur();
-  int getLongueur();
+  int* tab;
+  int nombre;
+  bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
+  void parseTxt();
 
 private:
 

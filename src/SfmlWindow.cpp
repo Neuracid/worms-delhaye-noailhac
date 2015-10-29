@@ -9,9 +9,6 @@ int SfmlWindow::setFond(){
     return -1;
 
   spriteFond.setTexture(textureFond);
-
-
-
 }
 
 void SfmlWindow::displayWindow(){
@@ -33,7 +30,7 @@ void SfmlWindow::displayWindow(){
 }
 
 void SfmlWindow::parseGrille(){
-  ifstream fichier("../res/txt/Grille.txt", ios::in);
+  std::ifstream fichier("../res/txt/Grille.txt", std::ios::in);
   if(fichier)
   {
     fichier>>largeurGrille>>hauteurGrille>>nombreWorms;
@@ -41,6 +38,6 @@ void SfmlWindow::parseGrille(){
   }
   else
   {
-    cerr << "Impossible d'ouvrir le fichier !" << endl;
+    std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
   }
 }
