@@ -1,8 +1,7 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit) : videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
+SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit) : map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
   this->window.setFramerateLimit(frameRateLimit);
-  map = new RenduMap(windowProperties.largeurGrille,windowProperties.hauteurGrille);
 }
 
 void SfmlWindow::setFond(){
