@@ -31,14 +31,7 @@ void Etat::parseOutWorms(){
     fichier<<v[i].worms->getPosition_x()<<' '<<v[i].worms->getPosition_y()<<' '<<v[i].worms->getVie()<<' '<<v[i].worms->getType()<<' '<<v[i].joueur->getTeam()<<std::endl;
   }
   fichier.close();
-=======
-  // std::ofstream fichier("../res/WormsOut.txt", std::ios::out | std::ios::trunc);
-  // fichier<<v.size()<<std::endl;
-  // for(int i=0; i<v.size();i++){
-  //   fichier<<v[i]->worms.getPosition_x()<<' '<<v[i]->worms.getPosition_y()<<' '<<v[i]->worms.getVie()<<' '<<v[i]->worms.getStatus()<<' '<<v[i]->joueurs.getTeam()<<std::endl;
-  // }
-  // fichier.close();
->>>>>>> Stashed changes
+
 }
 
 void Etat::parseOutJoueurs(){
