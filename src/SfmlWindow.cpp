@@ -4,10 +4,8 @@ SfmlWindow::SfmlWindow(int largeurPix,int hauteurPix, std::string name, int fram
   this->window.setFramerateLimit(frameRateLimit);
 }
 
-int SfmlWindow::setFond(){
-  if (!textureFond.loadFromFile("../res/fonds/image.jpg"))
-    return -1;
-
+void SfmlWindow::setFond(){
+  textureFond.loadFromFile("../res/fonds/image.jpg");
   spriteFond.setTexture(textureFond);
 }
 

@@ -10,7 +10,7 @@ public:
   //Constructeur , destructeur
   SfmlWindow(int largeurPix,int hauteurPix, std::string name, int frameRateLimit);
 
-  int setFond();
+  void setFond();
   void displayWindow();
   void parseGrille();
 
