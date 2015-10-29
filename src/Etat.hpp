@@ -14,7 +14,7 @@ public:
   //std::time_t result = std::time(NULL);
   Etat(int hauteur,int largeur);
   std::vector<Joueur> joueurs;
-  //void parseOutMap();
+  void parseOutMap();
   void parseOutWorms();
   void parseOutJoueurs();
 protected:
