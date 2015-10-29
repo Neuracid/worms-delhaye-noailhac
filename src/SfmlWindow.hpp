@@ -9,11 +9,11 @@ class SfmlWindow{
 public:
   //Constructeur , destructeur
   SfmlWindow(int largeurPix,int hauteurPix, std::string name, int frameRateLimit);
-  ~SfmlWindow();
 
   void displayWindow();
 
 protected:
+
   sf::VideoMode videoMode;
   sf::RenderWindow window;
 
