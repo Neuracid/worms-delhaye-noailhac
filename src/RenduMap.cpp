@@ -64,7 +64,7 @@ void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 void RenduMap::parseTxt(){
-  ifstream fichier("../res/txt/map.txt", ios::in);
+  std::ifstream fichier("../res/txt/map.txt", std::ios::in);
   if(fichier)
   {
 
@@ -77,6 +77,6 @@ void RenduMap::parseTxt(){
   }
   else
   {
-    cerr << "Impossible d'ouvrir le fichier !" << endl;
+    std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
   }
 }

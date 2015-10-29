@@ -10,7 +10,7 @@ void SfmlWindowProperties::parseGrille(){
   std::ifstream fichier("../res/txt/Grille.txt", std::ios::in);
   if(fichier)
   {
-    fichier>>largeurGrille>>hauteurGrille>>nombreWorms;
+    fichier>>largeurGrille>>hauteurGrille>>nombreDeWorms;
     fichier.close();
   }
   else

@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include "RenduMap.hpp"
 #include "SfmlWindowProperties.hpp"
+#include <string>
 
 class SfmlWindow{
 

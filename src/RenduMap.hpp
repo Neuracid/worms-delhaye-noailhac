@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
-using namespace std;
+
 
 class RenduMap : public sf::Drawable, public sf::Transformable
 {
