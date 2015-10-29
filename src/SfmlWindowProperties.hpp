@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-class SfmlWindowProperties{
-
+class SfmlWindowProperties {
 public:
   //Constructeur
   SfmlWindowProperties();
