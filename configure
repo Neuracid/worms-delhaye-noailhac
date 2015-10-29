@@ -32,9 +32,9 @@ fi
 cd build
 cmake ..
 
-if [[ $OS == *"debian"* ]]
+if [[ $OS == *"debian"* ]]||[[ $OS == *"Debian"* ]]
 then
-	echo -e "[ ok ] debian"
+	echo -e "[\x1B[01;32m  ok\x1B[0m ] debian"
 	SFML=`dpkg-query -W -f='${Status} ${Version}\n' libsfml-dev 2>/dev/null`
 	if [[ $SFML == *"install ok installed"* ]]
 	then
@@ -47,7 +47,7 @@ then
 	fi
 fi
 
-if [[ $OS == *"ubuntu"* ]]
+if [[ $OS == *"ubuntu"* ]]||[[ $OS == *"Ubuntu"* ]]
 then
 	echo -e "[\x1B[01;32m  ok\x1B[0m ] ubuntu"
 	SFML=`dpkg-query -W -f='${Status} ${Version}\n' libsfml-dev 2>/dev/null`
@@ -62,7 +62,7 @@ then
 	fi
 fi
 
-if [[ $OS == *"kali"* ]]
+if [[ $OS == *"kali"* ]]||[[ $OS == *"Kali"* ]]
 then
 	echo -e "[\x1B[01;32m  ok\x1B[0m ] kali"
 	SFML=`dpkg-query -W -f='${Status} ${Version}\n' libsfml-dev 2>/dev/null`
