@@ -4,12 +4,12 @@
 #include <SFML/Audio.hpp>
 #include <fstream>
 
-class RenduWorms : public sf::Drawable, public sf::Transformable
+class SfmlWorms : public sf::Drawable, public sf::Transformable
 {
 public:
 
-  RenduWorms(int largeur, int hauteur);
-  ~RenduWorms();
+  SfmlWorms(int largeur, int hauteur);
+  ~SfmlWorms();
   bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int x, unsigned int y);
 
   int* tab;

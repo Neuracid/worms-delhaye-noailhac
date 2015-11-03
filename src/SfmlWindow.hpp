@@ -2,8 +2,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "RenduMap.hpp"
-#include "RenduWorms.hpp"
+#include "SfmlMap.hpp"
+#include "SfmlWorms.hpp"
 #include "SfmlWindowProperties.hpp"
 #include <string>
 
@@ -23,10 +23,10 @@ protected:
   sf::RenderWindow window;
 
   //map
-  RenduMap map;
+  SfmlMap map;
 
   //worms
-  RenduWorms worms;
+  SfmlWorms worms;
 
   //fond
   sf::Texture textureFond;

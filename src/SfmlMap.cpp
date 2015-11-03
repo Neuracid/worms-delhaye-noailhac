@@ -1,18 +1,18 @@
-#include "RenduMap.hpp"
+#include "SfmlMap.hpp"
 
 //Constructeur , destructeur
-RenduMap::RenduMap(int largeur, int hauteur){
+SfmlMap::SfmlMap(int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
 parseTxt();
 load("../res/blocs/terrain.png", sf::Vector2u(64, 64), 16, 8);
 }
 
-RenduMap::~RenduMap(){
+SfmlMap::~SfmlMap(){
 }
 
 //Méthodes
-bool RenduMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
+bool SfmlMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
 {
     // on charge la texture du tileset
     if (!m_tileset.loadFromFile(tileset))
@@ -53,7 +53,7 @@ bool RenduMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned 
 }
 
 
-void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void SfmlMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     // on applique la transformation
     states.transform *= getTransform();
@@ -65,7 +65,7 @@ void RenduMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_vertices, states);
 }
 
-void RenduMap::parseTxt(){
+void SfmlMap::parseTxt(){
   std::ifstream fichier("../res/txt/map.txt", std::ios::in);
   if(fichier)
   {

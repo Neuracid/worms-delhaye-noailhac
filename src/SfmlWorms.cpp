@@ -1,19 +1,19 @@
-#include "RenduWorms.hpp"
+#include "SfmlWorms.hpp"
 
 //Constructeur , destructeur
-RenduWorms::RenduWorms(int largeur, int hauteur){
+SfmlWorms::SfmlWorms(int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
 parseTxt();
 load("../res/waccuse11.png", sf::Vector2u(64, 64), 16, 8);
 }
 
-RenduWorms::~RenduWorms(){
+SfmlWorms::~SfmlWorms(){
 
 }
 
 //Méthodes
-bool RenduWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
+bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
 {
     // on charge la texture du tileset
     if (!m_tileset.loadFromFile(tileset))
@@ -55,7 +55,7 @@ bool RenduWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigne
 
 
 // //Méthodes
-// bool RenduWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int position, unsigned int x, unsigned int y){
+// bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int position, unsigned int x, unsigned int y){
 //
 //   // création d'un quad
 //   sf::VertexArray quad(sf::Quads, 4);
@@ -75,7 +75,7 @@ bool RenduWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigne
 //   return true;
 // }
 
-void RenduWorms::parseTxt(){
+void SfmlWorms::parseTxt(){
   std::ifstream fichier("../res/txt/worms.txt", std::ios::in);
   if(fichier)
   {
@@ -93,7 +93,7 @@ void RenduWorms::parseTxt(){
   }
 }
 
- int** RenduWorms::parseTxt1(){
+ int** SfmlWorms::parseTxt1(){
    std::ifstream fichier("../res/txt/WormsOut.txt", std::ios::in);
    if(fichier)
    { int nombre;
@@ -119,7 +119,7 @@ void RenduWorms::parseTxt(){
    }
  }
 
- void RenduWorms::draw(sf::RenderTarget& target, sf::RenderStates states) const
+ void SfmlWorms::draw(sf::RenderTarget& target, sf::RenderStates states) const
  {
      // on applique la transformation
      states.transform *= getTransform();

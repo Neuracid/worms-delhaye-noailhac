@@ -7,12 +7,12 @@
 #include <vector>
 
 
-class RenduMap : public sf::Drawable, public sf::Transformable
+class SfmlMap : public sf::Drawable, public sf::Transformable
 {
 public:
 
-  RenduMap(int largeur,int hauteur);
-  ~RenduMap();
+  SfmlMap(int largeur,int hauteur);
+  ~SfmlMap();
   int* tab;
   int nombre;
   bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
