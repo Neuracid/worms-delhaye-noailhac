@@ -25,7 +25,7 @@ target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 
 if(SFML_FOUND)
    include_directories(${SFML_INCLUDE_DIR})
-   target_link_libraries(pacman ${SFML_LIBRARIES})
+   target_link_libraries(Main ${SFML_LIBRARIES})
 endif()
 
 
