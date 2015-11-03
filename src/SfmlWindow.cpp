@@ -5,7 +5,7 @@ SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, 
 }
 
 void SfmlWindow::setFond(){
-  textureFond.loadFromFile("../res/fonds/image.jpg");
+  textureFond.loadFromFile("../res/fonds/bleu.jpg");
   spriteFond.setTexture(textureFond);
 }
 
