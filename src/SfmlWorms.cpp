@@ -1,19 +1,17 @@
 #include "SfmlWorms.hpp"
 
 //Constructeur , destructeur
-SfmlWorms::SfmlWorms(int largeur, int hauteur,int nombreDeWorms) :  text(nombreDeWorms),quads(nombreDeWorms){
-  nombre=largeur*hauteur;
-  tab=new int[nombre];
+SfmlWorms::SfmlWorms(int nombreDeWorms) :  text(nombreDeWorms),quads(nombreDeWorms){
   this->nombreDeWorms=nombreDeWorms;
   tabWorms=new int* [nombreDeWorms];
   for(int i;i<nombreDeWorms;i++){
     tabWorms[i]=new int[5];
     quads[i].setPrimitiveType(sf::Quads);}
   parseTxt();
-  load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur,2);
+  load("../res/waccuse11.png", sf::Vector2u(64, 64),2);
+}
 
 SfmlWorms::~SfmlWorms(){
-
 }
 
 //Méthodes
@@ -23,15 +21,11 @@ bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, int posi
     if (!m_tileset.loadFromFile(tileset))
         return false;
 
-
-
-
             // on en déduit sa position dans la texture du tileset
             int tileNumber = tabWorms[positionTabWorms][3];
 
-
             // on récupère un pointeur vers le quad à définir dans le tableau de vertex
-            sf::Vertex* quad = &quads[positionTabWorms];
+            sf::Vertex* quad = &(quads[positionTabWorms]);
 
             // on définit ses quatre coins
             quad[0].position = sf::Vector2f(10, 10);
@@ -48,34 +42,12 @@ bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, int posi
     return true;
 }
 
-
-// //Méthodes
-// bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int position, unsigned int x, unsigned int y){
-//
-//   // création d'un quad
-//   sf::VertexArray quad(sf::Quads, 4);
-//
-//   // on le définit comme un rectangle, placé en (10, 10) et de taille 100x100
-//   quad[0].position = sf::Vector2f(10, 10);
-//   quad[1].position = sf::Vector2f(110, 10);
-//   quad[2].position = sf::Vector2f(110, 110);
-//   quad[3].position = sf::Vector2f(10, 110);
-//
-//   // et on définit la zone de texture à lui appliquer comme étant le rectangle de 25x50 démarrant en (0, 0)
-//   quad[0].texCoords = sf::Vector2f(0, 0);
-//   quad[1].texCoords = sf::Vector2f(25, 0);
-//   quad[2].texCoords = sf::Vector2f(25, 50);
-//   quad[3].texCoords = sf::Vector2f(0, 50);
-//
-//   return true;
-// }
-
  void SfmlWorms::parseTxt(){
    std::ifstream fichier("../res/txt/WormsOut.txt", std::ios::in);
    if(fichier)
    {
      int x,y,pv,etat,team;
-     for(int i=0; i<nombre; i++){
+     for(int i=0; i<nombreDeWorms; i++){
        fichier >>x>>y>>pv>>etat>>team;
        tabWorms[i][0]=x;
        tabWorms[i][1]=y;

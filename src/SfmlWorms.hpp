@@ -11,7 +11,7 @@ public:
 
   SfmlWorms(int nombreDeWorms);
   ~SfmlWorms();
-  bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int x, unsigned int y,int numeroWorms);
+  bool load(const std::string& tileset, sf::Vector2u tileSize, int numeroWorms);
   int nombreDeWorms;
   int **tabWorms;
   void parseTxt();
