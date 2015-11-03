@@ -12,6 +12,22 @@ void SfmlWindow::setFond(){
 void SfmlWindow::displayWindow(){
   while (window.isOpen())
   {
+      // Create a text
+      sf::Text text;
+      // Declare a new font
+      sf::Font font;
+      // Load it from a file
+      if (!font.loadFromFile("../res/fonts/arial.ttf"))
+      {
+          // error...
+      }
+      text.setFont(font);
+      text.setString("Hello world");
+      text.setCharacterSize(64);
+      text.setPosition(0,64*7);
+      text.setStyle(sf::Text::Bold);
+      text.setColor(sf::Color::Red);
+
       // on gère les évènements
       sf::Event event;
       while (window.pollEvent(event))
@@ -25,6 +41,7 @@ void SfmlWindow::displayWindow(){
       window.draw(spriteFond);
       window.draw(map);
       window.draw(worms);
+      window.draw(text);
       window.display();
   }
 }
