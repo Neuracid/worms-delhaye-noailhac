@@ -16,7 +16,7 @@ public:
   int **tabWorms;
   void parseTxt();
   std::vector<sf::Text> text;
-  std::vector<sf::Texture> texture;
+  std::vector<sf::VertexArray> quads;
 
 private:
 

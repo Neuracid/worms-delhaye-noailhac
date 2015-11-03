@@ -1,6 +1,7 @@
 #include "SfmlWorms.hpp"
 
 //Constructeur , destructeur
+<<<<<<< HEAD
 SfmlWorms::SfmlWorms(int nombreDeWorms) : texture(nombreDeWorms), text(nombreDeWorms){
 this->nombreDeWorms=nombreDeWorms;
 tabWorms=new int* [nombreDeWorms];
@@ -8,6 +9,18 @@ for(int i;i<nombreDeWorms;i++)
 tabWorms[i]=new int[5];
 parseTxt();
 load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur,2);
+=======
+SfmlWorms::SfmlWorms(int largeur, int hauteur,int nombreDeWorms) :  text(nombreDeWorms),quads(nombreDeWorms){
+  for(int i=0;i<nombreDeWorms;i++)quads[i].setPrimitiveType(sf::Quads);
+  nombre=largeur*hauteur;
+  tab=new int[nombre];
+  this->nombreDeWorms=nombreDeWorms;
+  tabWorms=new int* [nombreDeWorms];
+  for(int i;i<nombreDeWorms;i++)
+  tabWorms[i]=new int[5];
+  parseTxt();
+  load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur,2);
+>>>>>>> origin/master
 }
 
 SfmlWorms::~SfmlWorms(){
