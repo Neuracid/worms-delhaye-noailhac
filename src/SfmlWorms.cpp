@@ -116,6 +116,7 @@ void SfmlWorms::parseTxt(){
    else
    {
      std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+     return NULL;
    }
  }
 
