@@ -5,7 +5,7 @@ SfmlWorms::SfmlWorms(int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
 parseTxt();
-load("../res/waccuse11.png", sf::Vector2u(64, 64), 16, 8);
+load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur);
 }
 
 SfmlWorms::~SfmlWorms(){
