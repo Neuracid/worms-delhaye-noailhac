@@ -11,7 +11,6 @@ SfmlWorms::SfmlWorms(int largeur, int hauteur,int nombreDeWorms) :  text(nombreD
   tabWorms[i]=new int[5];
   parseTxt();
   load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur,2);
-}
 
 SfmlWorms::~SfmlWorms(){
 
@@ -29,6 +28,7 @@ bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, int posi
 
             // on en déduit sa position dans la texture du tileset
             int tileNumber = tabWorms[positionTabWorms][3];
+
 
             // on récupère un pointeur vers le quad à définir dans le tableau de vertex
             sf::Vertex* quad = &quads[positionTabWorms];
