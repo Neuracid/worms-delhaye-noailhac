@@ -19,7 +19,7 @@ public:
   void parseTxt1();
   void parseTxt();
   std::vector<sf::Text> text;
-  std::vector<sf::Texture> texture;
+  std::vector<sf::VertexArray> quads;
 
 private:
 
