@@ -10,7 +10,7 @@ public:
 
   SfmlWorms(int largeur, int hauteur, int nombreDeWorms);
   ~SfmlWorms();
-  bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int x, unsigned int y,int numéroWorms);
+  bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int x, unsigned int y,int numeroWorms);
 
   int* tab;
   int nombre;

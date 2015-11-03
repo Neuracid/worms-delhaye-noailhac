@@ -16,7 +16,7 @@ SfmlWorms::~SfmlWorms(){
 }
 
 //Méthodes
-bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height,int numéroWorms)
+bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height,int numeroWorms)
 {
 
     // on charge la texture du tileset
@@ -100,8 +100,7 @@ void SfmlWorms::parseTxt(){
  void SfmlWorms::parseTxt1(){
    std::ifstream fichier("../res/txt/WormsOut.txt", std::ios::in);
    if(fichier)
-   { int nombre;
-     fichier>>nombre;
+   {
      int x,y,pv,etat,team;
      for(int i=0; i<nombre; i++){
        fichier >>x>>y>>pv>>etat>>team;
