@@ -1,11 +1,14 @@
 #include "SfmlWorms.hpp"
 
 //Constructeur , destructeur
-SfmlWorms::SfmlWorms(int largeur, int hauteur){
+SfmlWorms::SfmlWorms(int largeur, int hauteur,int nombreDeWorms){
 nombre=largeur*hauteur;
 tab=new int[nombre];
+tabWorms=new int* [nombreDeWorms];
+for(int i;i<nombreDeWorms;i++)
+tabWorms[i]=new int[5];
 parseTxt();
-load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur);
+load("../res/waccuse11.png", sf::Vector2u(64, 64), largeur, hauteur,2);
 }
 
 SfmlWorms::~SfmlWorms(){
@@ -13,8 +16,9 @@ SfmlWorms::~SfmlWorms(){
 }
 
 //Méthodes
-bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height)
+bool SfmlWorms::load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height,int numéroWorms)
 {
+
     // on charge la texture du tileset
     if (!m_tileset.loadFromFile(tileset))
         return false;
@@ -93,30 +97,25 @@ void SfmlWorms::parseTxt(){
   }
 }
 
- int** SfmlWorms::parseTxt1(){
+ void SfmlWorms::parseTxt1(){
    std::ifstream fichier("../res/txt/WormsOut.txt", std::ios::in);
    if(fichier)
    { int nombre;
      fichier>>nombre;
      int x,y,pv,etat,team;
-     int **tabMap;
-     tabMap=new int* [nombre];
      for(int i=0; i<nombre; i++){
        fichier >>x>>y>>pv>>etat>>team;
-       tabMap[i]=new int[5];
-       tabMap[i][0]=x;
-       tabMap[i][1]=y;
-       tabMap[i][2]=pv;
-       tabMap[i][3]=etat;
-       tabMap[i][4]=team;
+       tabWorms[i][0]=x;
+       tabWorms[i][1]=y;
+       tabWorms[i][2]=pv;
+       tabWorms[i][3]=etat;
+       tabWorms[i][4]=team;
      }
      fichier.close();
-     return tabMap;
    }
    else
    {
      std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-     return NULL;
    }
  }
 
