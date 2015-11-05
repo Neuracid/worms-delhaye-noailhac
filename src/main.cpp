@@ -2,11 +2,6 @@
 //#include "SfmlWindowProperties.hpp"
 
 int main() {
-
-  SfmlWindowProperties windowProperties;
-  SfmlWindow window(windowProperties,"worms",30);
-
-  window.setFond();
+  SfmlWindow window("worms",30);
   window.displayWindow();
-
 }

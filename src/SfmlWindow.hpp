@@ -6,31 +6,30 @@
 #include "SfmlWorms.hpp"
 #include "SfmlWindowProperties.hpp"
 #include <string>
+#include <vector>
 
 class SfmlWindow{
-
 public:
+  SfmlWindowProperties windowProperties;
+  sf::VideoMode videoMode;
+  sf::RenderWindow window;
+  std::vector<SfmlWorms> worms;
+  //map
+  SfmlMap map;
+  //fond
+   sf::Texture textureFond;
+   sf::Sprite spriteFond;
+   sf::Font font;
   //Constructeur , destructeur
-  SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit);
+  SfmlWindow( std::string name, int frameRateLimit);
+
 
   void setFond();
 
   void displayWindow();
+  void setWorms();
+  void drawWorms();
 
 protected:
-
-  sf::VideoMode videoMode;
-  sf::RenderWindow window;
-
-  //map
-  SfmlMap map;
-
-  //worms
-  SfmlWorms worms;
-
-  //fond
-  sf::Texture textureFond;
-  sf::Sprite spriteFond;
-
 
 };

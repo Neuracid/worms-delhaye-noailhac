@@ -1,7 +1,10 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(SfmlWindowProperties windowProperties, std::string name, int frameRateLimit) : worms(windowProperties.largeurGrille,windowProperties.hauteurGrille), map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
-  this->window.setFramerateLimit(frameRateLimit);
+SfmlWindow::SfmlWindow(std::string name, int frameRateLimit) : map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
+ this->window.setFramerateLimit(frameRateLimit);
+  setWorms( );
+  setFond();
+  
 }
 
 void SfmlWindow::setFond(){
@@ -24,7 +27,20 @@ void SfmlWindow::displayWindow(){
       window.clear();
       window.draw(spriteFond);
       window.draw(map);
-      window.draw(worms);
+      drawWorms();
       window.display();
+  }
+}
+
+void SfmlWindow::setWorms(){
+  for(int i=0;i<windowProperties.nombreDeWorms;i++){
+    SfmlWorms nouveau(windowProperties.tabWorms[i],"../res/waccuse11.png");
+    worms.push_back(nouveau);
+  }
+}
+
+void SfmlWindow::drawWorms(){
+  for(int i=0;i<windowProperties.nombreDeWorms;i++){
+    window.draw(worms[i]);
   }
 }

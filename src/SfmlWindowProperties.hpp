@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 class SfmlWindowProperties {
 public:
@@ -8,6 +9,8 @@ public:
   int largeurGrille;
   int hauteurGrille;
   int nombreDeWorms;
+  std::vector<std::vector<int> > tabWorms;
   void parseGrille();
+  void parseWorms();
 
 };
