@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -20,6 +21,7 @@ public:
    sf::Texture textureFond;
    sf::Sprite spriteFond;
    sf::Font font;
+   std::vector<sf::Text> text;
   //Constructeur , destructeur
   SfmlWindow( std::string name, int frameRateLimit);
 
@@ -29,6 +31,8 @@ public:
   void displayWindow();
   void setWorms();
   void drawWorms();
+  void setText();
+  void drawText();
 
 protected:
 
