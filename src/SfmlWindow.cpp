@@ -15,6 +15,9 @@ void SfmlWindow::setFond(){
 void SfmlWindow::displayWindow(){
   while (window.isOpen())
   {
+      //test sur les text
+      
+
       // on gère les évènements
       sf::Event event;
       while (window.pollEvent(event))
