@@ -36,7 +36,7 @@ void SfmlWindow::displayWindow(){
                   {
                       case sf::Keyboard::Down: window.draw(spriteFond); window.draw(map); drawWorms(); drawText();
                       break;
-                      case sf::Keyboard::Up: SfmlMap.parseTxt(); map.load(); worms[0].load();
+                      case sf::Keyboard::Up: map.parseTxt(); map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille); worms[0]->load(sf::Vector2u(64, 64));
                       break;
                   }
                   window.display();
