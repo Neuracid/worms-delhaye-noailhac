@@ -14,7 +14,7 @@ public:
   SfmlWindowProperties windowProperties;
   sf::VideoMode videoMode;
   sf::RenderWindow window;
-  std::vector<SfmlWorms> worms;
+  std::vector<std::unique_ptr<SfmlWorms> > worms;
   //map
   SfmlMap map;
   //fond

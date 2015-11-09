@@ -1,4 +1,4 @@
 #include "ListeBloc.hpp"
 
-ListeBloc::ListeBloc(int hauteur,int largeur) : blocs(largeur*hauteur){
+ListeBloc::ListeBloc(int hauteur,int largeur) : matriceTerrain(largeur*hauteur){
 }

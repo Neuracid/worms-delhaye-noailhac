@@ -5,7 +5,7 @@
 class ListeBloc{
 
 public:
-std::vector<Bloc*> blocs;
+std::vector<Bloc*> matriceTerrain;
 ListeBloc(int hauteur, int largeur);
 private:
 

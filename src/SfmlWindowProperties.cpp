@@ -11,7 +11,7 @@ void SfmlWindowProperties::parseGrille(){
   std::ifstream fichier("../res/txt/Grille.txt", std::ios::in);
   if(fichier)
   {
-    fichier>>largeurGrille>>hauteurGrille>>nombreDeWorms;
+    fichier>>largeurGrille>>hauteurGrille>>nombreDeWorms>>wormsActif;
     fichier.close();
   }
   else
@@ -26,6 +26,7 @@ void SfmlWindowProperties::parseWorms(){
   {
     int x,y,pv,etat,team;
     std::vector<int> nouveau(5);
+    tabWorms.resize(0);
     for(int i=0; i<nombreDeWorms; i++){
       fichier >>x>>y>>pv>>etat>>team;
       nouveau[0]=y;

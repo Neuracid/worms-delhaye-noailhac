@@ -17,7 +17,7 @@ void SfmlWindow::displayWindow(){
   while (window.isOpen())
   {
       //test sur les text
-      
+
 
       // on gère les évènements
       sf::Event event;
@@ -38,15 +38,15 @@ void SfmlWindow::displayWindow(){
 }
 
 void SfmlWindow::setWorms(){
+  worms.resize(windowProperties.nombreDeWorms);
   for(int i=0;i<windowProperties.nombreDeWorms;i++){
-    SfmlWorms nouveau(windowProperties.tabWorms[i],"../res/waccuse11.png");
-    worms.push_back(nouveau);
+    worms[i].reset(new SfmlWorms(windowProperties.tabWorms[i],"../res/waccuse11.png"));
   }
 }
 
 void SfmlWindow::drawWorms(){
   for(int i=0;i<worms.size();i++){
-    window.draw(worms[i]);
+    window.draw(*worms[i]);
   }
 }
 
