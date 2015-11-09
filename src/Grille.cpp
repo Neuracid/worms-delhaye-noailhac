@@ -2,9 +2,17 @@
 #include <iostream>
 #include <vector>
 
-Grille::Grille(int hauteur,int largeur){
-  this->hauteur=hauteur;
-  this->largeur=largeur;
+Grille::Grille(){
+  std::ifstream fichier("../res/txt/MapType0.txt", std::ios::in);
+  if(fichier)
+  {
+  fichier >>largeur>>hauteur;
+    fichier.close();
+  }
+  else
+  {
+    std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+  }
 }
 
 int Grille::getHauteur(){

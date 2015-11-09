@@ -4,7 +4,8 @@ ListeBloc::ListeBloc(int hauteur,int largeur) : matriceTerrain(largeur*hauteur){
   std::ifstream fichier("../res/txt/MapType0.txt", std::ios::in);
   if(fichier)
   {
-  int x;
+  int x,hauteur,largeur;
+  fichier >>largeur>>hauteur;
     for(int i=0; i<largeur; i++){
       for(int j=0;j<hauteur;j++){
         fichier >>x;

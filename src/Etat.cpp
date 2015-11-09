@@ -1,6 +1,6 @@
 #include "Etat.hpp"
 
-Etat::Etat(int hauteur,int largeur):grille( hauteur, largeur),listeBloc(hauteur,largeur){
+Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
 }
 
 

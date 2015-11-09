@@ -12,7 +12,7 @@ public:
   Grille grille;
   ListeBloc listeBloc;
   //std::time_t result = std::time(NULL);
-  Etat(int hauteur,int largeur);
+  Etat();
   std::vector<Joueur> joueurs;
   void parseOutMap();
   void parseOutWorms();
