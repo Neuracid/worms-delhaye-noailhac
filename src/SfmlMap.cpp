@@ -4,7 +4,7 @@
 SfmlMap::SfmlMap(int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
-parseTxt();
+parseMap();
 load("../res/blocs/terrain.png", sf::Vector2u(64, 64), largeur, hauteur);
 }
 
@@ -65,7 +65,7 @@ void SfmlMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_vertices, states);
 }
 
-void SfmlMap::parseTxt(){
+void SfmlMap::parseMap(){
   std::ifstream fichier("../res/txt/map.txt", std::ios::in);
   if(fichier)
   {

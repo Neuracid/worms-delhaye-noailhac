@@ -1,7 +1,7 @@
 #include "SfmlWindow.hpp"
 
 SfmlWindow::SfmlWindow(std::string name, int frameRateLimit) : map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
- this->window.setFramerateLimit(frameRateLimit);
+  this->window.setFramerateLimit(frameRateLimit);
   setWorms();
   setFond();
   font.loadFromFile("../res/ttf/ComicSansMs.ttf");
@@ -36,7 +36,7 @@ void SfmlWindow::displayWindow(){
                   {
                       case sf::Keyboard::Down: window.draw(spriteFond); window.draw(map); drawWorms(); drawText();
                       break;
-                      case sf::Keyboard::Up: map.parseTxt(); map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille); worms[0]->load(sf::Vector2u(64, 64));
+                      case sf::Keyboard::Up: map.parseMap(); map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille); worms[0]->load(sf::Vector2u(64, 64));
                       break;
                   }
                   window.display();
@@ -52,6 +52,7 @@ void SfmlWindow::displayWindow(){
       // window.draw(map);
       // drawWorms();
       // drawText();
+      //window.display();
 
   }
 }
@@ -77,14 +78,14 @@ void SfmlWindow::setText(){
    text[i].setString(myString);
    text[i].setCharacterSize(18);
    switch (windowProperties.tabWorms[i][4]) {
-     case 0:text[i].setColor(sf::Color::Red);
-            break;
+    case 0:text[i].setColor(sf::Color::Red);
+    break;
     case 1:text[i].setColor(sf::Color::Yellow);
-           break;
-   case 2:text[i].setColor(sf::Color::Green);
-          break;
+    break;
+    case 2:text[i].setColor(sf::Color::Green);
+    break;
     case 3:text[i].setColor(sf::Color::Blue);
-           break;
+    break;
    }
    text[i].setPosition(64*windowProperties.tabWorms[i][0]+18,64*windowProperties.tabWorms[i][1]);
  }

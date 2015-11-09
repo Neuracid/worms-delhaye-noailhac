@@ -18,10 +18,10 @@ public:
   //map
   SfmlMap map;
   //fond
-   sf::Texture textureFond;
-   sf::Sprite spriteFond;
-   sf::Font font;
-   std::vector<sf::Text> text;
+  sf::Texture textureFond;
+  sf::Sprite spriteFond;
+  sf::Font font;
+  std::vector<sf::Text> text;
   //Constructeur , destructeur
   SfmlWindow( std::string name, int frameRateLimit);
 
