@@ -2,7 +2,7 @@
 
 SfmlWindow::SfmlWindow(std::string name, int frameRateLimit) : map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
  this->window.setFramerateLimit(frameRateLimit);
-  setWorms( );
+  setWorms();
   setFond();
   font.loadFromFile("../res/ttf/ComicSansMs.ttf");
   setText();
@@ -14,26 +14,45 @@ void SfmlWindow::setFond(){
 }
 
 void SfmlWindow::displayWindow(){
+  window.clear();
+  window.draw(spriteFond);
+  window.display();
   while (window.isOpen())
   {
       //test sur les text
-
 
       // on gère les évènements
       sf::Event event;
       while (window.pollEvent(event))
       {
-          if(event.type == sf::Event::Closed || ((event.type == sf::Event::KeyPressed) && (event.key.code==sf::Keyboard::Escape)) )
-              window.close();
+          if(event.type == sf::Event::Closed || ((event.type == sf::Event::KeyPressed) && (event.key.code==sf::Keyboard::Escape)) ){
+            window.close();
+          }
+          else
+          {
+              if (event.type == sf::Event::KeyPressed)
+              {
+                  switch(event.key.code)
+                  {
+                      case sf::Keyboard::Down: window.draw(spriteFond); window.draw(map); drawWorms(); drawText();
+                      break;
+                      case sf::Keyboard::Up: SfmlMap.parseTxt(); map.load(); worms[0].load();
+                      break;
+                  }
+                  window.display();
+
+              }
+          }
+
       }
 
       // on dessine le niveau
-      window.clear();
-      window.draw(spriteFond);
-      window.draw(map);
-      drawWorms();
-      drawText();
-      window.display();
+      // window.clear();
+      // window.draw(spriteFond);
+      // window.draw(map);
+      // drawWorms();
+      // drawText();
+
   }
 }
 
