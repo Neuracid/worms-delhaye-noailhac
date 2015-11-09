@@ -1,3 +1,5 @@
+#ifndef BLOC_H
+#define BLOC_H
 class Bloc {
 
 public:
@@ -16,3 +18,4 @@ private:
 protected:
   int position_x,position_y;
 };
+#endif

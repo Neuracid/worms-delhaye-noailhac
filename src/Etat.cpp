@@ -1,27 +1,22 @@
 #include "Etat.hpp"
 
-Etat::Etat(int hauteur,int largeur):grille( hauteur, largeur)/*,listeBloc(hauteur,largeur)*/{
+Etat::Etat(int hauteur,int largeur):grille( hauteur, largeur),listeBloc(hauteur,largeur){
 }
 
 
 void Etat::parseOutMap(){
-    // std::ofstream fichier("../res/MapOut.txt", std::ios::out | std::ios::trunc);
-    // int largeur,hauteur,valeur;
-    // largeur=grille.getLargeur();
-    // hauteur=grille.getHauteur();
-    //
-    // if(fichier){
-    //   fichier<<hauteur<<' '<<largeur<<std::endl;
-    //   for(int i=0;i<hauteur;i++){
-    //     for(int j=0;j<largeur;j++)
-    //     valeur=j+i*largeur;
-    //     fichier<<listeBloc[valeur]->getType()<<' ';
-    //     fichier<<std::endl;
-    //   }
-    //    fichier.close();
-    // }
-    // else
-    //         std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+    std::ofstream fichier("../res/Map.txt", std::ios::out | std::ios::trunc);
+
+    if(fichier){
+      for(int i=0;i<grille.getHauteur();i++){
+        for(int j=0;j<grille.getLargeur();j++)
+        fichier<<listeBloc[i][j]->getType()<<' ';
+        fichier<<std::endl;
+      }
+       fichier.close();
+    }
+    else
+            std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
 }
 
 

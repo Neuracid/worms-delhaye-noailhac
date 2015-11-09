@@ -1,3 +1,5 @@
+#ifndef WORMS_H
+#define WORMS_H
 #include "Bloc.hpp"
 class Worms:public Bloc{
 public:
@@ -17,3 +19,4 @@ protected:
 
 
 };
+#endif

@@ -1,12 +1,17 @@
 #include <iostream>
 #include <vector>
-#include "Bloc.hpp"
+#include "Terrain.hpp"
+#include <fstream>
 
 class ListeBloc{
 
 public:
-std::vector<Bloc*> matriceTerrain;
+std::vector<std::vector<std::unique_ptr< Bloc> > > matriceTerrain;
 ListeBloc(int hauteur, int largeur);
+
+std::vector<std::unique_ptr< Bloc> >& operator[](size_t i) { return matriceTerrain[i];}
+
+
 private:
 
 protected:

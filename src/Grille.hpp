@@ -8,6 +8,6 @@ public:
 protected:
 
 private:
-  int hauteur;
-  int largeur;
+  int hauteur=12;
+  int largeur=32;
 };

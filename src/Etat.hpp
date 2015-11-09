@@ -1,6 +1,6 @@
 #include <vector>
 #include "WormsJoueur.hpp"
-//#include "ListeBloc.hpp"
+#include "ListeBloc.hpp"
 #include "Grille.hpp"
 #include <ctime>
 #include <iostream>
@@ -9,8 +9,8 @@
 class Etat{
 public:
   std::vector<WormsJoueur> v;
-  //ListeBloc listeBloc;
   Grille grille;
+  ListeBloc listeBloc;
   //std::time_t result = std::time(NULL);
   Etat(int hauteur,int largeur);
   std::vector<Joueur> joueurs;
