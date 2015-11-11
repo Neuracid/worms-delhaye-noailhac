@@ -6,7 +6,6 @@ public:
   void deplacementGauche(Worms worms);
 
 private:
-  Etat etat;
 
 
 };
