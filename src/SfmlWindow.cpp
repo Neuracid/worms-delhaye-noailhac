@@ -34,10 +34,20 @@ void SfmlWindow::displayWindow(){
               {
                   switch(event.key.code)
                   {
-                      case sf::Keyboard::Down: window.draw(spriteFond); window.draw(map); drawWorms(); drawText();
-                      break;
-                      case sf::Keyboard::Up: map.parseMap(); map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille); worms[0]->load(sf::Vector2u(64, 64));
-                      break;
+                      case sf::Keyboard::Down:
+                                window.draw(spriteFond);
+                                window.draw(map);
+                                drawWorms();
+                                drawText();
+                                break;
+
+                      case sf::Keyboard::Up:
+                                map.parseMap();
+                                map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille);
+                                worms[0]->load(sf::Vector2u(64, 64));
+                                break;
+                                
+                      default: break;
                   }
                   window.display();
 
@@ -95,4 +105,15 @@ void SfmlWindow::drawText(){
   for(int i=0;i<text.size();i++){
     window.draw(text[i]);
   }
+}
+
+void SfmlWindow::update(){
+  //parse
+  windowProperties.parseGrille();
+  windowProperties.parseWorms();
+
+  setWorms();
+  setFond();
+  setText();
+
 }
