@@ -1,3 +1,5 @@
+#ifndef SFMLWINDOW_H
+#define SFMLWINDOW_H
 #include <iostream>
 #include <cstdlib>
 #include <SFML/Window.hpp>
@@ -37,3 +39,4 @@ public:
 protected:
 
 };
+#endif

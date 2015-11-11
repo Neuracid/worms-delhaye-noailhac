@@ -1,3 +1,5 @@
+#ifndef SFMLWINDOWPROPERTIES_H
+#define SFMLWINDOWPROPERTIES_H
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -15,3 +17,4 @@ public:
   void parseWorms();
 
 };
+#endif

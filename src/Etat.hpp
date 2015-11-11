@@ -1,3 +1,5 @@
+#ifndef ETAT_H
+#define ETAT_H
 #include <vector>
 #include "WormsJoueur.hpp"
 #include "ListeBloc.hpp"
@@ -8,18 +10,28 @@
 
 class Etat{
 public:
-  std::vector<WormsJoueur> v;
+  std::vector<WormsJoueur> listeWormsJoueurs;
+  int placeWormsActif=0;
+
   Grille grille;
   ListeBloc listeBloc;
-  //std::time_t result = std::time(NULL);
-  Etat();
+
   std::vector<Joueur> joueurs;
+
+  //std::time_t result = std::time(NULL);
+
+  Etat();
   void parseOutMap();
   void parseOutWorms();
   void parseOutJoueurs();
-  void parseGrille();
+  void parseOutGrille();
+  void setWormsJoueur();
+  void setWormsJoueur(int x, int y,Joueur::Team a);
+  void setJoueurListe(Joueur::Team a);
+
 protected:
 
 private:
 
 };
+#endif

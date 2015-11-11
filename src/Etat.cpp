@@ -1,6 +1,8 @@
 #include "Etat.hpp"
 
 Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
+  listeWormsJoueurs.resize(0);
+  //joueurs.resize(0);
 }
 
 
@@ -23,9 +25,9 @@ void Etat::parseOutMap(){
 void Etat::parseOutWorms(){
 
   std::ofstream fichier("../res/Worms.txt", std::ios::out | std::ios::trunc);
-  fichier<<v.size()<<std::endl;
-  for(int i=0; i<v.size();i++){
-    fichier<<v[i].worms->getPosition_x()<<' '<<v[i].worms->getPosition_y()<<' '<<v[i].worms->getVie()<<' '<<v[i].worms->getType()<<' '<<v[i].joueur->getTeam()<<std::endl;
+  fichier<<listeWormsJoueurs.size()<<std::endl;
+  for(int i=0; i<listeWormsJoueurs.size();i++){
+    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie()<<' '<<listeWormsJoueurs[i].worms->getType()<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
   }
   fichier.close();
 
@@ -40,8 +42,31 @@ void Etat::parseOutJoueurs(){
   fichier.close();
 }
 
-void Etat::parseGrille(){
+void Etat::parseOutGrille(){
   std::ofstream fichier("../res/Grille.txt", std::ios::out | std::ios::trunc);
-  fichier<<grille.getLargeur()<<' '<<grille.getHauteur()<<' '<<v.size();
+  fichier<<grille.getLargeur()<<' '<<grille.getHauteur()<<' '<<listeWormsJoueurs.size()<<' '<<placeWormsActif;
   fichier.close();
+}
+
+void Etat::setWormsJoueur(int x, int y,Joueur::Team a){
+    // Worms worms(x,y);
+    // WormsJoueur wormsJoueur;
+    // wormsJoueur.setWorms(worms);
+    // bool verifJoueurExiste=false;
+    // int i=0;
+    // while(i<joueurs.size()||verifJoueurExiste==false){
+    //   if(a==joueurs[i].getTeam())
+    //     verifJoueurExiste=true;
+    //   else
+    //     i++;
+    // }
+    // if(verifJoueurExiste==false)
+    //   setJoueurListe(a);
+    // wormsJoueur.setJoueur(joueurs[i]);
+    // listeWormsJoueurs.push_back(wormsJoueur);
+}
+
+void Etat::setJoueurListe(Joueur::Team a){
+  Joueur joueur(a);
+  joueurs.push_back(joueur);
 }

@@ -1,3 +1,5 @@
+#ifndef GRILLE_H
+#define GRILLE_H
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -12,3 +14,4 @@ private:
   int hauteur;
   int largeur;
 };
+#endif

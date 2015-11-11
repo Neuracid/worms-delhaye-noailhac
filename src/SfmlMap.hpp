@@ -1,3 +1,5 @@
+#ifndef SFMLMAP_H
+#define SFMLMAP_H
 #include <iostream>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -26,3 +28,4 @@ private:
   sf::VertexArray m_vertices;
   sf::Texture m_tileset;
 };
+#endif

@@ -1,3 +1,5 @@
+#ifndef TERRAIN_H
+#define TERRAIN_H
 #include "Bloc.hpp"
 class Terrain:public Bloc{
 
@@ -16,3 +18,4 @@ private:
 protected:
 
 };
+#endif

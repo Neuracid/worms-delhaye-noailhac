@@ -1,3 +1,5 @@
+#ifndef SFMLWORMS_H
+#define SFMLWORMS_H
 #include <iostream>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -19,3 +21,4 @@ public:
   sf::Texture m_tileset;
 
 };
+#endif
