@@ -24,9 +24,9 @@ void Etat::parseOutMap(){
 void Etat::parseOutWorms(){
 
   std::ofstream fichier("../res/txt/worms.txt", std::ios::out | std::ios::trunc);
-  fichier<<listeWormsJoueurs.size()<<std::endl;
   for(int i=0; i<listeWormsJoueurs.size();i++){
-    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie()<<' '<<listeWormsJoueurs[i].worms->getType();//<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
+    printf("%d e %d e %d",listeWormsJoueurs[i].worms->getPosition_x(),listeWormsJoueurs[i].worms->getPosition_y(),listeWormsJoueurs[i].worms->getVie());
+    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie();//<<' '<<listeWormsJoueurs[i].worms->getType()<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
   }
   fichier.close();
 
