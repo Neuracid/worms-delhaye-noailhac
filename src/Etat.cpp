@@ -2,6 +2,8 @@
 
 Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
   listeWormsJoueurs.resize(0);
+  grille.setLargeur(32);
+  grille.setHauteur(12);
 }
 
 

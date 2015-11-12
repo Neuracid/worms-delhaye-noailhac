@@ -22,3 +22,10 @@ int Grille::getHauteur(){
 int Grille::getLargeur(){
   return this->largeur;
 }
+
+void Grille::setLargeur(int largeur){
+  this->largeur=largeur;
+}
+void Grille::setHauteur(int hauteur){
+  this->hauteur=hauteur;
+}

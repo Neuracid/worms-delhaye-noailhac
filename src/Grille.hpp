@@ -8,6 +8,8 @@ public:
   Grille();
   int getHauteur();
   int getLargeur();
+  void setLargeur(int largeur);
+  void setHauteur(int hauteur);
 protected:
 
 private:
