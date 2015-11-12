@@ -13,7 +13,7 @@ public:
   int nombreDeWorms;
   std::vector<std::vector<int> > tabWorms;
   int wormsActif;
-  void parseGrille();
+  void parseProperties();
   void parseWorms();
 
 };

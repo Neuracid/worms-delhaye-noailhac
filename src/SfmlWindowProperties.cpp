@@ -2,13 +2,13 @@
 
 
 SfmlWindowProperties::SfmlWindowProperties(){
-  parseGrille();
+  parseProperties();
   parseWorms();
 }
 
 
-void SfmlWindowProperties::parseGrille(){
-  std::ifstream fichier("../res/txt/Grille.txt", std::ios::in);
+void SfmlWindowProperties::parseProperties(){
+  std::ifstream fichier("../res/txt/Properties.txt", std::ios::in);
   if(fichier)
   {
     fichier>>largeurGrille>>hauteurGrille>>nombreDeWorms>>wormsActif;

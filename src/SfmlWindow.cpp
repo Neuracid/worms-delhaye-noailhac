@@ -116,8 +116,8 @@ void SfmlWindow::drawText(){
 }
 
 void SfmlWindow::update(){
-  //props
-  windowProperties.parseGrille();
+  //properties
+  windowProperties.parseProperties();
   //worms
   windowProperties.parseWorms();
   for (int i=0; i<worms.size(); i++){
