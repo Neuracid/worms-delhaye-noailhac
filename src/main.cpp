@@ -13,6 +13,6 @@ int main() {
   Commandes commande;
   commande.deplacementDroite(etat);
   etat.parseOutWorms();
-  // SfmlWindow window("worms",30);
-  // window.displayWindow();
+  SfmlWindow window("worms",30);
+  window.displayWindow();
 }
