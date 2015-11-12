@@ -21,7 +21,7 @@ void SfmlWindowProperties::parseProperties(){
 }
 
 void SfmlWindowProperties::parseWorms(){
-  std::ifstream fichier("../res/txt/Worms.txt", std::ios::in);
+  std::ifstream fichier("../res/txt/worms.txt", std::ios::in);
   if(fichier)
   {
     int x,y,pv,etat,team;
