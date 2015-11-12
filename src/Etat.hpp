@@ -16,17 +16,13 @@ public:
   Grille grille;
   ListeBloc listeBloc;
 
-  std::vector<Joueur> joueurs;
-
   //std::time_t result = std::time(NULL);
 
   Etat();
   void parseOutMap();
   void parseOutWorms();
-  void parseOutJoueurs();
   void parseOutProperties();
   void setWormsJoueur(int x, int y,Joueur::Team a);
-  void setJoueurListe(Joueur::Team a);
 
 protected:
 
