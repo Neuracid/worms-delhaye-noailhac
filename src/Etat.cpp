@@ -51,8 +51,8 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
       i++;
   }
   if(verifJoueurExiste==false){
-    Joueur joueur(color);
-    wormsJoueur.setJoueur(&joueur);
+    Joueur* joueur = new Joueur(color);
+    wormsJoueur.setJoueur(joueur);
   }
   else wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
     printf("%d\n",wormsJoueur.worms->getPosition_x());
