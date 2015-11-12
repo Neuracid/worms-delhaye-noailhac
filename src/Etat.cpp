@@ -55,6 +55,7 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
     wormsJoueur.setJoueur(&joueur);
   }
   else wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
-
+    printf("%d\n",wormsJoueur.worms->getPosition_x());
     listeWormsJoueurs.push_back(wormsJoueur);
+    printf("%d\n", listeWormsJoueurs[0].worms->getPosition_x());
 }
