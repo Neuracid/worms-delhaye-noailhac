@@ -5,8 +5,8 @@ bool Commandes::deplacementDroite(Etat &etat){
   bool verif=false;
   int x=etat.listeWormsJoueurs[etat.placeWormsActif].worms->getPosition_x();
   int y=etat.listeWormsJoueurs[etat.placeWormsActif].worms->getPosition_y();
-  int type=etat.listeBloc[x+1][y]->getType();
   if(x>=0 && x<etat.grille.getLargeur()-1){
+      int type=etat.listeBloc[x+1][y]->getType();
     switch (type) {
       case 0: etat.listeWormsJoueurs[etat.placeWormsActif].worms->setPosition_x(x+1);verif=true;break; //air
       case 1: etat.listeWormsJoueurs[etat.placeWormsActif].worms->setPosition_x(x+1);verif=true;break; //gaz
@@ -30,8 +30,8 @@ bool Commandes::deplacementGauche(Etat &etat){
   bool verif=false;
   int x=etat.listeWormsJoueurs[etat.placeWormsActif].worms->getPosition_x();
   int y=etat.listeWormsJoueurs[etat.placeWormsActif].worms->getPosition_y();
-  int type=etat.listeBloc[x-1][y]->getType();
   if(x>0 && x<etat.grille.getLargeur()){
+    int type=etat.listeBloc[x-1][y]->getType();
     switch (type) {
       case 0: etat.listeWormsJoueurs[etat.placeWormsActif].worms->setPosition_x(x-1);verif=true;break; //air
       case 1: etat.listeWormsJoueurs[etat.placeWormsActif].worms->setPosition_x(x-1);verif=true;break; //gaz

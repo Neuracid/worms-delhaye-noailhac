@@ -6,7 +6,7 @@ Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
 
 
 void Etat::parseOutMap(){
-    std::ofstream fichier("../res/Map.txt", std::ios::out | std::ios::trunc);
+    std::ofstream fichier("../res/txt/map.txt", std::ios::out | std::ios::trunc);
 
     if(fichier){
       for(int i=0;i<grille.getHauteur();i++){
@@ -23,17 +23,17 @@ void Etat::parseOutMap(){
 
 void Etat::parseOutWorms(){
 
-  std::ofstream fichier("../res/Worms.txt", std::ios::out | std::ios::trunc);
+  std::ofstream fichier("../res/txt/worms.txt", std::ios::out | std::ios::trunc);
   fichier<<listeWormsJoueurs.size()<<std::endl;
   for(int i=0; i<listeWormsJoueurs.size();i++){
-    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie()<<' '<<listeWormsJoueurs[i].worms->getType()<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
+    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie()<<' '<<listeWormsJoueurs[i].worms->getType();//<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
   }
   fichier.close();
 
 }
 
 void Etat::parseOutProperties(){
-  std::ofstream fichier("../res/Properties.txt", std::ios::out | std::ios::trunc);
+  std::ofstream fichier("../res/txt/Properties.txt", std::ios::out | std::ios::trunc);
   fichier<<grille.getLargeur()<<' '<<grille.getHauteur()<<' '<<listeWormsJoueurs.size()<<' '<<placeWormsActif;
   fichier.close();
 }
