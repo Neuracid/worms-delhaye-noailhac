@@ -25,8 +25,7 @@ void Etat::parseOutWorms(){
 
   std::ofstream fichier("../res/txt/worms.txt", std::ios::out | std::ios::trunc);
   for(int i=0; i<listeWormsJoueurs.size();i++){
-    printf("%d e %d e %d",listeWormsJoueurs[i].worms->getPosition_x(),listeWormsJoueurs[i].worms->getPosition_y(),listeWormsJoueurs[i].worms->getVie());
-    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie();//<<' '<<listeWormsJoueurs[i].worms->getType()<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
+    fichier<<listeWormsJoueurs[i].worms->getPosition_x()<<' '<<listeWormsJoueurs[i].worms->getPosition_y()<<' '<<listeWormsJoueurs[i].worms->getVie()<<' '<<listeWormsJoueurs[i].worms->getType()<<' '<<listeWormsJoueurs[i].joueur->getTeam()<<std::endl;
   }
   fichier.close();
 
@@ -55,7 +54,5 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
     wormsJoueur.setJoueur(joueur);
   }
   else wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
-    printf("%d\n",wormsJoueur.worms->getPosition_x());
     listeWormsJoueurs.push_back(wormsJoueur);
-    printf("%d\n", listeWormsJoueurs[0].worms->getPosition_x());
 }
