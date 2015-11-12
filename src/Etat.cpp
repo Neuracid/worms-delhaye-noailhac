@@ -2,7 +2,6 @@
 
 Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
   listeWormsJoueurs.resize(2);
-  listeWormsJoueurs.push_back(new WormsJoueur);
   //joueurs.resize(0);
 }
 
