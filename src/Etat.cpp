@@ -1,8 +1,7 @@
 #include "Etat.hpp"
 
 Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
-  listeWormsJoueurs.resize(2);
-  //joueurs.resize(0);
+  listeWormsJoueurs.resize(0);
 }
 
 
@@ -45,7 +44,7 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
   wormsJoueur.setWorms(&worms);
   bool verifJoueurExiste=false;
   int i=0;
-  while(i<listeWormsJoueurs.size()||verifJoueurExiste==false){
+  while(i<listeWormsJoueurs.size()&&verifJoueurExiste==false){
     if(color==listeWormsJoueurs[i].joueur->getTeam())
       verifJoueurExiste=true;
     else
