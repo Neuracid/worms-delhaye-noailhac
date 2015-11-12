@@ -13,7 +13,7 @@ void Etat::parseOutMap(){
     if(fichier){
       for(int i=0;i<grille.getHauteur();i++){
         for(int j=0;j<grille.getLargeur();j++)
-        fichier<<listeBloc[i][j]->getType()<<' ';
+        fichier<<listeBloc.matriceTerrain[i][j]->getType()<<' ';
         fichier<<std::endl;
       }
        fichier.close();

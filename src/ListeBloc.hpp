@@ -8,10 +8,11 @@
 class ListeBloc{
 
 public:
-std::vector<std::vector<std::unique_ptr< Terrain> > > matriceTerrain;
+//std::vector<std::vector<std::unique_ptr< Terrain> > > matriceTerrain;
+std::vector<std::vector< Terrain*> > matriceTerrain;
 ListeBloc(int hauteur, int largeur);
 
-std::vector<std::unique_ptr< Terrain> >& operator[](size_t i) { return matriceTerrain[i];}
+//std::vector<std::unique_ptr< Terrain> >& operator[](size_t i) { return matriceTerrain[i];}
 
 
 private:

@@ -11,7 +11,7 @@ int main() {
   etat.placeWormsActif=2;
   etat.parseOutProperties();
   Commandes commande;
-  //commande.deplacementDroite(etat);
+  commande.deplacementDroite(etat);
   etat.parseOutWorms();
   // SfmlWindow window("worms",30);
   // window.displayWindow();
