@@ -24,11 +24,7 @@ public:
   void parseOutMap();
   void parseOutWorms();
   void parseOutJoueurs();
-<<<<<<< HEAD
   void parseOutProperties();
-=======
-  void parseOutGrille();
->>>>>>> origin/master1
   void setWormsJoueur(int x, int y,Joueur::Team a);
   void setJoueurListe(Joueur::Team a);
 
