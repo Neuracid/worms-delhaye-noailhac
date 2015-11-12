@@ -1,6 +1,6 @@
 #include "Etat.hpp"
 
-Etat::Etat():listeBloc(grille.getLargeur(),grille.getHauteur()){
+Etat::Etat():listeBloc(32,12){
   listeWormsJoueurs.resize(0);
   grille.setLargeur(32);
   grille.setHauteur(12);
@@ -13,7 +13,7 @@ void Etat::parseOutMap(){
     if(fichier){
       for(int i=0;i<grille.getHauteur();i++){
         for(int j=0;j<grille.getLargeur();j++)
-        fichier<<listeBloc.matriceTerrain[i][j]->getType()<<' ';
+        fichier<<listeBloc[i][j]->getType()<<' ';
         fichier<<std::endl;
       }
        fichier.close();

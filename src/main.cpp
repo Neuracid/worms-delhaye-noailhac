@@ -10,6 +10,7 @@ int main() {
   etat.setWormsJoueur(8,3,Joueur::bleu);
   etat.placeWormsActif=2;
   etat.parseOutProperties();
+  etat.parseOutMap();
   Commandes commande;
   commande.deplacementDroite(etat);
   etat.parseOutWorms();

@@ -5,8 +5,7 @@ ListeBloc::ListeBloc(int hauteur,int largeur) : matriceTerrain(largeur*hauteur){
   matriceTerrain.resize(largeur);
   if(fichier)
   {
-  int x,hauteur,largeur;
-  fichier >>largeur>>hauteur;
+  int x;
     for(int i=0; i<largeur; i++){
       matriceTerrain[i].resize(hauteur);
       for(int j=0;j<hauteur;j++){
