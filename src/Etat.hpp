@@ -25,7 +25,6 @@ public:
   void parseOutWorms();
   void parseOutJoueurs();
   void parseOutGrille();
-  void setWormsJoueur();
   void setWormsJoueur(int x, int y,Joueur::Team a);
   void setJoueurListe(Joueur::Team a);
 

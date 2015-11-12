@@ -8,6 +8,7 @@
 #include "SfmlMap.hpp"
 #include "SfmlWorms.hpp"
 #include "SfmlWindowProperties.hpp"
+#include "Commandes.hpp"
 #include <string>
 #include <vector>
 

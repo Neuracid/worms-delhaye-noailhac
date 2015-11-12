@@ -5,12 +5,9 @@
 class Commandes {
 
 public:
-  Etat etat;
 
-
-
-  bool deplacementDroite(Worms worms);
-  bool deplacementGauche(Worms worms);
+  bool deplacementDroite(Etat &etat);
+  bool deplacementGauche(Etat &etat);
 
 private:
 
