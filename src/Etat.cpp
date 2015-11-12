@@ -42,7 +42,7 @@ void Etat::parseOutProperties(){
 void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
   Worms worms(x,y);
   WormsJoueur wormsJoueur;
-  wormsJoueur.setWorms(worms);
+  wormsJoueur.setWorms(&worms);
   bool verifJoueurExiste=false;
   int i=0;
   while(i<listeWormsJoueurs.size()||verifJoueurExiste==false){
@@ -53,9 +53,9 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
   }
   if(verifJoueurExiste==false){
     Joueur joueur(color);
-    wormsJoueur.setJoueur(joueur);
+    wormsJoueur.setJoueur(&joueur);
   }
-  else wormsJoueur.setJoueur(*listeWormsJoueurs[i].joueur);
+  else wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
 
     listeWormsJoueurs.push_back(wormsJoueur);
 }

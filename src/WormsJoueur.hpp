@@ -10,11 +10,12 @@
 class WormsJoueur{
 
 public:
-  std::shared_ptr<Joueur> joueur;
-  std::unique_ptr<Worms> worms;
-  void setJoueur(Joueur nouveau);
-  void setWorms(Worms nouveau);
+  Joueur* joueur;
+  Worms* worms;
+  void setJoueur(Joueur* nouveau);
+  void setWorms(Worms* nouveau);
   WormsJoueur();
+  ~WormsJoueur();
 
 private:
 
