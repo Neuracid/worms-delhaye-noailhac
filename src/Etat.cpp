@@ -39,9 +39,9 @@ void Etat::parseOutProperties(){
 }
 
 void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
-  Worms worms(x,y);
+  Worms* worms = new Worms(x,y);
   WormsJoueur wormsJoueur;
-  wormsJoueur.setWorms(&worms);
+  wormsJoueur.setWorms(worms);
   bool verifJoueurExiste=false;
   int i=0;
   while(i<listeWormsJoueurs.size()&&verifJoueurExiste==false){
