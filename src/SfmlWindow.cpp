@@ -123,12 +123,13 @@ void SfmlWindow::update(){
   for (int i=0; i<worms.size(); i++){
     worms[i]->update(windowProperties.tabWorms[i],"../res/waccuse11.png");
   }
-
   //map
-
-
   setWorms();
   setFond();
   setText();
+}
 
+void SfmlWindow::initFleche(){
+  m_vertices.setPrimitiveType(sf::Quads);
+  m_vertices.resize(4);
 }

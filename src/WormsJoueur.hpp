@@ -14,6 +14,7 @@ public:
   std::unique_ptr<Worms> worms;
   void setJoueur(Joueur nouveau);
   void setWorms(Worms nouveau);
+  WormsJoueur();
 
 private:
 

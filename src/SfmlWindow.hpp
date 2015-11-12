@@ -30,6 +30,12 @@ public:
   std::vector<sf::Text> text;
   //Constructeur , destructeur
   SfmlWindow( std::string name, int frameRateLimit);
+  //fleche worms actif
+  std::string tileset;
+  sf::VertexArray m_vertices;
+  sf::Texture m_tileset;
+
+  void initFleche();
 
 
   void setFond();

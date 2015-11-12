@@ -42,28 +42,28 @@ void Etat::parseOutJoueurs(){
   fichier.close();
 }
 
-void Etat::parseOutGrille(){
-  std::ofstream fichier("../res/Grille.txt", std::ios::out | std::ios::trunc);
+void Etat::parseOutProperties(){
+  std::ofstream fichier("../res/Properties.txt", std::ios::out | std::ios::trunc);
   fichier<<grille.getLargeur()<<' '<<grille.getHauteur()<<' '<<listeWormsJoueurs.size()<<' '<<placeWormsActif;
   fichier.close();
 }
 
 void Etat::setWormsJoueur(int x, int y,Joueur::Team a){
-    // Worms worms(x,y);
-    // WormsJoueur wormsJoueur;
-    // wormsJoueur.setWorms(worms);
-    // bool verifJoueurExiste=false;
-    // int i=0;
-    // while(i<joueurs.size()||verifJoueurExiste==false){
-    //   if(a==joueurs[i].getTeam())
-    //     verifJoueurExiste=true;
-    //   else
-    //     i++;
-    // }
-    // if(verifJoueurExiste==false)
-    //   setJoueurListe(a);
-    // wormsJoueur.setJoueur(joueurs[i]);
-    // listeWormsJoueurs.push_back(wormsJoueur);
+    Worms worms(x,y);
+    WormsJoueur wormsJoueur;
+    wormsJoueur.setWorms(worms);
+    bool verifJoueurExiste=false;
+    int i=0;
+    while(i<joueurs.size()||verifJoueurExiste==false){
+      if(a==joueurs[i].getTeam())
+        verifJoueurExiste=true;
+      else
+        i++;
+    }
+    if(verifJoueurExiste==false)
+      setJoueurListe(a);
+    wormsJoueur.setJoueur(joueurs[i]);
+    listeWormsJoueurs.push_back(wormsJoueur);
 }
 
 void Etat::setJoueurListe(Joueur::Team a){

@@ -7,3 +7,7 @@ void WormsJoueur::setWorms(Worms nouveau){
 void WormsJoueur::setJoueur(Joueur nouveau){
   //joueur=&nouveau;
 }
+
+WormsJoueur::WormsJoueur(){
+  
+}
