@@ -14,12 +14,19 @@ void SfmlWindow::setFond(){
 }
 
 void SfmlWindow::displayWindow(){
-  window.clear();
-  window.draw(spriteFond);
-  window.display();
+  // window.clear();
+  // window.draw(spriteFond);
+  // window.draw(map);
+  // window.display();
   while (window.isOpen())
   {
       //test sur les text
+      window.clear();
+      window.draw(spriteFond);
+      window.draw(map);
+      drawText();
+      drawWorms();
+      window.display();
 
       // on gère les évènements
       sf::Event event;
@@ -35,18 +42,19 @@ void SfmlWindow::displayWindow(){
                   switch(event.key.code)
                   {
                       case sf::Keyboard::Down:
-                                window.draw(spriteFond);
-                                window.draw(map);
-                                drawWorms();
+                                //drawWorms();
+                                //window.draw(*worms[0]);
                                 drawText();
                                 break;
 
                       case sf::Keyboard::Up:
-                                map.parseMap();
-                                map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille);
-                                worms[0]->load(sf::Vector2u(64, 64));
+                                //map.parseMap();
+                                //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille);
+                                update();
+
+                                //worms[0].reset(new SfmlWorms(windowProperties.tabWorms[0],"../res/waccuse11.png"));
                                 break;
-                                
+
                       default: break;
                   }
                   window.display();
@@ -108,9 +116,16 @@ void SfmlWindow::drawText(){
 }
 
 void SfmlWindow::update(){
-  //parse
+  //props
   windowProperties.parseGrille();
+  //worms
   windowProperties.parseWorms();
+  for (int i=0; i<worms.size(); i++){
+    worms[i]->update(windowProperties.tabWorms[i],"../res/waccuse11.png");
+  }
+
+  //map
+
 
   setWorms();
   setFond();

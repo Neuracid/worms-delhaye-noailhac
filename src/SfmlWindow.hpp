@@ -13,15 +13,19 @@
 
 class SfmlWindow{
 public:
+  //propriétés du rendu
   SfmlWindowProperties windowProperties;
+  //window
   sf::VideoMode videoMode;
   sf::RenderWindow window;
+  //worms
   std::vector<std::unique_ptr<SfmlWorms> > worms;
   //map
   SfmlMap map;
   //fond
   sf::Texture textureFond;
   sf::Sprite spriteFond;
+  //text
   sf::Font font;
   std::vector<sf::Text> text;
   //Constructeur , destructeur

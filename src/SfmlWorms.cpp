@@ -11,10 +11,10 @@ SfmlWorms::SfmlWorms(std::vector<int> worms,const std::string& tiles){
   // on charge la texture du tileset
   m_tileset.loadFromFile(tileset);
 
-      // on redimensionne le tableau de vertex pour qu'il puisse contenir tout le niveau
-      m_vertices.setPrimitiveType(sf::Quads);
-      m_vertices.resize(4);
-      load(sf::Vector2u(64, 64));
+  // on redimensionne le tableau de vertex pour qu'il puisse contenir tout le niveau
+  m_vertices.setPrimitiveType(sf::Quads);
+  m_vertices.resize(4);
+  load(sf::Vector2u(64, 64));
 }
 
 SfmlWorms::~SfmlWorms(){
@@ -53,4 +53,18 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
 
      // et on dessine enfin le tableau de vertex
      target.draw(m_vertices, states);
+ }
+
+ void SfmlWorms::update(std::vector<int> worms, const std::string& tiles){
+   pv=worms[2];
+   etat=worms[3];
+   x=worms[0];
+   y=worms[1];
+   team=worms[4];
+   tileset=tiles;
+   // on charge la texture du tileset
+   m_tileset.loadFromFile(tileset);
+
+   load(sf::Vector2u(64, 64));
+
  }

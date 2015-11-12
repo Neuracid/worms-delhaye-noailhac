@@ -14,6 +14,7 @@ public:
   ~SfmlWorms();
   bool load( sf::Vector2u tileSize);
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+  void update(std::vector<int> worms, const std::string& tiles);
   std::string tileset;
   int x,y,etat,team,pv;
 
