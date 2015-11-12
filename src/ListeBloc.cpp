@@ -11,7 +11,7 @@ ListeBloc::ListeBloc(int hauteur,int largeur) : matriceTerrain(largeur*hauteur){
       matriceTerrain[i].resize(hauteur);
       for(int j=0;j<hauteur;j++){
         fichier >>x;
-        matriceTerrain[i][j].reset(new Terrain(i % largeur,i / hauteur,static_cast<Terrain::Type>(x)));
+        Terrain matriceTerrain[i][j]=new Terrain(i % largeur,i / hauteur,static_cast<Terrain::Type>(x));
       }
     }
     fichier.close();
