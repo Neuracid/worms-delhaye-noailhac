@@ -8,11 +8,11 @@ int main() {
   etat.setWormsJoueur(6,7,Joueur::bleu);
   etat.setWormsJoueur(6,10,Joueur::bleu);
   etat.setWormsJoueur(8,3,Joueur::bleu);
-  etat.placeWormsActif=2;
+  etat.placeWormsActif=0;
   etat.parseOutProperties();
   etat.parseOutMap();
   Commandes commande;
-  commande.deplacementDroite(etat);
+  commande.deplacementGauche(etat);
   etat.parseOutWorms();
   SfmlWindow window("worms",30);
   window.displayWindow();
