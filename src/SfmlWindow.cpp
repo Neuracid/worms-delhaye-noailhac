@@ -54,7 +54,7 @@ void SfmlWindow::displayWindow(){
 
                                 //worms[0].reset(new SfmlWorms(windowProperties.tabWorms[0],"../res/waccuse11.png"));
                                 break;
-                                
+
 
                       default: break;
                   }
