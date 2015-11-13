@@ -10,7 +10,7 @@ public:
   ~Terrain();
 
   int getType() override;
-  void setType(Type);
+  void setType(Type type);
 
 private:
   Type type;
