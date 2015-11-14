@@ -1,6 +1,7 @@
 build/*
 bin/*
 lib/*
+.gcc-flags.json
 
 res/musiques/*.mp3
 
