@@ -1,5 +1,5 @@
 #include "SfmlWindow.hpp"
-#include "Commandes.hpp"
+#include "Engine.hpp"
 //#include "SfmlWindowProperties.hpp"
 
 int main() {
@@ -8,12 +8,14 @@ int main() {
   etat.setWormsJoueur(6,7,Joueur::bleu);
   etat.setWormsJoueur(6,10,Joueur::bleu);
   etat.setWormsJoueur(8,3,Joueur::bleu);
-  etat.placeWormsActif=0;
+  etat.placeWormsActif=1;
   etat.parseOutProperties();
   etat.parseOutMap();
-  Commandes commande;
-  commande.deplacementGauche(etat);
+  Engine engine;
+  engine.deplacementGauche(&etat);
+  etat.placeWormsActif=0;
+  engine.deplacementGauche(&etat);
   etat.parseOutWorms();
   SfmlWindow window("worms",30);
-  window.displayWindow();
+  window.displayWindow(&etat);
 }

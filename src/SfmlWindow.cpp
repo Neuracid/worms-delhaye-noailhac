@@ -13,11 +13,12 @@ void SfmlWindow::setFond(){
   spriteFond.setTexture(textureFond);
 }
 
-void SfmlWindow::displayWindow(){
+void SfmlWindow::displayWindow(Etat* petat){
   // window.clear();
   // window.draw(spriteFond);
   // window.draw(map);
   // window.display();
+  Engine engine;
   while (window.isOpen())
   {
       //test sur les text
@@ -53,6 +54,10 @@ void SfmlWindow::displayWindow(){
                                 update();
 
                                 //worms[0].reset(new SfmlWorms(windowProperties.tabWorms[0],"../res/waccuse11.png"));
+                                break;
+                      case sf:: Keyboard::Right:
+                                engine.deplacementDroite(petat);
+                                update();
                                 break;
 
 
@@ -121,9 +126,9 @@ void SfmlWindow::update(){
   windowProperties.parseProperties();
   //worms
   windowProperties.parseWorms();
-  for (int i=0; i<worms.size(); i++){
-    worms[i]->update(windowProperties.tabWorms[i],"../res/waccuse11.png");
-  }
+  // for (int i=0; i<worms.size(); i++){
+  //   worms[i]->update(windowProperties.tabWorms[i],"../res/waccuse11.png");
+  // }
   //map
   setWorms();
   setFond();

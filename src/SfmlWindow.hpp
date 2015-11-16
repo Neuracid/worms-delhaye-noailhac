@@ -8,7 +8,8 @@
 #include "SfmlMap.hpp"
 #include "SfmlWorms.hpp"
 #include "SfmlWindowProperties.hpp"
-#include "Commandes.hpp"
+#include "Engine.hpp"
+#include "Etat.hpp"
 #include <string>
 #include <vector>
 
@@ -41,7 +42,7 @@ public:
 
   void setFond();
 
-  void displayWindow();
+  void displayWindow(Etat* petat);
   void setWorms();
   void drawWorms();
   void setText();
