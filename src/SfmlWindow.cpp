@@ -14,14 +14,10 @@ void SfmlWindow::setFond(){
 }
 
 void SfmlWindow::displayWindow(Etat* petat){
-  // window.clear();
-  // window.draw(spriteFond);
-  // window.draw(map);
-  // window.display();
   Engine engine;
   while (window.isOpen())
   {
-      //test sur les text
+      // on dessine le niveau
       window.clear();
       window.draw(spriteFond);
       window.draw(map);
@@ -63,21 +59,9 @@ void SfmlWindow::displayWindow(Etat* petat){
 
                       default: break;
                   }
-                  window.display();
-
               }
           }
-
       }
-
-      // on dessine le niveau
-      // window.clear();
-      // window.draw(spriteFond);
-      // window.draw(map);
-      // drawWorms();
-      // drawText();
-      //window.display();
-
   }
 }
 
