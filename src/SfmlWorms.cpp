@@ -21,7 +21,9 @@ SfmlWorms::~SfmlWorms(){
 }
 
 bool SfmlWorms::load( sf::Vector2u tileSize)
-{
+{           etat++;
+            if(etat>=(m_tileset.getSize().y / tileSize.y))
+            etat=0;
             //on en déduit sa position dans la texture du tileset
             int tu = etat % (m_tileset.getSize().x / tileSize.x);
             int tv = etat / (m_tileset.getSize().x / tileSize.x);

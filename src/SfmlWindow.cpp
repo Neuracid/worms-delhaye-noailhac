@@ -84,12 +84,14 @@ void SfmlWindow::displayWindow(Etat* petat){
 void SfmlWindow::setWorms(){
   worms.resize(windowProperties.nombreDeWorms);
   for(int i=0;i<windowProperties.nombreDeWorms;i++){
-    worms[i].reset(new SfmlWorms(windowProperties.tabWorms[i],"../res/waccuse11.png"));
+    worms[i].reset(new SfmlWorms(windowProperties.tabWorms[i],"../res/WormsGeneral/Worms/wbackflp.png"));
   }
+  worms[2].reset(new SfmlWorms(windowProperties.tabWorms[2],"../res/WormsGeneral/Worms/wpnctop.png"));
 }
 
 void SfmlWindow::drawWorms(){
   for(int i=0;i<worms.size();i++){
+    worms[i]->load(sf::Vector2u(64, 64));
     window.draw(*worms[i]);
   }
 }
