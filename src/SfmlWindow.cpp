@@ -1,6 +1,6 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit) : map(etat->grille.getLargeur(),etat->grille.getHauteur()), videoMode(etat->grille.getLargeur()*64,etat->grille.getHauteur()*64),window(videoMode, name){
+SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit) : map(etat,etat->grille.getLargeur(),etat->grille.getHauteur()), videoMode(etat->grille.getLargeur()*64,etat->grille.getHauteur()*64),window(videoMode, name){
   this->etat = etat;
   this->window.setFramerateLimit(frameRateLimit);
   setWorms();

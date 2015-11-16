@@ -1,10 +1,12 @@
 #include "SfmlMap.hpp"
 
 //Constructeur , destructeur
-SfmlMap::SfmlMap(int largeur, int hauteur){
+SfmlMap::SfmlMap(Etat* etat,int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
-parseMap();
+for(int i=0; i<nombre;i++)
+tab[i]=etat->listeBloc[i%largeur][i/hauteur]->getType();
+
 load("../res/blocs/terrain.png", sf::Vector2u(64, 64), largeur, hauteur);
 }
 
@@ -65,20 +67,20 @@ void SfmlMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_vertices, states);
 }
 
-void SfmlMap::parseMap(){
-  std::ifstream fichier("../res/txt/map.txt", std::ios::in);
-  if(fichier)
-  {
-
-    int rec;
-    for(int i=0; i<nombre; i++){
-      fichier >> rec;
-      tab[i]=rec;
-    }
-    fichier.close();
-  }
-  else
-  {
-    std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-  }
-}
+// void SfmlMap::parseMap(){
+//   std::ifstream fichier("../res/txt/map.txt", std::ios::in);
+//   if(fichier)
+//   {
+//
+//     int rec;
+//     for(int i=0; i<nombre; i++){
+//       fichier >> rec;
+//       tab[i]=rec;
+//     }
+//     fichier.close();
+//   }
+//   else
+//   {
+//     std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+//   }
+// }
