@@ -19,9 +19,9 @@ public:
   //std::time_t result = std::time(NULL);
 
   Etat();
-  void parseOutMap();
-  void parseOutWorms();
-  void parseOutProperties();
+  // void parseOutMap();
+  // void parseOutWorms();
+  // void parseOutProperties();
   void setWormsJoueur(int x, int y,Joueur::Team a);
 
 protected:

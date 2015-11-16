@@ -1,6 +1,7 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(std::string name, int frameRateLimit) : map(windowProperties.largeurGrille,windowProperties.hauteurGrille), videoMode(windowProperties.largeurGrille*64,windowProperties.hauteurGrille*64),window(videoMode, name){
+SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit) : map(etat->grille.getLargeur(),etat->grille.getHauteur()), videoMode(etat->grille.getLargeur()*64,etat->grille.getHauteur()*64),window(videoMode, name){
+  this->etat = etat;
   this->window.setFramerateLimit(frameRateLimit);
   setWorms();
   setFond();
@@ -13,7 +14,7 @@ void SfmlWindow::setFond(){
   spriteFond.setTexture(textureFond);
 }
 
-void SfmlWindow::displayWindow(Etat* petat){
+void SfmlWindow::displayWindow(){
   Engine engine;
   while (window.isOpen())
   {
@@ -46,13 +47,17 @@ void SfmlWindow::displayWindow(Etat* petat){
 
                       case sf::Keyboard::Up:
                                 //map.parseMap();
-                                //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), windowProperties.largeurGrille, windowProperties.hauteurGrille);
+                                //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurGrille, etat->hauteurGrille);
                                 update();
 
-                                //worms[0].reset(new SfmlWorms(windowProperties.tabWorms[0],"../res/waccuse11.png"));
+                                //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
                                 break;
                       case sf:: Keyboard::Right:
-                                engine.deplacementDroite(petat);
+                                engine.deplacementDroite(etat);
+                                update();
+                                break;
+                      case sf:: Keyboard::Left:
+                                engine.deplacementGauche(etat);
                                 update();
                                 break;
 
@@ -66,11 +71,11 @@ void SfmlWindow::displayWindow(Etat* petat){
 }
 
 void SfmlWindow::setWorms(){
-  worms.resize(windowProperties.nombreDeWorms);
-  for(int i=0;i<windowProperties.nombreDeWorms;i++){
-    worms[i].reset(new SfmlWorms(windowProperties.tabWorms[i],"../res/WormsGeneral/Worms/wbackflp.png"));
+  worms.resize(etat->listeWormsJoueurs.size());
+  for(int i=0;i<etat->listeWormsJoueurs.size();i++){
+    worms[i].reset(new SfmlWorms(etat->listeWormsJoueurs[i].worms,"../res/WormsGeneral/Worms/wbackflp.png"));
   }
-  worms[2].reset(new SfmlWorms(windowProperties.tabWorms[2],"../res/WormsGeneral/Worms/wpnctop.png"));
+  worms[2].reset(new SfmlWorms(etat->listeWormsJoueurs[2].worms,"../res/WormsGeneral/Worms/wpnctop.png"));
 }
 
 void SfmlWindow::drawWorms(){
@@ -81,13 +86,13 @@ void SfmlWindow::drawWorms(){
 }
 
 void SfmlWindow::setText(){
- text.resize(windowProperties.nombreDeWorms);
+ text.resize(etat->listeWormsJoueurs.size());
  for(int i=0;i<text.size();i++){
    text[i].setFont(font);
-   std::string myString =std::to_string(windowProperties.tabWorms[i][2]);;
+   std::string myString =std::to_string(etat->listeWormsJoueurs[i].worms->getVie());
    text[i].setString(myString);
    text[i].setCharacterSize(18);
-   switch (windowProperties.tabWorms[i][4]) {
+   switch (etat->listeWormsJoueurs[i].joueur->getTeam()) {
     case 0:text[i].setColor(sf::Color::Red);
     break;
     case 1:text[i].setColor(sf::Color::Yellow);
@@ -97,7 +102,7 @@ void SfmlWindow::setText(){
     case 3:text[i].setColor(sf::Color::Blue);
     break;
    }
-   text[i].setPosition(64*windowProperties.tabWorms[i][0]+18,64*windowProperties.tabWorms[i][1]);
+   text[i].setPosition(64*etat->listeWormsJoueurs[i].worms->getPosition_x()+18,64*etat->listeWormsJoueurs[i].worms->getPosition_y());
  }
 }
 
@@ -108,20 +113,13 @@ void SfmlWindow::drawText(){
 }
 
 void SfmlWindow::update(){
-  //properties
-  windowProperties.parseProperties();
-  //worms
-  windowProperties.parseWorms();
-  // for (int i=0; i<worms.size(); i++){
-  //   worms[i]->update(windowProperties.tabWorms[i],"../res/waccuse11.png");
-  // }
   //map
   setWorms();
   setFond();
   setText();
 }
 
-void SfmlWindow::initFleche(){
-  m_vertices.setPrimitiveType(sf::Quads);
-  m_vertices.resize(4);
-}
+// void SfmlWindow::initFleche(){
+//   m_vertices.setPrimitiveType(sf::Quads);
+//   m_vertices.resize(4);
+// }

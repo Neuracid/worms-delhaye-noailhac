@@ -7,7 +7,6 @@
 #include <SFML/Audio.hpp>
 #include "SfmlMap.hpp"
 #include "SfmlWorms.hpp"
-#include "SfmlWindowProperties.hpp"
 #include "Engine.hpp"
 #include "Etat.hpp"
 #include <string>
@@ -15,8 +14,7 @@
 
 class SfmlWindow{
 public:
-  //propriétés du rendu
-  SfmlWindowProperties windowProperties;
+  Etat* etat;
   //window
   sf::VideoMode videoMode;
   sf::RenderWindow window;
@@ -31,18 +29,18 @@ public:
   sf::Font font;
   std::vector<sf::Text> text;
   //Constructeur , destructeur
-  SfmlWindow( std::string name, int frameRateLimit);
+  SfmlWindow( Etat* etat, std::string name, int frameRateLimit);
   //fleche worms actif
   std::string tileset;
-  sf::VertexArray m_vertices;
-  sf::Texture m_tileset;
+  //sf::VertexArray m_vertices;
+  //sf::Texture m_tileset;
 
   void initFleche();
 
 
   void setFond();
 
-  void displayWindow(Etat* petat);
+  void displayWindow();
   void setWorms();
   void drawWorms();
   void setText();

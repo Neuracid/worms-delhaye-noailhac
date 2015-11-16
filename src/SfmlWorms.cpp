@@ -1,13 +1,11 @@
-#include "SfmlWorms.hpp"
+#include "Sfmlworms.hpp"
 
 
-SfmlWorms::SfmlWorms(std::vector<int> worms,const std::string& tiles){
-  pv=worms[2];
-  etat=worms[3];
-  x=worms[0];
-  y=worms[1];
-  team=worms[4];
+SfmlWorms::SfmlWorms(Worms* worms,const std::string& tiles){
   tileset=tiles;
+  y=worms->getPosition_y();
+  x=worms->getPosition_x();
+  etat=worms->getType();
   // on charge la texture du tileset
   m_tileset.loadFromFile(tileset);
 
@@ -21,12 +19,12 @@ SfmlWorms::~SfmlWorms(){
 }
 
 bool SfmlWorms::load( sf::Vector2u tileSize)
-{           etat++;
-            if(etat>=(m_tileset.getSize().y / tileSize.y))
-            etat=0;
+{           positionSprite++;
+            if(positionSprite>=(m_tileset.getSize().y / tileSize.y))
+            positionSprite=0;
             //on en déduit sa position dans la texture du tileset
-            int tu = etat % (m_tileset.getSize().x / tileSize.x);
-            int tv = etat / (m_tileset.getSize().x / tileSize.x);
+            int tu = positionSprite % (m_tileset.getSize().x / tileSize.x);
+            int tv = positionSprite / (m_tileset.getSize().x / tileSize.x);
 
 
             // on définit ses quatre coins
@@ -57,12 +55,10 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
      target.draw(m_vertices, states);
  }
 
- void SfmlWorms::update(std::vector<int> worms, const std::string& tiles){
-   pv=worms[2];
-   etat=worms[3];
-   x=worms[0];
-   y=worms[1];
-   team=worms[4];
+ void SfmlWorms::update(Worms* worms, const std::string& tiles){
+   x=worms->getPosition_x();
+   y=worms->getPosition_y();
+   etat=worms->getType();
    tileset=tiles;
    // on charge la texture du tileset
    m_tileset.loadFromFile(tileset);
