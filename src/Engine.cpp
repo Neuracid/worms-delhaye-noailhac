@@ -51,16 +51,21 @@ bool Engine::deplacementGauche(Etat* etat){
   return verif;
 }
 
-void gravite (Etat* etat) {
-  for (size_t i; i < etat->listeWormsJoueurs.size() ; i++) {
+void Engine::regleGravite (Etat* etat) {
+  for (int i = 0; i < etat->listeWormsJoueurs.size() ; i++) {
     int nbCasesVides=0;
-    int lala = etat->map[etat->listeWormsJoueurs[i].worms->getPosition_x()][etat->listeWormsJoueurs[i].worms->getPosition_y()];
-    while (lala == (0 || 1 || 2)){
+    int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
+    while ((y<etat->map.getHauteur()-1 && (etat->map[x][y+1]->getType() == 0)) || (y<etat->map.getHauteur()-1 && (etat->map[x][y+1]->getType() == 1)) || (y<etat->map.getHauteur()-1 && (etat->map[x][y+1]->getType() == 2))){
       nbCasesVides++;
+      y++;
     }
     if (nbCasesVides == 1){
       etat->listeWormsJoueurs[i].worms->setPosition_y(etat->listeWormsJoueurs[i].worms->getPosition_y()+1);
     }
+    if (nbCasesVides > 1 ){
+      etat->listeWormsJoueurs[i].worms->setPosition_y(etat->listeWormsJoueurs[i].worms->getPosition_y()+nbCasesVides);
+      etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-(nbCasesVides-1)*10);
+    }
   }
-
 }

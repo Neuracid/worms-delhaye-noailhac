@@ -24,6 +24,7 @@ void SfmlWindow::displayWindow(){
       window.draw(map);
       drawText();
       drawWorms();
+      engine.regleGravite(etat);
       window.display();
 
       // on gère les évènements
@@ -64,6 +65,7 @@ void SfmlWindow::displayWindow(){
 
                       default: break;
                   }
+                  engine.regleGravite(etat);
               }
           }
       }

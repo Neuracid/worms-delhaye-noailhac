@@ -9,7 +9,7 @@ public:
 
   bool deplacementDroite(Etat* etat);
   bool deplacementGauche(Etat* etat);
-  void gravite(Etat* etat);
+  void regleGravite(Etat* etat);
 
 private:
 
