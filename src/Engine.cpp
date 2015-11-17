@@ -58,16 +58,17 @@ void Engine::regleGravite (Etat* etat) {
     int nbCasesVides=0;
     int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-    while ((y<etat->map.getHauteur()-1 && (etat->map[x][y+1]->getType() == 0)) || (y<etat->map.getHauteur()-1 && (etat->map[x][y+1]->getType() == 1)) || (y<etat->map.getHauteur()-1 && (etat->map[x][y+1]->getType() == 2))){
+    int pv=etat->listeWormsJoueurs[i].worms->getVie();
+    while (y+1<etat->map.getHauteur() && etat->map[x][y+1]->getType() <3 ){
       nbCasesVides++;
       y++;
     }
     if (nbCasesVides == 1){
-      etat->listeWormsJoueurs[i].worms->setPosition_y(y+1);
+      etat->listeWormsJoueurs[i].worms->setPosition_y(y);
     }
     if (nbCasesVides > 1 ){
-      etat->listeWormsJoueurs[i].worms->setPosition_y(etat->listeWormsJoueurs[i].worms->getPosition_y()+nbCasesVides);
-      etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-(nbCasesVides-1)*10);
+      etat->listeWormsJoueurs[i].worms->setPosition_y(y);
+      etat->listeWormsJoueurs[i].worms->setVie(pv-(nbCasesVides-1)*10);
     }
   }
 }
@@ -75,9 +76,12 @@ void Engine::regleGravite (Etat* etat) {
 void Engine::regleChangementDeJoueur(Etat* etat){
     int nombreDeWorms=etat->listeWormsJoueurs.size();
     int position=etat->placeWormsActif+1;
-    while(etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()<=0 ){
+    int start=etat->placeWormsActif;
+    while(etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()<=0 && start!=position){
       position++;
     }
+    if(start==position && etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()==0)
+    std::cout << "Plus de worms disponible" << std::endl;
     etat->placeWormsActif=position%nombreDeWorms;
 }
 
