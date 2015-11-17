@@ -14,8 +14,7 @@ int main() {
   etat.placeWormsActif=1;
   engine.deplacementGauche(&etat);
   engine.regleGravite(&etat);
-  etat.placeWormsActif=2;
-  printf("%d et %d", etat.listeWormsJoueurs[2].worms->getPosition_x(),etat.listeWormsJoueurs[2].worms->getPosition_y());
+  etat.placeWormsActif=3;
   SfmlWindow window(&etat, "worms",30);
   window.displayWindow();
 }

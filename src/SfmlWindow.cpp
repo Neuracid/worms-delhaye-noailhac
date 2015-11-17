@@ -25,6 +25,7 @@ void SfmlWindow::displayWindow(){
       drawText();
       drawWorms();
       engine.regleGravite(etat);
+      engine.regleDeTerrain(etat);
       window.display();
 
       // on gère les évènements
@@ -55,17 +56,21 @@ void SfmlWindow::displayWindow(){
                                 break;
                       case sf:: Keyboard::Right:
                                 engine.deplacementDroite(etat);
+                                engine.regleGravite(etat);
+                                engine.regleDeTerrain(etat);
                                 update();
                                 break;
                       case sf:: Keyboard::Left:
                                 engine.deplacementGauche(etat);
+                                engine.regleGravite(etat);
+                                engine.regleDeTerrain(etat);
                                 update();
                                 break;
 
 
                       default: break;
                   }
-                  engine.regleGravite(etat);
+
               }
           }
       }
