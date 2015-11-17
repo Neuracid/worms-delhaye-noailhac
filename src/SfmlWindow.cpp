@@ -1,6 +1,6 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit) : videoMode(etat->grille.getLargeur()*64,etat->grille.getHauteur()*64), window(videoMode, name), map(etat,etat->grille.getLargeur(),etat->grille.getHauteur()){
+SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit) : videoMode(etat->map.getLargeur()*64,etat->map.getHauteur()*64), window(videoMode, name), map(etat,etat->map.getLargeur(),etat->map.getHauteur()){
   this->etat = etat;
   this->window.setFramerateLimit(frameRateLimit);
   setWorms();
@@ -47,7 +47,7 @@ void SfmlWindow::displayWindow(){
 
                       case sf::Keyboard::Up:
                                 //map.parseMap();
-                                //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurGrille, etat->hauteurGrille);
+                                //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurmap, etat->hauteurmap);
                                 update();
 
                                 //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));

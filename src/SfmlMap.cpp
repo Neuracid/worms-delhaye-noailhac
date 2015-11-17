@@ -5,7 +5,7 @@ SfmlMap::SfmlMap(Etat* etat,int largeur, int hauteur){
 nombre=largeur*hauteur;
 tab=new int[nombre];
 for(int i=0; i<nombre;i++)
-tab[i]=etat->listeBloc[i%largeur][i/hauteur]->getType();
+tab[i]=etat->map[i%largeur][i/hauteur]->getType();
 
 load("../res/blocs/terrain.png", sf::Vector2u(64, 64), largeur, hauteur);
 }

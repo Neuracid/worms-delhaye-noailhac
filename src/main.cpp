@@ -4,6 +4,7 @@
 
 int main() {
   Etat etat;
+  printf("%d et %d", etat.map.getLargeur(),etat.map.getHauteur());
   etat.setWormsJoueur(0,1,Joueur::rouge);
   etat.setWormsJoueur(7,6,Joueur::bleu);
   etat.setWormsJoueur(10,6,Joueur::bleu);
@@ -14,5 +15,5 @@ int main() {
   etat.placeWormsActif=0;
   engine.deplacementGauche(&etat);
   SfmlWindow window(&etat, "worms",30);
-  window.displayWindow();
+  // window.displayWindow();
 }

@@ -1,6 +1,6 @@
 #include "Etat.hpp"
 
-Etat::Etat():listeBloc(32,12){
+Etat::Etat():map(){
   listeWormsJoueurs.resize(0);
   //grille.setLargeur(32);
   //grille.setHauteur(12);

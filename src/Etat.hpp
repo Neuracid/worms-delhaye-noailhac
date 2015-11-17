@@ -2,8 +2,7 @@
 #define ETAT_H
 #include <vector>
 #include "WormsJoueur.hpp"
-#include "ListeBloc.hpp"
-#include "Grille.hpp"
+#include "Map.hpp"
 #include <ctime>
 #include <iostream>
 #include <fstream>
@@ -12,9 +11,8 @@ class Etat{
 public:
   std::vector<WormsJoueur> listeWormsJoueurs;
   int placeWormsActif=0;
-
-  Grille grille;
-  ListeBloc listeBloc;
+  
+  Map map;
 
   //std::time_t result = std::time(NULL);
 
