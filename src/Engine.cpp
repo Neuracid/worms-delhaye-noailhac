@@ -80,3 +80,21 @@ void Engine::regleChangementDeJoueur(Etat* etat){
     }
     etat->placeWormsActif=position%nombreDeWorms;
 }
+
+void Engine::regleDeTerrain(Etat* etat){
+  int x,y,pv;
+  for(int i=0; i<etat->listeWormsJoueurs.size();i++){
+    x=etat->listeWormsJoueurs[i].worms->getPosition_x();
+    y=etat->listeWormsJoueurs[i].worms->getPosition_y();
+    pv=etat->listeWormsJoueurs[i].worms->getVie();
+    switch (etat->map[x][y]->getType()) {
+      case 0:break;
+      case 1:etat->listeWormsJoueurs[i].worms->setVie((pv-10<0)?0:(pv-10));
+      case 2:etat->listeWormsJoueurs[i].worms->setVie(0); break;
+      case 3:std::cout << "probleme car le worms est dans de la terre" << std::endl;break;
+      case 4:std::cout << "probleme car le worms est dans de la roche" << std::endl;break;
+      case 5:std::cout << "probleme car le worms est dans du metal" << std::endl;break;
+      default: std::cout << "probleme car le worms est dans un type de terrain qui est inconnue" << std::endl;break;
+    }
+  }
+}
