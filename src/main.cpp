@@ -12,7 +12,7 @@ int main() {
   etat.placeWormsActif=3;
   Engine engine;
   engine.deplacementGauche(&etat);
-  etat.placeWormsActif=3;
+  etat.placeWormsActif=2;
   engine.deplacementGauche(&etat);
   SfmlWindow window(&etat, "worms",30);
   window.displayWindow();

@@ -50,3 +50,17 @@ bool Engine::deplacementGauche(Etat* etat){
   }
   return verif;
 }
+
+void gravite (Etat* etat) {
+  for (size_t i; i < etat->listeWormsJoueurs.size() ; i++) {
+    int nbCasesVides=0;
+    int lala = etat->map[etat->listeWormsJoueurs[i].worms->getPosition_x()][etat->listeWormsJoueurs[i].worms->getPosition_y()];
+    while (lala == (0 || 1 || 2)){
+      nbCasesVides++;
+    }
+    if (nbCasesVides == 1){
+      etat->listeWormsJoueurs[i].worms->setPosition_y(etat->listeWormsJoueurs[i].worms->getPosition_y()+1);
+    }
+  }
+
+}
