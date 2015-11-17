@@ -76,7 +76,7 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
 
  void SfmlWorms::image(){
    switch (etat) {
-     case 0:m_tileset.loadFromFile("../res/WormsGeneral/Worms/waccuse.png");break;
+     case 0:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wdie.png");break;
      case 1:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wpnctop.png");break;
      case 2:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbowlnk.png");break;
      case 3:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
