@@ -86,29 +86,35 @@ void SfmlWindow::drawWorms(){
 }
 
 void SfmlWindow::setText(){
- text.resize(etat->listeWormsJoueurs.size());
- for(int i=0;i<text.size();i++){
-   text[i].setFont(font);
-   std::string myString =std::to_string(etat->listeWormsJoueurs[i].worms->getVie());
-   text[i].setString(myString);
-   text[i].setCharacterSize(18);
-   switch (etat->listeWormsJoueurs[i].joueur->getTeam()) {
-    case 0:text[i].setColor(sf::Color::Red);
-    break;
-    case 1:text[i].setColor(sf::Color::Yellow);
-    break;
-    case 2:text[i].setColor(sf::Color::Green);
-    break;
-    case 3:text[i].setColor(sf::Color::Blue);
-    break;
-   }
-   text[i].setPosition(64*etat->listeWormsJoueurs[i].worms->getPosition_x()+18,64*etat->listeWormsJoueurs[i].worms->getPosition_y());
- }
+  textActif.setString("actif");
+  textActif.setCharacterSize(21);
+  textActif.setColor(sf::Color::White);
+  textActif.setFont(font);
+  textActif.setPosition(64*etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x()+6,64*etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y()+64);
+  text.resize(etat->listeWormsJoueurs.size());
+  for(int i=0;i<text.size();i++){
+    text[i].setFont(font);
+    std::string myString =std::to_string(etat->listeWormsJoueurs[i].worms->getVie());
+    text[i].setString(myString);
+    text[i].setCharacterSize(18);
+    switch (etat->listeWormsJoueurs[i].joueur->getTeam()) {
+     case 0:text[i].setColor(sf::Color::Red);
+     break;
+     case 1:text[i].setColor(sf::Color::Yellow);
+     break;
+     case 2:text[i].setColor(sf::Color::Green);
+     break;
+     case 3:text[i].setColor(sf::Color::Blue);
+     break;
+    }
+    text[i].setPosition(64*etat->listeWormsJoueurs[i].worms->getPosition_x()+18,64*etat->listeWormsJoueurs[i].worms->getPosition_y());
+  }
 }
 
 void SfmlWindow::drawText(){
   for(int i=0;i<text.size();i++){
     window.draw(text[i]);
+    window.draw(textActif);
   }
 }
 

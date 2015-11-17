@@ -2,11 +2,10 @@
 
 Map::Map() {
   std::ifstream fichier("../res/txt/MapType0.txt", std::ios::in);
-  matriceTerrain.resize(largeur);
   if(fichier)
   {
   int x;
-  fichier >>this->largeur>>this->hauteur;
+  fichier >>largeur>>hauteur;
   matriceTerrain.resize(largeur*hauteur);
     for(int i=0; i<largeur; i++){
       matriceTerrain[i].resize(hauteur);

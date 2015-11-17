@@ -28,6 +28,7 @@ public:
   //text
   sf::Font font;
   std::vector<sf::Text> text;
+  sf::Text textActif;
   //Constructeur , destructeur
   SfmlWindow( Etat* etat, std::string name, int frameRateLimit);
   //fleche worms actif

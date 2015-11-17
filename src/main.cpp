@@ -12,8 +12,8 @@ int main() {
   etat.placeWormsActif=1;
   Engine engine;
   engine.deplacementGauche(&etat);
-  etat.placeWormsActif=0;
+  etat.placeWormsActif=3;
   engine.deplacementGauche(&etat);
   SfmlWindow window(&etat, "worms",30);
-  // window.displayWindow();
+  window.displayWindow();
 }
