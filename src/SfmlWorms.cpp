@@ -1,13 +1,12 @@
 #include "Sfmlworms.hpp"
 
 
-SfmlWorms::SfmlWorms(Worms* worms,const std::string& tiles){
-  tileset=tiles;
+SfmlWorms::SfmlWorms(Worms* worms){
   y=worms->getPosition_y();
   x=worms->getPosition_x();
   etat=worms->getType();
   // on charge la texture du tileset
-  m_tileset.loadFromFile(tileset);
+  image();
 
   // on redimensionne le tableau de vertex pour qu'il puisse contenir tout le niveau
   m_vertices.setPrimitiveType(sf::Quads);
@@ -55,14 +54,22 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
      target.draw(m_vertices, states);
  }
 
- void SfmlWorms::update(Worms* worms, const std::string& tiles){
+ void SfmlWorms::update(Worms* worms){
    x=worms->getPosition_x();
    y=worms->getPosition_y();
    etat=worms->getType();
-   tileset=tiles;
    // on charge la texture du tileset
-   m_tileset.loadFromFile(tileset);
+   image();
 
    load(sf::Vector2u(64, 64));
+ }
 
+ void SfmlWorms::image(){
+   switch (etat) {
+     case 0:m_tileset.loadFromFile("../res/WormsGeneral/Worms/waccuse.png");break;
+     case 1:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wpnctop.png");break;
+     case 2:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbowlnk.png");break;
+     case 3:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
+     default:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
+   }
  }

@@ -2,7 +2,7 @@
 //Constructeur
 Worms::Worms(int x,int y):Bloc(x,y){
   vie=100;
-  status=vivant;
+  status=normal;
 }
 
 //Destructeur
@@ -19,4 +19,8 @@ void Worms::setVie(int x){
 
 int Worms::getType(){
   return static_cast<int>(status);
+}
+
+void Worms::setType(Worms::Status status){
+ this->status=status;
 }

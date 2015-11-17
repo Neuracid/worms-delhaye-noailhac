@@ -3,13 +3,14 @@
 #include "Bloc.hpp"
 class Worms:public Bloc{
 public:
-  enum Status{mort=0,vivant=1,empoisonné=2};
+  enum Status{normal=0,kungfu=1,saut=2};
   Worms(int x,int y);
   ~Worms();
 
   int getVie();
   void setVie(int x);
   int getType() override;
+  void setType(Worms::Status status);
 
 private:
   int vie;
