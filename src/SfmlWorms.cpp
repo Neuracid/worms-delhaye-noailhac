@@ -28,10 +28,10 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
 
 
             // on définit ses quatre coins
-            m_vertices[0].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
-            m_vertices[1].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
-            m_vertices[2].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
-            m_vertices[3].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
+            m_vertices[1].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
+            m_vertices[0].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
+            m_vertices[3].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
+            m_vertices[2].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
 
             // on définit ses quatre coordonnées de texture
             m_vertices[0].texCoords = sf::Vector2f(tu * tileSize.x, tv * tileSize.y);

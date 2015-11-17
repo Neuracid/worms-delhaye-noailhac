@@ -24,8 +24,6 @@ void SfmlWindow::displayWindow(){
       window.draw(map);
       drawText();
       drawWorms();
-      engine.regleGravite(etat);
-      engine.regleDeTerrain(etat);
       window.display();
 
       // on gère les évènements
@@ -50,27 +48,21 @@ void SfmlWindow::displayWindow(){
                       case sf::Keyboard::Up:
                                 //map.parseMap();
                                 //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurmap, etat->hauteurmap);
-                                update();
 
                                 //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
                                 break;
                       case sf:: Keyboard::Right:
                                 engine.deplacementDroite(etat);
-                                engine.regleGravite(etat);
-                                engine.regleDeTerrain(etat);
-                                update();
                                 break;
                       case sf:: Keyboard::Left:
                                 engine.deplacementGauche(etat);
-                                engine.regleGravite(etat);
-                                engine.regleDeTerrain(etat);
-                                update();
                                 break;
 
 
                       default: break;
                   }
-
+                  engine.fonctionPourDebutNewEtat(etat);
+                  update();
               }
           }
       }

@@ -23,7 +23,6 @@ bool Engine::deplacementDroite(Etat* etat){
               }
       }
     }
-    regleChangementDeJoueur( etat);
     return verif;
 }
 
@@ -49,7 +48,6 @@ bool Engine::deplacementGauche(Etat* etat){
               }
     }
   }
-  regleChangementDeJoueur( etat);
   return verif;
 }
 
@@ -75,10 +73,10 @@ void Engine::regleGravite (Etat* etat) {
 
 void Engine::regleChangementDeJoueur(Etat* etat){
     int nombreDeWorms=etat->listeWormsJoueurs.size();
-    int position=etat->placeWormsActif+1;
+    int position=(etat->placeWormsActif+1)%nombreDeWorms;
     int start=etat->placeWormsActif;
     while(etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()<=0 && start!=position){
-      position++;
+      position=(position+1)%nombreDeWorms;
     }
     if(start==position && etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()==0)
     std::cout << "Plus de worms disponible" << std::endl;
@@ -93,7 +91,7 @@ void Engine::regleDeTerrain(Etat* etat){
     pv=etat->listeWormsJoueurs[i].worms->getVie();
     switch (etat->map[x][y]->getType()) {
       case 0:break;
-      case 1:etat->listeWormsJoueurs[i].worms->setVie((pv-10<0)?0:(pv-10));
+      case 1:etat->listeWormsJoueurs[i].worms->setVie((pv-10<0)?0:(pv-10));break;
       case 2:etat->listeWormsJoueurs[i].worms->setVie(0); break;
       case 3:std::cout << "probleme car le worms est dans de la terre" << std::endl;break;
       case 4:std::cout << "probleme car le worms est dans de la roche" << std::endl;break;
@@ -101,4 +99,10 @@ void Engine::regleDeTerrain(Etat* etat){
       default: std::cout << "probleme car le worms est dans un type de terrain qui est inconnue" << std::endl;break;
     }
   }
+}
+
+void Engine::fonctionPourDebutNewEtat(Etat* etat){
+  regleGravite(etat);
+  regleDeTerrain(etat);
+  regleChangementDeJoueur(etat);
 }

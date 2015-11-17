@@ -13,7 +13,7 @@ public:
   void regleGravite(Etat* etat);
   void regleChangementDeJoueur(Etat* etat);
   void regleDeTerrain(Etat* etat);
-
+  void fonctionPourDebutNewEtat(Etat* etat);
 
 private:
 
