@@ -19,7 +19,6 @@ public:
   int* tab;
   int nombre;
   bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
-  //void parseMap();
 
 private:
 

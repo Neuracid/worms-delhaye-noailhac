@@ -118,8 +118,3 @@ void SfmlWindow::update(){
   setFond();
   setText();
 }
-
-// void SfmlWindow::initFleche(){
-//   m_vertices.setPrimitiveType(sf::Quads);
-//   m_vertices.resize(4);
-// }
