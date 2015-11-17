@@ -15,7 +15,6 @@ if [[ $OS == *"Darwin"* ]]
 then
 	echo -e "[\x1B[01;32m  ok\x1B[0m ] mac os"
 	echo -e "Y to install SFML: "
-  say 'voulez vous installer la librairie sfml qui sera importante pour la suite et coucher avec moi ce soir'
 	read QUESTION
 	if [[ $QUESTION == 'Y' ]]
 	then
