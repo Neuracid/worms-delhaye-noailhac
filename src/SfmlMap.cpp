@@ -51,7 +51,7 @@ bool SfmlMap::load(const std::string& tileset, sf::Vector2u tileSize, unsigned i
             quad[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
         }
 
-    return true;
+     return true;
 }
 
 
@@ -66,21 +66,3 @@ void SfmlMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     // et on dessine enfin le tableau de vertex
     target.draw(m_vertices, states);
 }
-
-// void SfmlMap::parseMap(){
-//   std::ifstream fichier("../res/txt/map.txt", std::ios::in);
-//   if(fichier)
-//   {
-//
-//     int rec;
-//     for(int i=0; i<nombre; i++){
-//       fichier >> rec;
-//       tab[i]=rec;
-//     }
-//     fichier.close();
-//   }
-//   else
-//   {
-//     std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-//   }
-// }
