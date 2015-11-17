@@ -8,6 +8,7 @@ int main() {
   etat.setWormsJoueur(7,6,Joueur::bleu);
   etat.setWormsJoueur(10,6,Joueur::jaune);
   etat.setWormsJoueur(4,4,Joueur::vert);
+  etat.listeWormsJoueurs[2].worms->setDirection(Worms::right);
   etat.listeWormsJoueurs[0].worms->setType(Worms::kungfu);
   etat.placeWormsActif=2;
   Engine engine;

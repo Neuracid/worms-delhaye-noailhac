@@ -4,6 +4,7 @@
 class Worms:public Bloc{
 public:
   enum Status{normal=0,kungfu=1,saut=2};
+  enum Direction{left=0,right=1};
   Worms(int x,int y);
   ~Worms();
 
@@ -11,10 +12,13 @@ public:
   void setVie(int x);
   int getType() override;
   void setType(Worms::Status status);
+  int getDirection();
+  void setDirection(Worms::Direction direction);
 
 private:
   int vie;
   Status status;
+  Direction direction;
 
 protected:
 

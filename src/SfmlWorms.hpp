@@ -18,7 +18,7 @@ public:
   void update(Worms* worms);
   std::string tileset;
   int positionSprite=0;
-  int x, y, etat;
+  int x, y, etat,direction;
   void image();
 
   sf::VertexArray m_vertices;

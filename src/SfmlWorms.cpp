@@ -5,6 +5,7 @@ SfmlWorms::SfmlWorms(Worms* worms){
   y=worms->getPosition_y();
   x=worms->getPosition_x();
   etat=worms->getType();
+  direction=worms->getDirection();
   // on charge la texture du tileset
   image();
 
@@ -25,12 +26,20 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
             int tu = positionSprite % (m_tileset.getSize().x / tileSize.x);
             int tv = positionSprite / (m_tileset.getSize().x / tileSize.x);
 
-
-            // on définit ses quatre coins
-            m_vertices[1].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
-            m_vertices[0].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
-            m_vertices[3].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
-            m_vertices[2].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
+            switch(direction){
+              case 1:// on définit ses quatre coins
+                    m_vertices[1].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
+                    m_vertices[0].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
+                    m_vertices[3].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
+                    m_vertices[2].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
+                    break;
+              default:// on définit ses quatre coins
+                    m_vertices[0].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
+                    m_vertices[1].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
+                    m_vertices[2].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
+                    m_vertices[3].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
+                    break;
+            }
 
             // on définit ses quatre coordonnées de texture
             m_vertices[0].texCoords = sf::Vector2f(tu * tileSize.x, tv * tileSize.y);
@@ -58,6 +67,7 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
    x=worms->getPosition_x();
    y=worms->getPosition_y();
    etat=worms->getType();
+   direction=worms->getDirection();
    // on charge la texture du tileset
    image();
 

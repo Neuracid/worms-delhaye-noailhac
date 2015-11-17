@@ -3,6 +3,7 @@
 Worms::Worms(int x,int y):Bloc(x,y){
   vie=100;
   status=normal;
+  direction=left;
 }
 
 //Destructeur
@@ -23,4 +24,12 @@ int Worms::getType(){
 
 void Worms::setType(Worms::Status status){
  this->status=status;
+}
+
+int Worms::getDirection(){
+  return static_cast<int>(direction);
+}
+
+void Worms::setDirection(Worms::Direction direction){
+ this->direction=direction;
 }
