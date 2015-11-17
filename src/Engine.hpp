@@ -10,6 +10,8 @@ public:
   bool deplacementDroite(Etat* etat);
   bool deplacementGauche(Etat* etat);
   void regleGravite(Etat* etat);
+  void regleChangementDeJoueur(Etat* etat);
+
 
 private:
 

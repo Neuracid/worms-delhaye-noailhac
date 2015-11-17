@@ -11,15 +11,12 @@ class Etat{
 public:
   std::vector<WormsJoueur> listeWormsJoueurs;
   int placeWormsActif=0;
-  
+
   Map map;
 
   //std::time_t result = std::time(NULL);
 
   Etat();
-  // void parseOutMap();
-  // void parseOutWorms();
-  // void parseOutProperties();
   void setWormsJoueur(int x, int y,Joueur::Team a);
 
 protected:

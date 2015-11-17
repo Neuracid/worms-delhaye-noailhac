@@ -23,6 +23,7 @@ bool Engine::deplacementDroite(Etat* etat){
               }
       }
     }
+    regleChangementDeJoueur( etat);
     return verif;
 }
 
@@ -48,6 +49,7 @@ bool Engine::deplacementGauche(Etat* etat){
               }
     }
   }
+  regleChangementDeJoueur( etat);
   return verif;
 }
 
@@ -61,11 +63,20 @@ void Engine::regleGravite (Etat* etat) {
       y++;
     }
     if (nbCasesVides == 1){
-      etat->listeWormsJoueurs[i].worms->setPosition_y(etat->listeWormsJoueurs[i].worms->getPosition_y()+1);
+      etat->listeWormsJoueurs[i].worms->setPosition_y(y+1);
     }
     if (nbCasesVides > 1 ){
       etat->listeWormsJoueurs[i].worms->setPosition_y(etat->listeWormsJoueurs[i].worms->getPosition_y()+nbCasesVides);
       etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-(nbCasesVides-1)*10);
     }
   }
+}
+
+void Engine::regleChangementDeJoueur(Etat* etat){
+    int nombreDeWorms=etat->listeWormsJoueurs.size();
+    int position=etat->placeWormsActif+1;
+    while(etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()<=0 ){
+      position++;
+    }
+    etat->placeWormsActif=position%nombreDeWorms;
 }

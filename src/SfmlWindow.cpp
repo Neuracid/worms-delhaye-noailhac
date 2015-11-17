@@ -78,6 +78,7 @@ void SfmlWindow::setWorms(){
     worms[i].reset(new SfmlWorms(etat->listeWormsJoueurs[i].worms,"../res/WormsGeneral/Worms/wbackflp.png"));
   }
   worms[2].reset(new SfmlWorms(etat->listeWormsJoueurs[2].worms,"../res/WormsGeneral/Worms/wpnctop.png"));
+  worms[3].reset(new SfmlWorms(etat->listeWormsJoueurs[3].worms,"../res/WormsGeneral/Worms/wbowlnk.png"));
 }
 
 void SfmlWindow::drawWorms(){

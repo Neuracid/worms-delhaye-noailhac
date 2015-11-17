@@ -31,10 +31,7 @@ public:
   sf::Text textActif;
   //Constructeur , destructeur
   SfmlWindow( Etat* etat, std::string name, int frameRateLimit);
-  //fleche worms actif
   std::string tileset;
-  //sf::VertexArray m_vertices;
-  //sf::Texture m_tileset;
 
   void initFleche();
 
