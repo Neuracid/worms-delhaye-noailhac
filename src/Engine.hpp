@@ -20,6 +20,7 @@ public:
   void setNbDeplacements(int);
   bool getCapaUtilise();
   void setCapaUtilise(bool);
+  void mineGaz(Etat* etat);
 
 private:
   int nbDeplacements = 2;

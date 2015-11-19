@@ -70,6 +70,13 @@ void Engine::kungfu(Etat* etat){
 
 }
 
+void Engine::mineGaz(Etat* etat){
+  int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+  int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+  etat->map.matriceTerrain[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
+
+}
+
 
 //REGLES
 void Engine::regleGravite (Etat* etat) {
@@ -100,7 +107,7 @@ void Engine::regleDeTerrain(Etat* etat){
     pv=etat->listeWormsJoueurs[i].worms->getVie();
     switch (etat->map[x][y]->getType()) {
       case 0:break;
-      case 1:etat->listeWormsJoueurs[i].worms->setVie((pv-10<0)?0:(pv-10));break;
+      case 1:if(i==etat->placeWormsActif){etat->listeWormsJoueurs[i].worms->setVie((pv-10<0)?0:(pv-2));}break;
       case 2:etat->listeWormsJoueurs[i].worms->setVie(0); break;
       case 3:std::cout << "probleme car le worms est dans de la terre" << std::endl;break;
       case 4:std::cout << "probleme car le worms est dans de la roche" << std::endl;break;
@@ -124,6 +131,9 @@ bool Engine::finTour(Etat* etat){
     return true;
   }
   else if (etat->getTime() >= 120){
+    return true;
+  }
+  else if (etat->listeWormsJoueurs[etat->placeWormsActif].worms->getVie() <= 0){
     return true;
   }
   else {

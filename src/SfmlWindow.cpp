@@ -18,7 +18,6 @@ void SfmlWindow::displayWindow(){
   Engine engine;
   engine.regleGravite(etat);
   engine.regleDeTerrain(etat);
-  engine.changementDeJoueur(etat);
   while (window.isOpen())
   {
       // on dessine le niveau
@@ -39,44 +38,44 @@ void SfmlWindow::displayWindow(){
           if(event.type == sf::Event::Closed || ((event.type == sf::Event::KeyPressed) && (event.key.code==sf::Keyboard::Escape)) ){
             window.close();
           }
-          else
-          {
-              if (event.type == sf::Event::KeyPressed)
-              {
-                  switch(event.key.code)
-                  {
-                      case sf::Keyboard::Down:
-                                //drawWorms();
-                                //window.draw(*worms[0]);
-                                drawText();
-                                break;
+          else{
+            if (event.type == sf::Event::KeyPressed) {
+              switch(event.key.code){
+                case sf::Keyboard::P:
+                          engine.changementDeJoueur(etat);
+                          break;
+                case sf::Keyboard::Down:
+                          //drawWorms();
+                          //window.draw(*worms[0]);
+                          drawText();
+                          break;
 
-                      case sf::Keyboard::Up:
-                                //map.parseMap();
-                                //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurmap, etat->hauteurmap);
+                case sf::Keyboard::Up:
+                          //map.parseMap();
+                          //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurmap, etat->hauteurmap);
 
-                                //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
-                                break;
-                      case sf:: Keyboard::Right:
-                                if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
-                                //printf("%d",engine.getNbDeplacements());
-                                break;
-                      case sf:: Keyboard::Left:
-                                if(engine.getNbDeplacements() > 0){if(engine.deplacementGauche(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
-                                //printf("%d",engine.getNbDeplacements());
-                                break;
+                          //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
+                          break;
+                case sf:: Keyboard::Right:
+                          if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
+                          //printf("%d",engine.getNbDeplacements());
+                          break;
+                case sf:: Keyboard::Left:
+                          if(engine.getNbDeplacements() > 0){if(engine.deplacementGauche(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
+                          //printf("%d",engine.getNbDeplacements());
+                          break;
 
 
-                      default: break;
-                  }
+                default: break;
               }
+            }
           }
+        }
+        if (engine.finTour(etat)){
+          engine.changementDeJoueur(etat);
+        }
       }
-      if (engine.finTour(etat)){
-        engine.changementDeJoueur(etat);
-      }
-  }
-}
+    }
 
 void SfmlWindow::setWorms(){
   worms.resize(etat->listeWormsJoueurs.size());
