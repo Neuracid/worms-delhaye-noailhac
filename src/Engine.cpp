@@ -1,6 +1,6 @@
 #include "Engine.hpp"
 
-
+//COMMANDES
 bool Engine::deplacementDroite(Etat* etat){
   bool verif=false;
   int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
@@ -51,6 +51,26 @@ bool Engine::deplacementGauche(Etat* etat){
   return verif;
 }
 
+void Engine::changementDeJoueur(Etat* etat){
+    int nombreDeWorms=etat->listeWormsJoueurs.size();
+    int position=(etat->placeWormsActif+1)%nombreDeWorms;
+    int start=etat->placeWormsActif;
+    while(etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()<=0 && start!=position){
+      position=(position+1)%nombreDeWorms;
+    }
+    if(start==position && etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()==0)
+    std::cout << "Plus de worms disponible" << std::endl;
+    etat->placeWormsActif=position%nombreDeWorms;
+    nbDeplacements=2;
+    capaUtilise=false;
+}
+
+void Engine::kungfu(Etat* etat){
+
+}
+
+
+//REGLES
 void Engine::regleGravite (Etat* etat) {
   for (int i = 0; i < etat->listeWormsJoueurs.size() ; i++) {
     int nbCasesVides=0;
@@ -69,18 +89,6 @@ void Engine::regleGravite (Etat* etat) {
       etat->listeWormsJoueurs[i].worms->setVie(pv-(nbCasesVides-1)*10);
     }
   }
-}
-
-void Engine::regleChangementDeJoueur(Etat* etat){
-    int nombreDeWorms=etat->listeWormsJoueurs.size();
-    int position=(etat->placeWormsActif+1)%nombreDeWorms;
-    int start=etat->placeWormsActif;
-    while(etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()<=0 && start!=position){
-      position=(position+1)%nombreDeWorms;
-    }
-    if(start==position && etat->listeWormsJoueurs[position%nombreDeWorms].worms->getVie()==0)
-    std::cout << "Plus de worms disponible" << std::endl;
-    etat->placeWormsActif=position%nombreDeWorms;
 }
 
 void Engine::regleDeTerrain(Etat* etat){
@@ -104,5 +112,36 @@ void Engine::regleDeTerrain(Etat* etat){
 void Engine::fonctionPourDebutNewEtat(Etat* etat){
   regleGravite(etat);
   regleDeTerrain(etat);
-  regleChangementDeJoueur(etat);
+  changementDeJoueur(etat);
+}
+
+bool Engine::finTour(Etat* etat){
+  if (nbDeplacements == 0) {
+    return true;
+  }
+  else if ( capaUtilise == true) {
+    return true;
+  }
+  else if (etat.getTyme() == 120){
+    return true;
+  }
+  else {
+    return false;
+  }
+
+}
+
+
+//GETSET
+int Engine::getNbDeplacements(){
+  return nbDeplacements;
+}
+void Engine::setNbDeplacements(int nb){
+  nbDeplacements=nb;
+}
+bool Engine::getCapaUtilise(){
+  return capaUtilise;
+}
+void Engine::setCapaUtilise(bool capaU){
+  capaUtilise=capaU;
 }
