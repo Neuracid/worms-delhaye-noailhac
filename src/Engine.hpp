@@ -8,8 +8,8 @@ class Engine {
 
 public:
 
-  bool deplacementDroite(Etat* etat);
-  bool deplacementGauche(Etat* etat);
+  bool deplacementDroite(Etat* etat,int i);
+  bool deplacementGauche(Etat* etat, int i);
   void kungfu(Etat* etat);
   void regleGravite(Etat* etat);
   void changementDeJoueur(Etat* etat);
