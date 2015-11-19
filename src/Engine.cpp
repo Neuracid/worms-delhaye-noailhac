@@ -83,8 +83,9 @@ void Engine::kungfu(Etat* etat){
 void Engine::mineGaz(Etat* etat){
   int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
   int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
-  etat->map.matriceTerrain[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
-
+  etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
+  printf("%d et %d",etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection(),etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType());
+  capaUtilise=true;
 }
 
 

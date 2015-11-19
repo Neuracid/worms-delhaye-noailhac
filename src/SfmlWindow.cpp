@@ -44,6 +44,9 @@ void SfmlWindow::displayWindow(){
                 case sf::Keyboard::P:
                           engine.changementDeJoueur(etat);
                           break;
+                case sf::Keyboard::G:
+                          engine.mineGaz(etat);
+                          break;
                 case sf::Keyboard::Down:
                           //drawWorms();
                           //window.draw(*worms[0]);
