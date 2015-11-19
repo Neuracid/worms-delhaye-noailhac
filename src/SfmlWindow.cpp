@@ -53,16 +53,13 @@ void SfmlWindow::displayWindow(){
                                 //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
                                 break;
                       case sf:: Keyboard::Right:
-                                engine.deplacementDroite(etat);
                                 break;
                       case sf:: Keyboard::Left:
-                                engine.deplacementGauche(etat);
                                 break;
 
 
                       default: break;
                   }
-                  engine.fonctionPourDebutNewEtat(etat);
               }
           }
       }
@@ -124,7 +121,6 @@ void SfmlWindow::drawText(){
   for(int i=0;i<text.size();i++){
     window.draw(text[i]);
     window.draw(textActif);
-    window.draw(horloge);
   }
 }
 

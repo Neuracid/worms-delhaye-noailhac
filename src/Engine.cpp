@@ -63,6 +63,7 @@ void Engine::changementDeJoueur(Etat* etat){
     etat->placeWormsActif=position%nombreDeWorms;
     nbDeplacements=2;
     capaUtilise=false;
+    etat->setTimeToZero();
 }
 
 void Engine::kungfu(Etat* etat){
@@ -122,7 +123,7 @@ bool Engine::finTour(Etat* etat){
   else if ( capaUtilise == true) {
     return true;
   }
-  else if (etat.getTyme() == 120){
+  else if (etat->getTime() >= 120){
     return true;
   }
   else {
