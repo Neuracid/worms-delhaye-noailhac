@@ -4,7 +4,7 @@
 class Worms:public Bloc{
 public:
   enum Status{normal=0,kungfu=1,saut=3};
-  enum Direction{left=0,right=1};
+  enum Direction{left=-1,right=1};
   Worms(int x,int y);
   ~Worms();
 
