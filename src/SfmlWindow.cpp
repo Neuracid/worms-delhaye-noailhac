@@ -20,6 +20,7 @@ void SfmlWindow::displayWindow(){
   {
       // on dessine le niveau
       window.clear();
+      update();
       window.draw(spriteFond);
       window.draw(map);
       drawText();
@@ -62,7 +63,6 @@ void SfmlWindow::displayWindow(){
                       default: break;
                   }
                   engine.fonctionPourDebutNewEtat(etat);
-                  update();
               }
           }
       }
@@ -113,12 +113,18 @@ void SfmlWindow::setText(){
     }
     text[i].setPosition(64*etat->listeWormsJoueurs[i].worms->getPosition_x()+18,64*etat->listeWormsJoueurs[i].worms->getPosition_y());
   }
+  horloge.setString(std::to_string((int)etat->getTime()));
+  horloge.setCharacterSize(21);
+  horloge.setColor(sf::Color::White);
+  horloge.setFont(font);
+  horloge.setPosition(0,0);
 }
 
 void SfmlWindow::drawText(){
   for(int i=0;i<text.size();i++){
     window.draw(text[i]);
     window.draw(textActif);
+    window.draw(horloge);
   }
 }
 

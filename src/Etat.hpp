@@ -14,14 +14,16 @@ public:
 
   Map map;
 
-  //std::time_t result = std::time(NULL);
+
 
   Etat();
   void setWormsJoueur(int x, int y,Joueur::Team a);
+  float getTime();
+  void setTimeToZero();
 
 protected:
 
 private:
-
+    time_t depart=time(&depart);
 };
 #endif

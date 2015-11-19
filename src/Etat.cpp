@@ -23,3 +23,12 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
   else wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
     listeWormsJoueurs.push_back(wormsJoueur);
 }
+
+float Etat::getTime(){
+  time_t arrivee=time(&arrivee);
+  return difftime(arrivee, depart);
+}
+
+void Etat::setTimeToZero(){
+  depart=time(&depart);
+}

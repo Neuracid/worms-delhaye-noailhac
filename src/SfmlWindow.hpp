@@ -29,6 +29,7 @@ public:
   sf::Font font;
   std::vector<sf::Text> text;
   sf::Text textActif;
+  sf::Text horloge;
   //Constructeur , destructeur
   SfmlWindow( Etat* etat, std::string name, int frameRateLimit);
   std::string tileset;
