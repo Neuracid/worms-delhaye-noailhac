@@ -3,7 +3,7 @@
 Worms::Worms(int x,int y):Bloc(x,y){
   vie=100;
   status=normal;
-  direction=left;
+  direction=right;
 }
 
 //Destructeur

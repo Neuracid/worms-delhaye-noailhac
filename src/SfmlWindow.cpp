@@ -74,8 +74,12 @@ void SfmlWindow::setWorms(){
   for(int i=0;i<etat->listeWormsJoueurs.size();i++){
     worms[i].reset(new SfmlWorms(etat->listeWormsJoueurs[i].worms));
   }
-  worms[2].reset(new SfmlWorms(etat->listeWormsJoueurs[2].worms));
-  worms[3].reset(new SfmlWorms(etat->listeWormsJoueurs[3].worms));
+}
+
+void SfmlWindow::updateWorms(){
+  for(int i=0;i<etat->listeWormsJoueurs.size();i++){
+    worms[i]->update(etat->listeWormsJoueurs[i].worms);
+  }
 }
 
 void SfmlWindow::drawWorms(){
@@ -120,7 +124,7 @@ void SfmlWindow::drawText(){
 
 void SfmlWindow::update(){
   //map
-  setWorms();
+  updateWorms();
   setFond();
   setText();
 }

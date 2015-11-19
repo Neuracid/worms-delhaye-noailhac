@@ -9,7 +9,7 @@ int main() {
   etat.setWormsJoueur(10,6,Joueur::jaune);
   etat.setWormsJoueur(4,4,Joueur::vert);
   etat.listeWormsJoueurs[2].worms->setDirection(Worms::right);
-  etat.listeWormsJoueurs[0].worms->setType(Worms::kungfu);
+  etat.listeWormsJoueurs[0].worms->setType(Worms::saut);
   etat.placeWormsActif=2;
   Engine engine;
   engine.deplacementGauche(&etat);

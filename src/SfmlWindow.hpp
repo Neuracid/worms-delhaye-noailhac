@@ -44,6 +44,7 @@ public:
   void setText();
   void drawText();
   void update();
+  void updateWorms();
 
 protected:
 

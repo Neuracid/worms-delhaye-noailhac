@@ -2,10 +2,16 @@
 
 
 SfmlWorms::SfmlWorms(Worms* worms){
-  y=worms->getPosition_y();
-  x=worms->getPosition_x();
-  etat=worms->getType();
-  direction=worms->getDirection();
+  y_new=worms->getPosition_y();
+  y_old=y_new;
+  x_new=worms->getPosition_x();
+  x_old=x_new;
+  etat_new=worms->getType();
+  etat_old=etat_new;
+  direction_new=worms->getDirection();
+  direction_old=direction_new;
+  pv_new=worms->getVie();
+  pv_old=pv_new;
   // on charge la texture du tileset
   image();
 
@@ -25,19 +31,22 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
             //on en déduit sa position dans la texture du tileset
             int tu = positionSprite % (m_tileset.getSize().x / tileSize.x);
             int tv = positionSprite / (m_tileset.getSize().x / tileSize.x);
+            // int mod=64/(m_tileset.getSize().y / tileSize.y);
+            // test+=mod;
+            // test=test%64;
 
-            switch(direction){
+            switch(direction_new){
               case 1:// on définit ses quatre coins
-                    m_vertices[1].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
-                    m_vertices[0].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
-                    m_vertices[3].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
-                    m_vertices[2].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
+                    m_vertices[1].position = sf::Vector2f(x_new * tileSize.x, y_new * tileSize.y+18);
+                    m_vertices[0].position = sf::Vector2f((x_new + 1) * tileSize.x, y_new * tileSize.y+18);
+                    m_vertices[3].position = sf::Vector2f((x_new + 1) * tileSize.x+test, (y_new + 1) * tileSize.y+18);
+                    m_vertices[2].position = sf::Vector2f(x_new * tileSize.x, (y_new + 1) * tileSize.y+18);
                     break;
               default:// on définit ses quatre coins
-                    m_vertices[0].position = sf::Vector2f(x * tileSize.x, y * tileSize.y+18);
-                    m_vertices[1].position = sf::Vector2f((x + 1) * tileSize.x, y * tileSize.y+18);
-                    m_vertices[2].position = sf::Vector2f((x + 1) * tileSize.x, (y + 1) * tileSize.y+18);
-                    m_vertices[3].position = sf::Vector2f(x * tileSize.x, (y + 1) * tileSize.y+18);
+                    m_vertices[0].position = sf::Vector2f(x_new * tileSize.x, y_new * tileSize.y+18);
+                    m_vertices[1].position = sf::Vector2f((x_new + 1) * tileSize.x, y_new* tileSize.y+18);
+                    m_vertices[2].position = sf::Vector2f((x_new + 1) * tileSize.x, (y_new + 1) * tileSize.y+18);
+                    m_vertices[3].position = sf::Vector2f(x_new * tileSize.x, (y_new + 1) * tileSize.y+18);
                     break;
             }
 
@@ -64,10 +73,16 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
  }
 
  void SfmlWorms::update(Worms* worms){
-   x=worms->getPosition_x();
-   y=worms->getPosition_y();
-   etat=worms->getType();
-   direction=worms->getDirection();
+   y_old=y_new;
+   x_old=x_new;
+   etat_old=etat_new;
+   direction_old=direction_new;
+   pv_old=pv_new;
+   x_new=worms->getPosition_x();
+   y_new=worms->getPosition_y();
+   etat_new=worms->getType();
+   direction_new=worms->getDirection();
+   pv_new=worms->getVie();
    // on charge la texture du tileset
    image();
 
@@ -75,7 +90,7 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
  }
 
  void SfmlWorms::image(){
-   switch (etat) {
+   switch (etat_new) {
      case 0:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wdie.png");break;
      case 1:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wpnctop.png");break;
      case 2:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbowlnk.png");break;
