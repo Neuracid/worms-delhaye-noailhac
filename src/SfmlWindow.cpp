@@ -50,18 +50,6 @@ void SfmlWindow::displayWindow(){
                 case sf::Keyboard::K:
                           engine.kungfu(etat);
                           break;
-                case sf::Keyboard::Down:
-                          //drawWorms();
-                          //window.draw(*worms[0]);
-                          drawText();
-                          break;
-
-                case sf::Keyboard::Up:
-                          //map.parseMap();
-                          //map.load("../res/blocs/terrain.png", sf::Vector2u(64, 64), etat->largeurmap, etat->hauteurmap);
-
-                          //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
-                          break;
                 case sf:: Keyboard::Right:
                           if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat,etat->placeWormsActif)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
                           //printf("%d",engine.getNbDeplacements());
