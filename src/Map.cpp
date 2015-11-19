@@ -1,7 +1,7 @@
 #include "Map.hpp"
 
 Map::Map() {
-  std::ifstream fichier("../res/txt/MapType0.txt", std::ios::in);
+  std::ifstream fichier("../res/txt/MapType1.txt", std::ios::in);
   if(fichier)
   {
   int x;
