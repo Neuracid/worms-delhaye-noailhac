@@ -66,3 +66,9 @@ void SfmlMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     // et on dessine enfin le tableau de vertex
     target.draw(m_vertices, states);
 }
+
+void SfmlMap::update(Etat* etat){
+  for(int i=0; i<nombre;i++)
+  tab[i]=etat->map[i%(etat->map.getLargeur())][i/(etat->map.getLargeur())]->getType();
+  load("../res/blocs/terrain.png", sf::Vector2u(64, 64),etat->map.getLargeur(), etat->map.getHauteur());
+}

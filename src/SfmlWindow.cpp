@@ -144,4 +144,5 @@ void SfmlWindow::update(){
   updateWorms();
   setFond();
   setText();
+  map.update(etat);
 }

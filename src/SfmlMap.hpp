@@ -18,6 +18,7 @@ public:
   ~SfmlMap();
   int* tab;
   int nombre;
+  void update(Etat* etat);
   bool load(const std::string& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
 
 private:
