@@ -60,11 +60,11 @@ void SfmlWindow::displayWindow(){
                           //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
                           break;
                 case sf:: Keyboard::Right:
-                          if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
+                          if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat, etat->placeWormsActif)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
                           //printf("%d",engine.getNbDeplacements());
                           break;
                 case sf:: Keyboard::Left:
-                          if(engine.getNbDeplacements() > 0){if(engine.deplacementGauche(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
+                          if(engine.getNbDeplacements() > 0){if(engine.deplacementGauche(etat, etat->placeWormsActif)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
                           //printf("%d",engine.getNbDeplacements());
                           break;
 
