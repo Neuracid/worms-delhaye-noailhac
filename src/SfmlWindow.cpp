@@ -16,10 +16,15 @@ void SfmlWindow::setFond(){
 
 void SfmlWindow::displayWindow(){
   Engine engine;
+  engine.regleGravite(etat);
+  engine.regleDeTerrain(etat);
+  engine.changementDeJoueur(etat);
   while (window.isOpen())
   {
       // on dessine le niveau
       window.clear();
+      engine.regleGravite(etat);
+      engine.regleDeTerrain(etat);
       update();
       window.draw(spriteFond);
       window.draw(map);
@@ -53,8 +58,12 @@ void SfmlWindow::displayWindow(){
                                 //worms[0].reset(new SfmlWorms(etat->tabWorms[0],"../res/waccuse11.png"));
                                 break;
                       case sf:: Keyboard::Right:
+                                if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
+                                //printf("%d",engine.getNbDeplacements());
                                 break;
                       case sf:: Keyboard::Left:
+                                if(engine.getNbDeplacements() > 0){if(engine.deplacementGauche(etat)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
+                                //printf("%d",engine.getNbDeplacements());
                                 break;
 
 
@@ -62,6 +71,9 @@ void SfmlWindow::displayWindow(){
                   }
               }
           }
+      }
+      if (engine.finTour(etat)){
+        engine.changementDeJoueur(etat);
       }
   }
 }
@@ -120,8 +132,9 @@ void SfmlWindow::setText(){
 void SfmlWindow::drawText(){
   for(int i=0;i<text.size();i++){
     window.draw(text[i]);
-    window.draw(textActif);
   }
+  window.draw(textActif);
+  window.draw(horloge);
 }
 
 void SfmlWindow::update(){
