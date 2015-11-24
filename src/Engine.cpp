@@ -185,7 +185,7 @@ void Engine::regleDeTerrain(Etat* etat){
     switch (etat->map[x][y]->getType()) {
       case 0:break;
       case 1:if(i==etat->placeWormsActif){etat->listeWormsJoueurs[i].oteVie(2);}break;
-      case 2:etat->listeWormsJoueurs[i].worms->setVie(0); break;
+      case 2:etat->listeWormsJoueurs[i].oteVie(etat->listeWormsJoueurs[i].worms->getVie()); break;
       case 3:std::cout << "probleme car le worms est dans de la terre" << std::endl;break;
       case 4:std::cout << "probleme car le worms est dans de la roche" << std::endl;break;
       case 5:std::cout << "probleme car le worms est dans du metal" << std::endl;break;
