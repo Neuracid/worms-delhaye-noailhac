@@ -20,7 +20,8 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
     Joueur* joueur = new Joueur(color);
     wormsJoueur.setJoueur(joueur);
   }
-  else wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
+  else {wormsJoueur.setJoueur(&*listeWormsJoueurs[i].joueur);
+        wormsJoueur.joueur->addVie(100);}
     listeWormsJoueurs.push_back(wormsJoueur);
 }
 

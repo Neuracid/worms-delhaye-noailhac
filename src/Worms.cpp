@@ -33,3 +33,9 @@ int Worms::getDirection(){
 void Worms::setDirection(Worms::Direction direction){
  this->direction=direction;
 }
+
+void Worms::oteVie(int nombre){
+  this->vie-=nombre;
+  if(this->vie<0)
+  this->vie=0;
+}

@@ -16,6 +16,7 @@ public:
   void setWorms(Worms* nouveau);
   WormsJoueur();
   ~WormsJoueur();
+  void oteVie(int nombre);
 
 private:
 

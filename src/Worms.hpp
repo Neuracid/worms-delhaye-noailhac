@@ -14,6 +14,7 @@ public:
   void setType(Worms::Status status);
   int getDirection();
   void setDirection(Worms::Direction direction);
+  void oteVie(int nombre);
 
 private:
   int vie;

@@ -9,6 +9,8 @@ public:
   ~Joueur();
   Team getTeam();
   int getVie();
+  void addVie(int vie);
+  void oteVie(int nombre);
 private:
   int vieEquipe;
   Team team;
