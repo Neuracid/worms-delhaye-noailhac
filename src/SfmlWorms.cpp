@@ -96,6 +96,7 @@ bool SfmlWorms::load( sf::Vector2u tileSize)
      case 2:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbowlnk.png");break;
      case 3:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
      case 4:m_tileset.loadFromFile("../res/WormsGeneral/Worms/waccuse.png");break;
+     case 5:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wmgnlnk.png");break;
      default:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
    }
    if(pv_old>0 && pv_new<=0)

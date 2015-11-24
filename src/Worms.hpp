@@ -3,7 +3,7 @@
 #include "Bloc.hpp"
 class Worms:public Bloc{
 public:
-  enum Status{die=0,archer=2,normal=4,kungfu=1,saut=2};
+  enum Status{die=0,archer=2,normal=4,kungfu=1,saut=2,tir=5};
   enum Direction{left=-1,right=1};
   Worms(int x,int y);
   ~Worms();

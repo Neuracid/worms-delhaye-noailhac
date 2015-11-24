@@ -236,6 +236,7 @@ void Engine::tir(Etat* etat){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
     int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
+    etat->listeWormsJoueurs[etat->placeWormsActif].worms->setType(Worms::tir);
     bool find=false;
     x+=direction;
 
