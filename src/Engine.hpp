@@ -24,6 +24,7 @@ public:
   void changementDeDirection(Etat* etat,Worms::Direction direction);
   void creuser(Etat* etat);
   void barricader(Etat* etat);
+  void tir(Etat* etat);
 
 private:
   int nbDeplacements = 2;

@@ -230,3 +230,40 @@ bool Engine::getCapaUtilise(){
 void Engine::setCapaUtilise(bool capaU){
   capaUtilise=capaU;
 }
+
+void Engine::tir(Etat* etat){
+  if(capaUtilise == false){
+    int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+    int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
+    bool find=false;
+    x+=direction;
+
+    while(x>=0 && x<etat->map.getLargeur() && find==false){
+      for(int i=0; i<etat->listeWormsJoueurs.size() ;i++){
+        if(x==etat->listeWormsJoueurs[i].worms->getPosition_x() && y==etat->listeWormsJoueurs[i].worms->getPosition_y() ){
+          etat->listeWormsJoueurs[i].worms->oteVie(25);
+          find=true;
+        }
+      }
+      switch (etat->map[x][y]->getType()){
+        case Terrain::metal:
+        etat->map[x][y]->setType(Terrain::roche);
+        find=true;
+        break;
+        case Terrain::roche:
+        etat->map[x][y]->setType(Terrain::terre);
+        find=true;
+        break;
+        case Terrain::terre:
+        etat->map[x][y]->setType(Terrain::air);
+        find=true;
+        break;
+        default:
+        break;
+      }
+      x+=direction;
+    }
+    capaUtilise=true;
+  }
+}

@@ -56,6 +56,9 @@ void SfmlWindow::displayWindow(){
                 case sf::Keyboard::K:
                           engine.kungfu(etat);
                           break;
+                case sf::Keyboard::T:
+                          engine.tir(etat);
+                          break;
                 case sf:: Keyboard::Right:
                           engine.deplacementDroite(etat,etat->placeWormsActif);
                           engine.changementDeDirection(etat,Worms::right);
