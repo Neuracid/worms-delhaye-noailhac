@@ -21,6 +21,7 @@ public:
   bool getCapaUtilise();
   void setCapaUtilise(bool);
   void mineGaz(Etat* etat);
+  void changementDeDirection(Etat* etat,Worms::Direction direction);
 
 private:
   int nbDeplacements = 2;

@@ -5,11 +5,6 @@ bool Engine::deplacementDroite(Etat* etat, int i){
   bool verif=false;
   int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
   int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-  int direction=etat->listeWormsJoueurs[i].worms->getDirection();
-  if(direction==-1 && i==etat->placeWormsActif){
-    etat->listeWormsJoueurs[i].worms->setDirection(Worms::right);
-    return verif;
-  }
   if(x>=0 && x<etat->map.getLargeur()-1){
     int type=etat->map.matriceTerrain[x+1][y]->getType();
     switch (type) {
@@ -31,15 +26,14 @@ bool Engine::deplacementDroite(Etat* etat, int i){
     return verif;
 }
 
+void Engine::changementDeDirection(Etat* etat,Worms::Direction direction){
+  etat->listeWormsJoueurs[etat->placeWormsActif].worms->setDirection(direction);
+}
+
 bool Engine::deplacementGauche(Etat* etat,int i){
   bool verif=false;
   int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
   int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-  int direction=etat->listeWormsJoueurs[i].worms->getDirection();
-  if(direction==1 && i==etat->placeWormsActif){
-    etat->listeWormsJoueurs[i].worms->setDirection(Worms::left);
-    return verif;
-  }
   if(x>0 && x<etat->map.getLargeur()){
     int type=etat->map.matriceTerrain[x-1][y]->getType();
     switch (type) {

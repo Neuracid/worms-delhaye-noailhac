@@ -51,10 +51,12 @@ void SfmlWindow::displayWindow(){
                           engine.kungfu(etat);
                           break;
                 case sf:: Keyboard::Right:
+                          engine.changementDeDirection(etat,Worms::right);
                           if(engine.getNbDeplacements() > 0){if(engine.deplacementDroite(etat,etat->placeWormsActif)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
                           //printf("%d",engine.getNbDeplacements());
                           break;
                 case sf:: Keyboard::Left:
+                          engine.changementDeDirection(etat,Worms::left);
                           if(engine.getNbDeplacements() > 0){if(engine.deplacementGauche(etat,etat->placeWormsActif)==true){engine.setNbDeplacements(engine.getNbDeplacements()-1);}};
                           //printf("%d",engine.getNbDeplacements());
                           break;
