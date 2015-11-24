@@ -77,28 +77,34 @@ void Engine::changementDeJoueur(Etat* etat){
 }
 
 void Engine::kungfu(Etat* etat){
-  int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
-  int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
-  int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
-  etat->listeWormsJoueurs[etat->placeWormsActif].worms->setType(Worms::kungfu);
-  for(int i=0; i<etat->listeWormsJoueurs.size();i++){
-    if(etat->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && etat->listeWormsJoueurs[i].worms->getPosition_y()==y){
-      switch (direction) {
-        case 1:deplacementDroite(etat,i);
-              etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-50);break;
-        case -1:deplacementGauche(etat,i);
-              etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-50);break;
+  if (capaUtilise == false){
+    int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+    int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
+    etat->listeWormsJoueurs[etat->placeWormsActif].worms->setType(Worms::kungfu);
+    for(int i=0; i<etat->listeWormsJoueurs.size();i++){
+      if(etat->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && etat->listeWormsJoueurs[i].worms->getPosition_y()==y){
+        switch (direction) {
+          case 1:deplacementDroite(etat,i);
+                etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-50);break;
+          case -1:deplacementGauche(etat,i);
+                etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-50);break;
+        }
       }
     }
+    capaUtilise=true;
   }
-  capaUtilise=true;
 }
 
 void Engine::mineGaz(Etat* etat){
-  int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
-  int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
-  etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
-  capaUtilise=true;
+  if (capaUtilise == false){
+    int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+    if (etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType() == Terrain::air){
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
+      capaUtilise=true;
+    }
+  }
 }
 
 
@@ -148,10 +154,7 @@ void Engine::fonctionPourDebutNewEtat(Etat* etat){
 }
 
 bool Engine::finTour(Etat* etat){
-  if (nbDeplacements == 0) {
-    return true;
-  }
-  else if ( capaUtilise == true) {
+  if (nbDeplacements == 0 && capaUtilise == true) {
     return true;
   }
   else if (etat->getTime() >= etat->getTempTour()){
