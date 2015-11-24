@@ -107,6 +107,54 @@ void Engine::mineGaz(Etat* etat){
   }
 }
 
+void Engine::creuser(Etat* etat){
+  if (capaUtilise == false){
+    int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+    switch (etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType()){
+      case Terrain::metal:
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::roche);
+      capaUtilise=true;
+      break;
+      case Terrain::roche:
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::terre);
+      capaUtilise=true;
+      break;
+      case Terrain::terre:
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::air);
+      capaUtilise=true;
+      break;
+      default:
+      capaUtilise=false;
+      break;
+    }
+  }
+}
+
+void Engine::barricader(Etat* etat){
+  if (capaUtilise == false){
+    int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+    switch (etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType()){
+      case Terrain::air:
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::terre);
+      capaUtilise=true;
+      break;
+      case Terrain::terre:
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::roche);
+      capaUtilise=true;
+      break;
+      case Terrain::roche:
+      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::metal);
+      capaUtilise=true;
+      break;
+      default:
+      capaUtilise=false;
+      break;
+    }
+  }
+}
+
 
 //REGLES
 void Engine::regleGravite (Etat* etat) {

@@ -47,6 +47,12 @@ void SfmlWindow::displayWindow(){
                 case sf::Keyboard::G:
                           engine.mineGaz(etat);
                           break;
+                case sf::Keyboard::C:
+                          engine.creuser(etat);
+                          break;
+                case sf::Keyboard::B:
+                          engine.barricader(etat);
+                          break;
                 case sf::Keyboard::K:
                           engine.kungfu(etat);
                           break;
