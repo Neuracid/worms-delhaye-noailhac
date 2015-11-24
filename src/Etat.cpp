@@ -32,3 +32,10 @@ float Etat::getTime(){
 void Etat::setTimeToZero(){
   depart=time(&depart);
 }
+
+int Etat::getTempTour(){
+  return tempTour;
+}
+void Etat::setTempTour(int tempTour){
+  this->tempTour=tempTour;
+}

@@ -115,7 +115,7 @@ void SfmlWindow::setText(){
     }
     text[i].setPosition(64*etat->listeWormsJoueurs[i].worms->getPosition_x()+18,64*etat->listeWormsJoueurs[i].worms->getPosition_y());
   }
-  horloge.setString(std::to_string(((int)etat->getTime()/60))+":"+std::to_string(((int)etat->getTime()%60)));
+  horloge.setString(std::to_string(((etat->getTempTour()-(int)etat->getTime())/60))+":"+std::to_string(((etat->getTempTour()-(int)etat->getTime())%60)));
   horloge.setCharacterSize(21);
   horloge.setColor(sf::Color::White);
   horloge.setFont(font);

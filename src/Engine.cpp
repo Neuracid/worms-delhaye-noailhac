@@ -80,6 +80,7 @@ void Engine::kungfu(Etat* etat){
   int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
   int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
   int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
+  etat->listeWormsJoueurs[etat->placeWormsActif].worms->setType(Worms::kungfu);
   for(int i=0; i<etat->listeWormsJoueurs.size();i++){
     if(etat->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && etat->listeWormsJoueurs[i].worms->getPosition_y()==y){
       switch (direction) {
@@ -153,7 +154,7 @@ bool Engine::finTour(Etat* etat){
   else if ( capaUtilise == true) {
     return true;
   }
-  else if (etat->getTime() >= 120){
+  else if (etat->getTime() >= etat->getTempTour()){
     return true;
   }
   else if (etat->listeWormsJoueurs[etat->placeWormsActif].worms->getVie() <= 0){

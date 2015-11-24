@@ -20,10 +20,12 @@ public:
   void setWormsJoueur(int x, int y,Joueur::Team a);
   float getTime();
   void setTimeToZero();
-
+  int getTempTour();
+  void setTempTour(int tempTour);
 protected:
 
 private:
     time_t depart=time(&depart);
+    int tempTour=120;
 };
 #endif
