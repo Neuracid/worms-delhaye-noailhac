@@ -86,9 +86,9 @@ void Engine::kungfu(Etat* etat){
       if(etat->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && etat->listeWormsJoueurs[i].worms->getPosition_y()==y){
         switch (direction) {
           case 1:deplacementDroite(etat,i);
-                etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-50);break;
+                etat->listeWormsJoueurs[i].oteVie(50);break;
           case -1:deplacementGauche(etat,i);
-                etat->listeWormsJoueurs[i].worms->setVie(etat->listeWormsJoueurs[i].worms->getVie()-50);break;
+                etat->listeWormsJoueurs[i].oteVie(50);break;
         }
       }
     }
@@ -114,7 +114,6 @@ void Engine::regleGravite (Etat* etat) {
     int nbCasesVides=0;
     int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-    int pv=etat->listeWormsJoueurs[i].worms->getVie();
     while (y+1<etat->map.getHauteur() && etat->map[x][y+1]->getType() <3 ){
       nbCasesVides++;
       y++;
@@ -124,7 +123,7 @@ void Engine::regleGravite (Etat* etat) {
     }
     if (nbCasesVides > 1 ){
       etat->listeWormsJoueurs[i].worms->setPosition_y(y);
-      etat->listeWormsJoueurs[i].worms->setVie(pv-(nbCasesVides-1)*10);
+      etat->listeWormsJoueurs[i].oteVie((nbCasesVides-1)*10);
     }
   }
 }
@@ -137,7 +136,7 @@ void Engine::regleDeTerrain(Etat* etat){
     pv=etat->listeWormsJoueurs[i].worms->getVie();
     switch (etat->map[x][y]->getType()) {
       case 0:break;
-      case 1:if(i==etat->placeWormsActif){etat->listeWormsJoueurs[i].worms->setVie((pv-10<0)?0:(pv-2));}break;
+      case 1:if(i==etat->placeWormsActif){etat->listeWormsJoueurs[i].oteVie(2);}break;
       case 2:etat->listeWormsJoueurs[i].worms->setVie(0); break;
       case 3:std::cout << "probleme car le worms est dans de la terre" << std::endl;break;
       case 4:std::cout << "probleme car le worms est dans de la roche" << std::endl;break;
