@@ -6,22 +6,30 @@ DumbIA::DumbIA(Etat* mainState): IA(mainState) {
 
 void DumbIA::findWormsProche() {
   int i = 0;
+  Worms* wormsIni = new Worms(10000,10000);
+  wormsProche=wormsIni;
 
-  while(i<mainState->listeWormsJoueurs.size()) {
-    if ( mainState->listeWormsJoueurs[i].worms->getPosition_x() + mainState->listeWormsJoueurs[i].worms->getPosition_y() < wormsProche->getPosition_x() + wormsProche->getPosition_y()) {
+  for(i;i<mainState->listeWormsJoueurs.size();i++) {
+    if ( team != mainState->listeWormsJoueurs[i].joueur->getTeam() && i != placeWormsActif && std::sqrt(std::pow(mainState->listeWormsJoueurs[i].worms->getPosition_x()-x,2) + std::pow(mainState->listeWormsJoueurs[i].worms->getPosition_y()-y,2)) < std::sqrt(std::pow(wormsProche->getPosition_x()-x,2) + std::pow(wormsProche->getPosition_y()-y,2)) ){
       wormsProche=mainState->listeWormsJoueurs[i].worms;
-      i++;
     } else {
-      i++;
     }
   }
 }
 
 bool DumbIA::deplacement () {
 
-  if (wormsProche->getPosition_x() > mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_x()){
-    
-  }
+  if (true){
 
+  }
+}
+
+bool DumbIA::attaque() {
+  if (true) {
+
+  }
+}
+
+bool DumbIA::tirPossible() {
 
 }

@@ -7,6 +7,8 @@ public:
   DumbIA(Etat* mainState);
 private:
   bool deplacement();
+  bool attaque();
+  bool tirPossible();
   void findWormsProche();
   Worms* wormsProche;
 
