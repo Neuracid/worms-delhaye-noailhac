@@ -5,9 +5,14 @@
 
 class IA {
 public:
-  Etat* mainState;
   IA(Etat* mainState);
-  //virtual void
+  virtual void initActif (Etat* mainState);
+
+protected:
+  Etat* mainState;
+  int x;
+  int y;
+  Joueur::Team team;
 
 };
 #endif
