@@ -2,6 +2,7 @@
 #define IA_H
 #include "Etat.hpp"
 #include "Engine.hpp"
+#include <complex>
 
 class IA {
 public:
@@ -12,6 +13,7 @@ protected:
   Etat* mainState;
   int x;
   int y;
+  int placeWormsActif;
   Joueur::Team team;
 
 };
