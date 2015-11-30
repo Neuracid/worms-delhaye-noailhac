@@ -60,12 +60,17 @@ void SfmlWindow::displayWindow(){
                           engine.tir(etat);
                           break;
                 case sf:: Keyboard::Right:
-                          engine.deplacementDroite(etat,etat->placeWormsActif);
+                          if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==1)
+                          engine.deplacement(etat,etat->placeWormsActif);
                           engine.changementDeDirection(etat,Worms::right);
                           //printf("%d",engine.getNbDeplacements());
                           break;
+                case sf::Keyboard::E:
+                          engine.grappin(etat);
+                          break;
                 case sf:: Keyboard::Left:
-                          engine.deplacementGauche(etat,etat->placeWormsActif);
+                          if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==-1)
+                          engine.deplacement(etat,etat->placeWormsActif);
                           engine.changementDeDirection(etat,Worms::left);
                           //printf("%d",engine.getNbDeplacements());
                           break;

@@ -1,64 +1,53 @@
 #include "Engine.hpp"
 
 //COMMANDES
-bool Engine::deplacementDroite(Etat* etat, int i){
+bool Engine::deplacement(Etat* etat, int i){
   bool verif=false;
-  if ( nbDeplacements > 0 && etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection() == 1){
-    int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
-    int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-    if(x>=0 && x<etat->map.getLargeur()-1){
-      int type=etat->map.matriceTerrain[x+1][y]->getType();
-      switch (type) {
-        case 0: etat->listeWormsJoueurs[i].worms->setPosition_x(x+1);verif=true;break; //air
-        case 1: etat->listeWormsJoueurs[i].worms->setPosition_x(x+1);verif=true;break; //gaz
-        case 2: etat->listeWormsJoueurs[i].worms->setPosition_x(x+1);verif=true;break; //eau
-        default: //terre ou roche ou metal
-                if(y>0 && y<etat->map.getHauteur()){
-                  type=etat->map.matriceTerrain[x+1][y-1]->getType();
-                  switch (type) {
-                    case 0: etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);etat->listeWormsJoueurs[i].worms->setPosition_x(x+1);verif=true;break; //air
-                    case 1: etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);etat->listeWormsJoueurs[i].worms->setPosition_x(x+1);verif=true;break; //gaz
-                    case 2: etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);etat->listeWormsJoueurs[i].worms->setPosition_x(x+1);verif=true;break; //eau
-                    default : break;
-                  }
-                }
+  int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
+  int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
+  int d=etat->listeWormsJoueurs[i].worms->getDirection();
+
+  //cas actif
+  if(i==etat->placeWormsActif){
+    if(nbDeplacements > 0 && x+d>=0 && x+d<etat->map.getLargeur()){
+      if(etat->map[x+d][y]->getType()==Terrain::air || etat->map[x+d][y]->getType()==Terrain::gaz || etat->map[x+d][y]->getType()==Terrain::eau){
+        etat->listeWormsJoueurs[i].worms->setPosition_x(x+d);verif=true;nbDeplacements--;
+      }
+      else{
+        if(y>0){
+          if((etat->map[x+d][y-1]->getType()==Terrain::air || etat->map[x+d][y-1]->getType()==Terrain::gaz || etat->map[x+d][y-1]->getType()==Terrain::eau) && (etat->map[x][y-1]->getType()==Terrain::air || etat->map[x][y-1]->getType()==Terrain::gaz || etat->map[x][y-1]->getType()==Terrain::eau)){
+            etat->listeWormsJoueurs[i].worms->setPosition_x(x+d);
+            etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);
+            nbDeplacements--;
+            verif=true;
+          }
         }
       }
-      nbDeplacements--;
+    }
   }
+
+  //cas autre
+  else{
+    if(nbDeplacements > 0 && x+d>=0 && x+d<etat->map.getLargeur()){
+      if(etat->map[x+d][y]->getType()==Terrain::air || etat->map[x+d][y]->getType()==Terrain::gaz || etat->map[x+d][y]->getType()==Terrain::eau){
+        etat->listeWormsJoueurs[i].worms->setPosition_x(x+d);
+      }
+      else{
+        if(y>0){
+          if((etat->map[x+d][y-1]->getType()==Terrain::air || etat->map[x+d][y-1]->getType()==Terrain::gaz || etat->map[x+d][y-1]->getType()==Terrain::eau) && (etat->map[x][y-1]->getType()==Terrain::air || etat->map[x][y-1]->getType()==Terrain::gaz || etat->map[x][y-1]->getType()==Terrain::eau)){
+            etat->listeWormsJoueurs[i].worms->setPosition_x(x+d);
+            etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);
+          }
+        }
+      }
+    }
+  }
+
   return verif;
 }
 
 void Engine::changementDeDirection(Etat* etat,Worms::Direction direction){
   etat->listeWormsJoueurs[etat->placeWormsActif].worms->setDirection(direction);
-}
-
-bool Engine::deplacementGauche(Etat* etat,int i){
-  bool verif=false;
-  if ( nbDeplacements > 0 && etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection() == -1){
-    int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
-    int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-    if(x>0 && x<etat->map.getLargeur()){
-      int type=etat->map.matriceTerrain[x-1][y]->getType();
-      switch (type) {
-        case 0: etat->listeWormsJoueurs[i].worms->setPosition_x(x-1);verif=true;break; //air
-        case 1: etat->listeWormsJoueurs[i].worms->setPosition_x(x-1);verif=true;break; //gaz
-        case 2: etat->listeWormsJoueurs[i].worms->setPosition_x(x-1);verif=true;break; //eau
-        default: //terre ou roche ou metal
-                if(y>0 && y<etat->map.getHauteur()){
-                  type=etat->map.matriceTerrain[x-1][y-1]->getType();
-                  switch (type) {
-                    case 0: etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);etat->listeWormsJoueurs[i].worms->setPosition_x(x-1);verif=true;break; //air
-                    case 1: etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);etat->listeWormsJoueurs[i].worms->setPosition_x(x-1);verif=true;break; //gaz
-                    case 2: etat->listeWormsJoueurs[i].worms->setPosition_y(y-1);etat->listeWormsJoueurs[i].worms->setPosition_x(x-1);verif=true;break; //eau
-                    default : break;
-                  }
-                }
-      }
-    }
-    nbDeplacements--;
-  }
-  return verif;
 }
 
 void Engine::changementDeJoueur(Etat* etat){
@@ -84,12 +73,9 @@ void Engine::kungfu(Etat* etat){
     etat->listeWormsJoueurs[etat->placeWormsActif].worms->setType(Worms::kungfu);
     for(int i=0; i<etat->listeWormsJoueurs.size();i++){
       if(etat->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && etat->listeWormsJoueurs[i].worms->getPosition_y()==y){
-        switch (direction) {
-          case 1:deplacementDroite(etat,i);
-                etat->listeWormsJoueurs[i].oteVie(50);break;
-          case -1:deplacementGauche(etat,i);
-                etat->listeWormsJoueurs[i].oteVie(50);break;
-        }
+          etat->listeWormsJoueurs[i].worms->setDirection(((direction==1)?Worms::right : Worms::left));
+          deplacement(etat,i);
+          etat->listeWormsJoueurs[i].oteVie(50);break;
       }
     }
     capaUtilise=true;
@@ -135,23 +121,31 @@ void Engine::barricader(Etat* etat){
   if (capaUtilise == false){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
-    switch (etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType()){
-      case Terrain::air:
-      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::terre);
-      capaUtilise=true;
-      break;
-      case Terrain::terre:
-      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::roche);
-      capaUtilise=true;
-      break;
-      case Terrain::roche:
-      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::metal);
-      capaUtilise=true;
-      break;
-      default:
-      capaUtilise=false;
-      break;
-    }
+    int d=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
+
+    if(etat->map[x+d][y+1]->getType()==Terrain::air || etat->map[x+d][y+1]->getType()==Terrain::eau || etat->map[x+d][y+1]->getType()==Terrain::gaz){
+      etat->map[x+d][y+1]->setType(Terrain::terre);
+      capaUtilise=true;}
+    else{
+      switch (etat->map[x+d][y]->getType()) {
+        case Terrain::air : etat->map[x+d][y]->setType(Terrain::terre);
+                            capaUtilise=true;
+                            break;
+        case Terrain::gaz : etat->map[x+d][y]->setType(Terrain::terre);
+                            capaUtilise=true;
+                            break;
+        case Terrain::eau : etat->map[x+d][y]->setType(Terrain::terre);
+                            capaUtilise=true;
+                            break;
+        case Terrain::terre : etat->map[x+d][y]->setType(Terrain::roche);
+                            capaUtilise=true;
+                            break;
+        case Terrain::roche : etat->map[x+d][y]->setType(Terrain::metal);
+                            capaUtilise=true;
+                            break;
+        default: break;
+      }
+      }
   }
 }
 
@@ -265,6 +259,19 @@ void Engine::tir(Etat* etat){
       }
       x+=direction;
     }
+    capaUtilise=true;
+  }
+}
+
+void Engine::grappin(Etat* etat){
+  if(capaUtilise==false){
+    int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
+    int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
+    int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
+    while(etat->map[x+direction][y]->getType()==Terrain::terre || etat->map[x+direction][y]->getType()==Terrain::roche || etat->map[x+direction][y]->getType()==Terrain::metal)
+    y-=1;
+    etat->listeWormsJoueurs[etat->placeWormsActif].worms->setPosition_x(x+direction);
+    etat->listeWormsJoueurs[etat->placeWormsActif].worms->setPosition_y(y);
     capaUtilise=true;
   }
 }
