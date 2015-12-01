@@ -27,8 +27,24 @@ bool DumbIA::deplacement () {
 }
 
 bool DumbIA::attaque() {
-  if (true) {
-
+  if (tirPossible(1)) {
+    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::right);
+    engine.tir(mainState);
+  }
+  else if (tirPossible(-1)) {
+    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::left);
+    engine.tir(mainState);
+  }
+  else if (kungFuPossible(1)) {
+    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::right);
+    engine.kungfu(mainState);
+  }
+  else if (kungFuPossible(-1)) {
+    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::left);
+    engine.kungfu(mainState);
+  }
+  else {
+    return false;
   }
   return true;
 }

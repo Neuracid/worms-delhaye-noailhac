@@ -2,6 +2,7 @@
 #define IA_H
 #include "Etat.hpp"
 #include <cmath>
+#include "Engine.hpp"
 
 class IA {
 public:
@@ -10,6 +11,7 @@ public:
 
 protected:
   Etat* mainState;
+  Engine engine;
   int x;
   int y;
   int placeWormsActif;
