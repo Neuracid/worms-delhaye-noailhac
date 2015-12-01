@@ -36,7 +36,3 @@ bool DumbIA::attaque() {
 bool DumbIA::tirPossible() {
   return true;
 }
-
-bool DumbIA::tirPossible() {
-return false;
-}
