@@ -8,6 +8,7 @@ class IA {
 public:
   IA(Etat* mainState, Engine* engine);
   virtual void initActif (Etat* mainState);
+  virtual bool activeIA();
 
 protected:
   Etat* mainState;

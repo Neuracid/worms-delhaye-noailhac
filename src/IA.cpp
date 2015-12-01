@@ -12,3 +12,12 @@ void IA::initActif(Etat* mainState){
   this->team = mainState->listeWormsJoueurs[mainState->placeWormsActif].joueur->getTeam();
   this->placeWormsActif=mainState->placeWormsActif;
 }
+
+bool IA::activeIA(){
+  for(int i=0;i<mainState->listeJoueursIA.size();i++){
+    if(mainState->listeJoueursIA[i]==team){
+      return true;
+    }
+  }
+  return false;
+}
