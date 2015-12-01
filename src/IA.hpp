@@ -1,8 +1,7 @@
 #ifndef IA_H
 #define IA_H
 #include "Etat.hpp"
-#include "Engine.hpp"
-#include <complex>
+#include <cmath>
 
 class IA {
 public:

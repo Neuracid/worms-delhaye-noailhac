@@ -5,6 +5,8 @@ if [ "$1" == "-h" ]; then
   exit 2
 fi
 
+rm -rf build
+rm -rf bin
 
 mkdir -p lib
 mkdir -p build
