@@ -6,11 +6,11 @@ class DumbIA: public IA {
 public:
   DumbIA(Etat* mainState);
   void findWormsProche();
+  bool tirPossible(int direction);
 
 private:
   bool deplacement();
   bool attaque();
-  bool tirPossible();
   bool grimperPossible();
   Worms* wormsProche;
 

@@ -33,8 +33,36 @@ bool DumbIA::attaque() {
   return true;
 }
 
-bool DumbIA::tirPossible() {
-  return true;
+bool DumbIA::tirPossible(int direction) {
+  int x=mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_x();
+  int y=mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_y();
+  bool obstacle=false;
+  bool joueur=false;
+  x+=direction;
+
+  while(x>=0 && x<mainState->map.getLargeur() && obstacle==false){
+    for(int i=0; i<mainState->listeWormsJoueurs.size() ;i++){
+      if(x==mainState->listeWormsJoueurs[i].worms->getPosition_x() && y==mainState->listeWormsJoueurs[i].worms->getPosition_y() ){
+        joueur=true;
+      }
+    }
+    switch (mainState->map[x][y]->getType()){
+      case Terrain::metal:
+      obstacle=true;
+      break;
+      case Terrain::roche:
+      obstacle=true;
+      break;
+      case Terrain::terre:
+      obstacle=true;
+      break;
+      default:
+      break;
+    }
+    x+=direction;
+  }
+  printf(joueur ?"true" : "false");
+  return joueur;
 }
 
 bool DumbIA::grimperPossible(){

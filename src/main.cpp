@@ -12,7 +12,7 @@ void lanceThreadIA(DumbIA* ia, Etat* etat,Engine* engine)
   while(jeuActif){
     ia->initActif(etat);
     ia->findWormsProche();
-    engine->changementDeJoueur(etat);
+    ia->tirPossible(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection());
   }
 }
 
