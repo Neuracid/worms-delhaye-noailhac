@@ -76,3 +76,53 @@ int d=(wormsProche->getPosition_x()-x<0)?-1:1;
 
   return false;
 }
+
+bool DumbIA::deplacementPossible(){
+int d=(wormsProche->getPosition_x()-x<0)?-1:1;
+
+  //[x+d][y] vide
+  if(x+d<0 || x+d>=mainState->map.getLargeur()) return false;
+  if(mainState->map[x+d][y]->getType()<2){
+
+    //[x+d][y+1] vide & [x+d][y+2] non vide
+    if(x+d<0 || x+d>=mainState->map.getLargeur() || y+2>=mainState->map.getHauteur()) return false;
+    if((mainState->map[x+d][y+1]->getType()<2) && (mainState->map[x+d][y+2]->getType()>2))
+    return true;
+
+    //[x+d][y+1] non vide
+    if(y+1>=mainState->map.getHauteur() || x+d<0 || x+d>=mainState->map.getLargeur()) return false;
+    if(mainState->map[x+d][y+1]->getType()>2)
+    return true;
+
+    else
+    return false;
+  }
+  else{
+    //[x+d][y-1] vide & [x][y-1] vide
+    if(y-1<0 || x+d<0 || x+d>=mainState->map.getLargeur()) return false;
+    if((mainState->map[x+d][y-1]->getType()<2) && (mainState->map[x][y-1]->getType()<2))
+    return true;
+
+    else
+    return false;
+  }
+  return false;
+}
+
+
+bool DumbIA::barricaderPosiible(){
+int d=(wormsProche->getPosition_x()-x<0)?-1:1;
+
+  //[x+d][y] vide & [x+d][y+1] vide & [x+d][y+2] vide
+  if(y+2>=mainState->map.getHauteur() || x+d<0 || x+d>=mainState->map.getLargeur()) return false;
+  if((mainState->map[x+d][y]->getType()<2) && (mainState->map[x+d][y+1]->getType()<2) && (mainState->map[x+d][y+2]->getType()<2))
+  return true;
+
+  //[x+d][y] vide & [x+2d][y] non vide & [x+2d][y-1] non vide & [x+2d][y-2] vide
+  if(y-2<0 || x+d+d<0 || x+d+d>=mainState->map.getLargeur()) return false;
+  if((mainState->map[x+d][y]->getType()<2) && (mainState->map[x+d+d][y]->getType()>2) && (mainState->map[x+d+d][y-1]->getType()>2) && (mainState->map[x+d+d][y-1]->getType()<2))
+  return true;
+
+  return false;
+
+}

@@ -7,11 +7,14 @@ public:
   DumbIA(Etat* mainState);
   void findWormsProche();
   bool tirPossible(int direction);
-
-private:
+  bool barricaderPosiible();
   bool deplacement();
   bool attaque();
   bool grimperPossible();
+  bool deplacementPossible();
+
+private:
+
   Worms* wormsProche;
 
 };
