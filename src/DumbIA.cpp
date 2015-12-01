@@ -22,11 +22,11 @@ bool DumbIA::deplacement () {
   Worms::Direction d=(wormsProche->getPosition_x()-x<0)?Worms::left : Worms::right;
   engine->changementDeDirection(mainState,d);
 
-  if (deplacementPossible()==true){
-    return engine->deplacement(mainState,placeWormsActif);
-  }
   if(barricaderPosible()==true){
     return engine->barricader(mainState);
+  }
+  if (deplacementPossible()==true){
+    return engine->deplacement(mainState,placeWormsActif);
   }
   if(grimperPossible()==true){
     return engine->grappin(mainState);
