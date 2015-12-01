@@ -4,10 +4,10 @@
 
 class DumbIA: public IA {
 public:
-  DumbIA(Etat* mainState);
+  DumbIA(Etat* mainState, Engine* engine);
   void findWormsProche();
   bool tirPossible(int direction);
-  bool barricaderPosiible();
+  bool barricaderPosible();
   bool deplacement();
   bool attaque();
   bool grimperPossible();

@@ -117,7 +117,7 @@ void Engine::creuser(Etat* etat){
   }
 }
 
-void Engine::barricader(Etat* etat){
+bool Engine::barricader(Etat* etat){
   if (capaUtilise == false){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
@@ -145,8 +145,10 @@ void Engine::barricader(Etat* etat){
                             break;
         default: break;
       }
-      }
   }
+  return true;
+  }
+  return false;
 }
 
 void Engine::tir(Etat* etat){
@@ -187,7 +189,7 @@ void Engine::tir(Etat* etat){
   }
 }
 
-void Engine::grappin(Etat* etat){
+bool Engine::grappin(Etat* etat){
   if(capaUtilise==false){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
@@ -197,7 +199,9 @@ void Engine::grappin(Etat* etat){
     etat->listeWormsJoueurs[etat->placeWormsActif].worms->setPosition_x(x+direction);
     etat->listeWormsJoueurs[etat->placeWormsActif].worms->setPosition_y(y);
     capaUtilise=true;
+    return true;
   }
+  return false;
 }
 
 

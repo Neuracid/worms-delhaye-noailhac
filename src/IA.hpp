@@ -6,12 +6,13 @@
 
 class IA {
 public:
-  IA(Etat* mainState);
+  IA(Etat* mainState, Engine* engine);
   virtual void initActif (Etat* mainState);
+  virtual bool activeIA();
 
 protected:
   Etat* mainState;
-  Engine engine;
+  Engine* engine;
   int x;
   int y;
   int placeWormsActif;
