@@ -11,6 +11,7 @@ private:
   bool deplacement();
   bool attaque();
   bool tirPossible();
+  bool grimperPossible();
   Worms* wormsProche;
 
 };

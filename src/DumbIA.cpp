@@ -36,3 +36,15 @@ bool DumbIA::attaque() {
 bool DumbIA::tirPossible() {
   return true;
 }
+
+bool DumbIA::grimperPossible(){
+int d=(wormsProche->getPosition_x()-x<0)?-1:1;
+  if(y==1 || y== 0)
+  return false;
+
+  //[x+d][y] non vide && [x+d][y-1] non vide
+  if((mainState->map[x+d][y]->getType()>2) && (mainState->map[x+d][y-1]->getType()>2))
+  return true;
+
+  return false;
+}
