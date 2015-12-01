@@ -1,12 +1,13 @@
 #include "SfmlWindow.hpp"
 
-SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit) : videoMode(etat->map.getLargeur()*64,etat->map.getHauteur()*64), window(videoMode, name), map(etat,etat->map.getLargeur(),etat->map.getHauteur()){
+SfmlWindow::SfmlWindow(Etat* etat,std::string name, int frameRateLimit, Engine* engine) : videoMode(etat->map.getLargeur()*64,etat->map.getHauteur()*64), window(videoMode, name), map(etat,etat->map.getLargeur(),etat->map.getHauteur()){
   this->etat = etat;
   this->window.setFramerateLimit(frameRateLimit);
   setWorms();
   setFond();
   font.loadFromFile("../res/ttf/ComicSansMs.ttf");
   setText();
+  this->engine=engine;
 }
 
 void SfmlWindow::setFond(){
@@ -15,15 +16,14 @@ void SfmlWindow::setFond(){
 }
 
 void SfmlWindow::displayWindow(){
-  Engine engine;
-  engine.regleGravite(etat);
-  engine.regleDeTerrain(etat);
+  engine->regleGravite(etat);
+  engine->regleDeTerrain(etat);
   while (window.isOpen())
   {
       // on dessine le niveau
       window.clear();
-      engine.regleGravite(etat);
-      engine.regleDeTerrain(etat);
+      engine->regleGravite(etat);
+      engine->regleDeTerrain(etat);
       update();
       window.draw(spriteFond);
       window.draw(map);
@@ -42,37 +42,37 @@ void SfmlWindow::displayWindow(){
             if (event.type == sf::Event::KeyPressed) {
               switch(event.key.code){
                 case sf::Keyboard::P:
-                          engine.changementDeJoueur(etat);
+                          engine->changementDeJoueur(etat);
                           break;
                 case sf::Keyboard::G:
-                          engine.mineGaz(etat);
+                          engine->mineGaz(etat);
                           break;
                 case sf::Keyboard::C:
-                          engine.creuser(etat);
+                          engine->creuser(etat);
                           break;
                 case sf::Keyboard::B:
-                          engine.barricader(etat);
+                          engine->barricader(etat);
                           break;
                 case sf::Keyboard::K:
-                          engine.kungfu(etat);
+                          engine->kungfu(etat);
                           break;
                 case sf::Keyboard::T:
-                          engine.tir(etat);
+                          engine->tir(etat);
                           break;
                 case sf:: Keyboard::Right:
                           if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==1)
-                          engine.deplacement(etat,etat->placeWormsActif);
-                          engine.changementDeDirection(etat,Worms::right);
-                          //printf("%d",engine.getNbDeplacements());
+                          engine->deplacement(etat,etat->placeWormsActif);
+                          engine->changementDeDirection(etat,Worms::right);
+                          //printf("%d",engine->getNbDeplacements());
                           break;
                 case sf::Keyboard::E:
-                          engine.grappin(etat);
+                          engine->grappin(etat);
                           break;
                 case sf:: Keyboard::Left:
                           if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==-1)
-                          engine.deplacement(etat,etat->placeWormsActif);
-                          engine.changementDeDirection(etat,Worms::left);
-                          //printf("%d",engine.getNbDeplacements());
+                          engine->deplacement(etat,etat->placeWormsActif);
+                          engine->changementDeDirection(etat,Worms::left);
+                          //printf("%d",engine->getNbDeplacements());
                           break;
 
 
@@ -81,8 +81,8 @@ void SfmlWindow::displayWindow(){
             }
           }
         }
-        if (engine.finTour(etat)){
-          engine.changementDeJoueur(etat);
+        if (engine->finTour(etat)){
+          engine->changementDeJoueur(etat);
         }
       }
     }

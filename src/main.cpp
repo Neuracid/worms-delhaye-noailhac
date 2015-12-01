@@ -10,9 +10,12 @@ bool jeuActif=true;
 void lanceThreadIA(DumbIA* ia, Etat* etat,Engine* engine)
 {
   while(jeuActif){
+    usleep(5000000);
     ia->initActif(etat);
     ia->findWormsProche();
-    ia->tirPossible(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection());
+    if(ia->deplacement()==false){
+      engine->changementDeJoueur(etat);
+    }
   }
 }
 
@@ -24,12 +27,12 @@ int main() {
   etat.setWormsJoueur(25,8,Joueur::bleu);
   etat.setWormsJoueur(10,5,Joueur::jaune);
   etat.setWormsJoueur(4,9,Joueur::vert);
-  DumbIA dumb(&etat);
+  DumbIA dumb(&etat,&engine);
 
   std::future<void> result( std::async(lanceThreadIA,&dumb,&etat,&engine));
 
 
-  SfmlWindow window(&etat, "worms",30);
+  SfmlWindow window(&etat, "worms",30,&engine);
   window.displayWindow();
   jeuActif=false;
 

@@ -1,6 +1,6 @@
 #include "DumbIA.hpp"
 
-DumbIA::DumbIA(Etat* mainState): IA(mainState) {
+DumbIA::DumbIA(Etat* mainState, Engine* engine): IA(mainState, engine) {
 
 }
 
@@ -19,11 +19,19 @@ void DumbIA::findWormsProche() {
 }
 
 bool DumbIA::deplacement () {
+  Worms::Direction d=(wormsProche->getPosition_x()-x<0)?Worms::left : Worms::right;
+  engine->changementDeDirection(mainState,d);
 
-  if (true){
-
+  if (deplacementPossible()==true){
+    return engine->deplacement(mainState,placeWormsActif);
   }
-  return true;
+  if(barricaderPosible()==true){
+    return engine->barricader(mainState);
+  }
+  if(grimperPossible()==true){
+    return engine->grappin(mainState);
+  }
+  return false;
 }
 
 bool DumbIA::attaque() {
@@ -120,19 +128,18 @@ int d=(wormsProche->getPosition_x()-x<0)?-1:1;
 }
 
 
-bool DumbIA::barricaderPosiible(){
+bool DumbIA::barricaderPosible(){
 int d=(wormsProche->getPosition_x()-x<0)?-1:1;
 
-  //[x+d][y] vide & [x+d][y+1] vide & [x+d][y+2] vide
-  if(y+2>=mainState->map.getHauteur() || x+d<0 || x+d>=mainState->map.getLargeur()) return false;
-  if((mainState->map[x+d][y]->getType()<2) && (mainState->map[x+d][y+1]->getType()<2) && (mainState->map[x+d][y+2]->getType()<2))
+  //[x+d][y] vide & [x+d][y+1] vide & [x+d+d][y+1] non vide
+  if(y+1>=mainState->map.getHauteur() || x+d+d<0 || x+d+d>=mainState->map.getLargeur()) return false;
+  if((mainState->map[x+d][y]->getType()<2) && (mainState->map[x+d][y+1]->getType()<3) && (mainState->map[x+d+d][y+1]->getType()>2))
   return true;
 
   //[x+d][y] vide & [x+2d][y] non vide & [x+2d][y-1] non vide & [x+2d][y-2] vide
   if(y-2<0 || x+d+d<0 || x+d+d>=mainState->map.getLargeur()) return false;
-  if((mainState->map[x+d][y]->getType()<2) && (mainState->map[x+d+d][y]->getType()>2) && (mainState->map[x+d+d][y-1]->getType()>2) && (mainState->map[x+d+d][y-1]->getType()<2))
+  if((mainState->map[x+d][y]->getType()<2) && (mainState->map[x+d+d][y]->getType()>2) && (mainState->map[x+d+d][y-1]->getType()>2) && (mainState->map[x+d+d][y-2]->getType()<2))
   return true;
 
   return false;
-
 }

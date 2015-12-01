@@ -22,9 +22,9 @@ public:
   void mineGaz(Etat* etat);
   void changementDeDirection(Etat* etat,Worms::Direction direction);
   void creuser(Etat* etat);
-  void barricader(Etat* etat);
+  bool barricader(Etat* etat);
   void tir(Etat* etat);
-  void grappin(Etat* etat);
+  bool grappin(Etat* etat);
 
 private:
   int nbDeplacements = 2;
