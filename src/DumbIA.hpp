@@ -12,6 +12,7 @@ public:
   bool attaque();
   bool grimperPossible();
   bool deplacementPossible();
+  bool kungFuPossible(int direction);
 
 private:
 
