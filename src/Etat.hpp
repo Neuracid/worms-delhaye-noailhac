@@ -10,6 +10,7 @@
 class Etat{
 public:
   std::vector<WormsJoueur> listeWormsJoueurs;
+  std::vector<Joueur::Team> listeJoueursIA;
   int placeWormsActif=0;
 
   Map map;
