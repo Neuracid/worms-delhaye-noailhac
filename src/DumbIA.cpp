@@ -18,53 +18,60 @@ void DumbIA::findWormsProche() {
   printf("worms proche : x: %d y: %d\n",wormsProche->getPosition_x(), wormsProche->getPosition_y() );
 }
 
-bool DumbIA::deplacement () {
+bool DumbIA::deplacement (){
   Worms::Direction d=(wormsProche->getPosition_x()-x<0)?Worms::left : Worms::right;
   engine->changementDeDirection(mainState,d);
 
-  if(barricaderPosible()==true){
-    return engine->barricader(mainState);
+  if(engine->getCapaUtilise()==false){
+    if(barricaderPosible()==true){
+      return engine->barricader(mainState);
+    }
+    if(grimperPossible()==true){
+      return engine->grappin(mainState);
+    }
   }
-  if (deplacementPossible()==true){
-    return engine->deplacement(mainState,placeWormsActif);
-  }
-  if(grimperPossible()==true){
-    return engine->grappin(mainState);
+  if(engine->getNbDeplacements()>0){
+    if (deplacementPossible()==true){
+      return engine->deplacement(mainState,placeWormsActif);
+    }
   }
   return false;
 }
 
 bool DumbIA::attaque() {
-  if (tirPossible(1)) {
-    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::right);
-    engine.tir(mainState);
+  if(engine->getCapaUtilise()==false){
+    if (kungFuPossible(1)) {
+      engine->changementDeDirection(mainState,Worms::right);
+      engine->kungfu(mainState);
+    }
+    else if (kungFuPossible(-1)) {
+      engine->changementDeDirection(mainState,Worms::left);
+      engine->kungfu(mainState);
+    }
+    else if (tirPossible(1)) {
+      engine->changementDeDirection(mainState,Worms::right);
+      engine->tir(mainState);
+    }
+    else if (tirPossible(-1)) {
+      engine->changementDeDirection(mainState,Worms::left);
+      engine->tir(mainState);
+    }
+    else {
+      return false;
+    }
+    return true;
   }
-  else if (tirPossible(-1)) {
-    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::left);
-    engine.tir(mainState);
-  }
-  else if (kungFuPossible(1)) {
-    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::right);
-    engine.kungfu(mainState);
-  }
-  else if (kungFuPossible(-1)) {
-    mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->setDirection(Worms::left);
-    engine.kungfu(mainState);
-  }
-  else {
-    return false;
-  }
-  return true;
+  return false;
 }
 
 bool DumbIA::tirPossible(int direction) {
-  int x=mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_x();
-  int y=mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_y();
+  int x=mainState->listeWormsJoueurs[placeWormsActif].worms->getPosition_x();
+  int y=mainState->listeWormsJoueurs[placeWormsActif].worms->getPosition_y();
   bool obstacle=false;
   bool worms=false;
   x+=direction;
 
-  while(x>=0 && x<mainState->map.getLargeur() && obstacle==false){
+  while(x>=0 && x<mainState->map.getLargeur() && obstacle==false && worms==false){
     for(int i=0; i<mainState->listeWormsJoueurs.size() ;i++){
       if(x==mainState->listeWormsJoueurs[i].worms->getPosition_x() && y==mainState->listeWormsJoueurs[i].worms->getPosition_y() ){
         worms=true;
@@ -89,8 +96,6 @@ bool DumbIA::tirPossible(int direction) {
 }
 
 bool DumbIA::kungFuPossible(int direction) {
-  int x=mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_x();
-  int y=mainState->listeWormsJoueurs[mainState->placeWormsActif].worms->getPosition_y();
   for(int i=0; i<mainState->listeWormsJoueurs.size();i++){
     if(mainState->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && mainState->listeWormsJoueurs[i].worms->getPosition_y()==y){
         return true;

@@ -9,7 +9,7 @@ class Engine {
 public:
 
   bool deplacement(Etat* etat,int i);
-  void kungfu(Etat* etat);
+  bool kungfu(Etat* etat);
   void regleGravite(Etat* etat);
   void changementDeJoueur(Etat* etat);
   void regleDeTerrain(Etat* etat);
@@ -23,7 +23,7 @@ public:
   void changementDeDirection(Etat* etat,Worms::Direction direction);
   void creuser(Etat* etat);
   bool barricader(Etat* etat);
-  void tir(Etat* etat);
+  bool tir(Etat* etat);
   bool grappin(Etat* etat);
 
 private:

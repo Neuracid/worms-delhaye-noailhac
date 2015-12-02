@@ -14,7 +14,7 @@ void lanceThreadIA(DumbIA* ia, Etat* etat,Engine* engine)
     ia->initActif(etat);
     if(ia->activeIA()==true){
       ia->findWormsProche();
-      if(ia->deplacement()==false){
+      if(ia->attaque()==false && ia->deplacement()==false){
         engine->changementDeJoueur(etat);
       }
     }
@@ -32,13 +32,8 @@ int main() {
   etat.listeJoueursIA.push_back(Joueur::vert);
   etat.listeJoueursIA.push_back(Joueur::rouge);
   DumbIA dumb(&etat,&engine);
-
-  std::future<void> result( std::async(lanceThreadIA,&dumb,&etat,&engine));
-
-
   SfmlWindow window(&etat, "worms",30,&engine);
+  std::future<void> IA( std::async(lanceThreadIA,&dumb,&etat,&engine));
   window.displayWindow();
   jeuActif=false;
-
-
 }

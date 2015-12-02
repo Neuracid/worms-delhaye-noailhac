@@ -65,7 +65,7 @@ void Engine::changementDeJoueur(Etat* etat){
     etat->setTimeToZero();
 }
 
-void Engine::kungfu(Etat* etat){
+bool Engine::kungfu(Etat* etat){
   if (capaUtilise == false){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
@@ -79,7 +79,9 @@ void Engine::kungfu(Etat* etat){
       }
     }
     capaUtilise=true;
+    return true;
   }
+  return false;
 }
 
 void Engine::mineGaz(Etat* etat){
@@ -151,7 +153,7 @@ bool Engine::barricader(Etat* etat){
   return false;
 }
 
-void Engine::tir(Etat* etat){
+bool Engine::tir(Etat* etat){
   if(capaUtilise == false){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
@@ -186,7 +188,9 @@ void Engine::tir(Etat* etat){
       x+=direction;
     }
     capaUtilise=true;
+    return true;
   }
+  return false;
 }
 
 bool Engine::grappin(Etat* etat){
