@@ -39,6 +39,7 @@ bool DumbIA::deplacement (){
 }
 
 bool DumbIA::attaque() {
+
   if(engine->getCapaUtilise()==false){
     if (kungFuPossible(1)) {
       engine->changementDeDirection(mainState,Worms::right);
