@@ -12,7 +12,7 @@ Map::Map() {
     for(int i=0; i<hauteur; i++){
       for(int j=0;j<largeur;j++){
         fichier >>x;
-         matriceTerrain[j][i].reset(new Terrain(j,i,static_cast<Terrain::Type>(x)));
+         matriceTerrain[j][i]=new Terrain(j,i,static_cast<Terrain::Type>(x));
       }
     }
     fichier.close();

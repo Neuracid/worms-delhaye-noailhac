@@ -8,7 +8,7 @@
 class Map {
 
 public:
-std::vector<std::vector<std::unique_ptr< Terrain> > > matriceTerrain;
+std::vector<std::vector<Terrain* > > matriceTerrain;
 int hauteur;
 int largeur;
 
@@ -19,7 +19,7 @@ int getLargeur();
 void setLargeur(int largeur);
 void setHauteur(int hauteur);
 
-std::vector<std::unique_ptr< Terrain> >& operator[](size_t i) { return matriceTerrain[i];}
+std::vector<Terrain* >& operator[](size_t i) { return matriceTerrain[i];}
 
 
 private:
