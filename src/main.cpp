@@ -27,7 +27,7 @@ int main() {
 
   Etat etat;
   Engine engine;
-  etat.setWormsJoueur(29,9,Joueur::rouge);
+  etat.setWormsJoueur(27,9,Joueur::rouge);
   etat.setWormsJoueur(25,8,Joueur::bleu);
   etat.setWormsJoueur(10,5,Joueur::jaune);
   etat.setWormsJoueur(4,9,Joueur::vert);
