@@ -1,10 +1,10 @@
-#ifndef DUMBIA_H
-#define DUMBIA_H
+#ifndef NORMAL_H
+#define NORMAL_H
 #include "IA.hpp"
 
-class DumbIA: public IA {
+class NormalIA: public IA {
 public:
-  DumbIA(Etat* mainState, Engine* engine);
+  NormalIA(Etat* mainState, Engine* engine);
   void findWormsProche();
   bool deplacement();
   bool attaque();

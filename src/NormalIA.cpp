@@ -1,10 +1,10 @@
-#include "DumbIA.hpp"
+#include "NormalIA.hpp"
 
-DumbIA::DumbIA(Etat* mainState, Engine* engine): IA(mainState, engine) {
+NormalIA::NormalIA(Etat* mainState, Engine* engine): IA(mainState, engine) {
 
 }
 
-void DumbIA::findWormsProche() {
+void NormalIA::findWormsProche() {
   size_t i = 0;
   Worms* wormsIni = new Worms(10000,10000);
   wormsProche=wormsIni;
@@ -18,7 +18,7 @@ void DumbIA::findWormsProche() {
   printf("worms proche : x: %d y: %d\n",wormsProche->getPosition_x(), wormsProche->getPosition_y() );
 }
 
-bool DumbIA::deplacement (){
+bool NormalIA::deplacement (){
   Worms::Direction d=(wormsProche->getPosition_x()-x<0)?Worms::left : Worms::right;
   engine->changementDeDirection(mainState,d);
 
@@ -38,7 +38,7 @@ bool DumbIA::deplacement (){
   return false;
 }
 
-bool DumbIA::attaque() {
+bool NormalIA::attaque() {
 
   if(engine->getCapaUtilise()==false){
     if (kungFuPossible(1)) {
@@ -65,7 +65,7 @@ bool DumbIA::attaque() {
   return false;
 }
 
-bool DumbIA::tirPossible(int direction) {
+bool NormalIA::tirPossible(int direction) {
   int x=mainState->listeWormsJoueurs[placeWormsActif].worms->getPosition_x();
   int y=mainState->listeWormsJoueurs[placeWormsActif].worms->getPosition_y();
   bool obstacle=false;
@@ -74,7 +74,7 @@ bool DumbIA::tirPossible(int direction) {
 
   while(x>=0 && x<mainState->map.getLargeur() && obstacle==false && worms==false){
     for(size_t i=0; i<mainState->listeWormsJoueurs.size() ;i++){
-      if(x==mainState->listeWormsJoueurs[i].worms->getPosition_x() && y==mainState->listeWormsJoueurs[i].worms->getPosition_y() ){
+      if(x==mainState->listeWormsJoueurs[i].worms->getPosition_x() && y==mainState->listeWormsJoueurs[i].worms->getPosition_y() && team!=mainState->listeWormsJoueurs[i].joueur->getTeam()){
         worms=true;
       }
     }
@@ -96,16 +96,16 @@ bool DumbIA::tirPossible(int direction) {
   return worms;
 }
 
-bool DumbIA::kungFuPossible(int direction) {
+bool NormalIA::kungFuPossible(int direction) {
   for(size_t i=0; i<mainState->listeWormsJoueurs.size();i++){
-    if(mainState->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && mainState->listeWormsJoueurs[i].worms->getPosition_y()==y){
+    if(mainState->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && mainState->listeWormsJoueurs[i].worms->getPosition_y()==y && team!=mainState->listeWormsJoueurs[i].joueur->getTeam()){
         return true;
     }
   }
   return false;
 }
 
-bool DumbIA::grimperPossible(){
+bool NormalIA::grimperPossible(){
 int d=(wormsProche->getPosition_x()-x<0)?-1:1;
   if(y==1 || y== 0)
   return false;
@@ -117,7 +117,7 @@ int d=(wormsProche->getPosition_x()-x<0)?-1:1;
   return false;
 }
 
-bool DumbIA::deplacementPossible(){
+bool NormalIA::deplacementPossible(){
 int d=(wormsProche->getPosition_x()-x<0)?-1:1;
 
   //[x+d][y] vide
@@ -150,7 +150,7 @@ int d=(wormsProche->getPosition_x()-x<0)?-1:1;
 }
 
 
-bool DumbIA::barricaderPosible(){
+bool NormalIA::barricaderPosible(){
 int d=(wormsProche->getPosition_x()-x<0)?-1:1;
 
   //[x+d][y] vide & [x+d][y+1] vide & [x+d+d][y+1] non vide
