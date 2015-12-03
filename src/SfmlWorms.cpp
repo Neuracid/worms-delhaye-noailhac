@@ -1,4 +1,4 @@
-#include "Sfmlworms.hpp"
+#include "SfmlWorms.hpp"
 
 
 SfmlWorms::SfmlWorms(Worms* worms){

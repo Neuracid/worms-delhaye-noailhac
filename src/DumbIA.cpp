@@ -5,7 +5,7 @@ DumbIA::DumbIA(Etat* mainState, Engine* engine): IA(mainState, engine) {
 }
 
 void DumbIA::findWormsProche() {
-  int i = 0;
+  size_t i = 0;
   Worms* wormsIni = new Worms(10000,10000);
   wormsProche=wormsIni;
 
@@ -73,7 +73,7 @@ bool DumbIA::tirPossible(int direction) {
   x+=direction;
 
   while(x>=0 && x<mainState->map.getLargeur() && obstacle==false && worms==false){
-    for(int i=0; i<mainState->listeWormsJoueurs.size() ;i++){
+    for(size_t i=0; i<mainState->listeWormsJoueurs.size() ;i++){
       if(x==mainState->listeWormsJoueurs[i].worms->getPosition_x() && y==mainState->listeWormsJoueurs[i].worms->getPosition_y() ){
         worms=true;
       }
@@ -97,7 +97,7 @@ bool DumbIA::tirPossible(int direction) {
 }
 
 bool DumbIA::kungFuPossible(int direction) {
-  for(int i=0; i<mainState->listeWormsJoueurs.size();i++){
+  for(size_t i=0; i<mainState->listeWormsJoueurs.size();i++){
     if(mainState->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && mainState->listeWormsJoueurs[i].worms->getPosition_y()==y){
         return true;
     }

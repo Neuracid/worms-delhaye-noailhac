@@ -3,6 +3,8 @@
 //#include "SfmlWindowProperties.hpp"
 #include "DumbIA.hpp"
 #include <future>
+#include <unistd.h>
+
 #define NUM_THREADS     1
 
 bool jeuActif=true;
