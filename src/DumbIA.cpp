@@ -10,7 +10,7 @@ void DumbIA::findWormsProche() {
   wormsProche=wormsIni;
 
   for(i=0;i<mainState->listeWormsJoueurs.size();i++) {
-    if ( team != mainState->listeWormsJoueurs[i].joueur->getTeam() && i != placeWormsActif && std::sqrt(std::pow(mainState->listeWormsJoueurs[i].worms->getPosition_x()-x,2) + std::pow(mainState->listeWormsJoueurs[i].worms->getPosition_y()-y,2)) < std::sqrt(std::pow(wormsProche->getPosition_x()-x,2) + std::pow(wormsProche->getPosition_y()-y,2)) ){
+    if ( team != mainState->listeWormsJoueurs[i].joueur->getTeam() && (int)i != placeWormsActif && std::sqrt(std::pow(mainState->listeWormsJoueurs[i].worms->getPosition_x()-x,2) + std::pow(mainState->listeWormsJoueurs[i].worms->getPosition_y()-y,2)) < std::sqrt(std::pow(wormsProche->getPosition_x()-x,2) + std::pow(wormsProche->getPosition_y()-y,2)) ){
       wormsProche=mainState->listeWormsJoueurs[i].worms;
     } else {
     }

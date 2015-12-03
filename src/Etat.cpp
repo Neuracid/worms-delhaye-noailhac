@@ -9,7 +9,7 @@ void Etat::setWormsJoueur(int x, int y, Joueur::Team color){
   WormsJoueur wormsJoueur;
   wormsJoueur.setWorms(worms);
   bool verifJoueurExiste=false;
-  int i=0;
+  size_t i=0;
   while(i<listeWormsJoueurs.size()&&verifJoueurExiste==false){
     if(color==listeWormsJoueurs[i].joueur->getTeam())
       verifJoueurExiste=true;
