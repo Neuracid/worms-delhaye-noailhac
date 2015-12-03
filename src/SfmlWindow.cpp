@@ -90,7 +90,7 @@ void SfmlWindow::displayWindow(){
 void SfmlWindow::setWorms(){
   worms.resize(etat->listeWormsJoueurs.size());
   for(int i=0;i<etat->listeWormsJoueurs.size();i++){
-    worms[i].reset(new SfmlWorms(etat->listeWormsJoueurs[i].worms));
+    worms[i]=new SfmlWorms(etat->listeWormsJoueurs[i].worms);
   }
 }
 

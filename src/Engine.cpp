@@ -71,7 +71,7 @@ bool Engine::kungfu(Etat* etat){
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
     int direction=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection();
     etat->listeWormsJoueurs[etat->placeWormsActif].worms->setType(Worms::kungfu);
-    for(int i=0; i<etat->listeWormsJoueurs.size();i++){
+    for(size_t i=0; i<etat->listeWormsJoueurs.size();i++){
       if(etat->listeWormsJoueurs[i].worms->getPosition_x()==x+direction && etat->listeWormsJoueurs[i].worms->getPosition_y()==y){
           etat->listeWormsJoueurs[i].worms->setDirection(((direction==1)?Worms::right : Worms::left));
           deplacement(etat,i);
@@ -163,7 +163,7 @@ bool Engine::tir(Etat* etat){
     x+=direction;
 
     while(x>=0 && x<etat->map.getLargeur() && find==false){
-      for(int i=0; i<etat->listeWormsJoueurs.size() ;i++){
+      for(size_t i=0; i<etat->listeWormsJoueurs.size() ;i++){
         if(x==etat->listeWormsJoueurs[i].worms->getPosition_x() && y==etat->listeWormsJoueurs[i].worms->getPosition_y() ){
           etat->listeWormsJoueurs[i].worms->oteVie(25);
           find=true;
@@ -211,7 +211,7 @@ bool Engine::grappin(Etat* etat){
 
 //REGLES
 void Engine::regleGravite (Etat* etat) {
-  for (int i = 0; i < etat->listeWormsJoueurs.size() ; i++) {
+  for (size_t i = 0; i < etat->listeWormsJoueurs.size() ; i++) {
     int nbCasesVides=0;
     int x=etat->listeWormsJoueurs[i].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[i].worms->getPosition_y();
@@ -230,14 +230,13 @@ void Engine::regleGravite (Etat* etat) {
 }
 
 void Engine::regleDeTerrain(Etat* etat){
-  int x,y,pv;
-  for(int i=0; i<etat->listeWormsJoueurs.size();i++){
+  int x,y;
+  for(size_t i=0; i<etat->listeWormsJoueurs.size();i++){
     x=etat->listeWormsJoueurs[i].worms->getPosition_x();
     y=etat->listeWormsJoueurs[i].worms->getPosition_y();
-    pv=etat->listeWormsJoueurs[i].worms->getVie();
     switch (etat->map[x][y]->getType()) {
       case 0:break;
-      case 1:if(i==etat->placeWormsActif){etat->listeWormsJoueurs[i].oteVie(2);}break;
+      case 1:if((int)i==etat->placeWormsActif){etat->listeWormsJoueurs[i].oteVie(2);}break;
       case 2:etat->listeWormsJoueurs[i].oteVie(etat->listeWormsJoueurs[i].worms->getVie()); break;
       case 3:std::cout << "probleme car le worms est dans de la terre" << std::endl;break;
       case 4:std::cout << "probleme car le worms est dans de la roche" << std::endl;break;

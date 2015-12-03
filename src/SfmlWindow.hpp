@@ -20,7 +20,7 @@ public:
   sf::VideoMode videoMode;
   sf::RenderWindow window;
   //worms
-  std::vector<std::unique_ptr<SfmlWorms> > worms;
+  std::vector<SfmlWorms* > worms;
   //map
   SfmlMap map;
   //fond

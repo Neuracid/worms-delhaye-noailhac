@@ -14,7 +14,7 @@ void IA::initActif(Etat* mainState){
 }
 
 bool IA::activeIA(){
-  for(int i=0;i<mainState->listeJoueursIA.size();i++){
+  for(size_t i=0;i<mainState->listeJoueursIA.size();i++){
     if(mainState->listeJoueursIA[i]==team){
       return true;
     }
