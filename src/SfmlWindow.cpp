@@ -89,19 +89,19 @@ void SfmlWindow::displayWindow(){
 
 void SfmlWindow::setWorms(){
   worms.resize(etat->listeWormsJoueurs.size());
-  for(int i=0;i<etat->listeWormsJoueurs.size();i++){
+  for(size_t i=0;i<etat->listeWormsJoueurs.size();i++){
     worms[i]=new SfmlWorms(etat->listeWormsJoueurs[i].worms);
   }
 }
 
 void SfmlWindow::updateWorms(){
-  for(int i=0;i<etat->listeWormsJoueurs.size();i++){
+  for(size_t i=0;i<etat->listeWormsJoueurs.size();i++){
     worms[i]->update(etat->listeWormsJoueurs[i].worms);
   }
 }
 
 void SfmlWindow::drawWorms(){
-  for(int i=0;i<worms.size();i++){
+  for(size_t i=0;i<worms.size();i++){
     worms[i]->load(sf::Vector2u(64, 64));
     window.draw(*worms[i]);
   }
@@ -114,7 +114,7 @@ void SfmlWindow::setText(){
   textActif.setFont(font);
   textActif.setPosition(64*etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x()+6,64*etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y()+64);
   text.resize(etat->listeWormsJoueurs.size());
-  for(int i=0;i<text.size();i++){
+  for(size_t i=0;i<text.size();i++){
     text[i].setFont(font);
     std::string myString =std::to_string(etat->listeWormsJoueurs[i].worms->getVie());
     text[i].setString(myString);
@@ -139,7 +139,7 @@ void SfmlWindow::setText(){
 }
 
 void SfmlWindow::drawText(){
-  for(int i=0;i<text.size();i++){
+  for(size_t i=0;i<text.size();i++){
     window.draw(text[i]);
   }
   window.draw(textActif);

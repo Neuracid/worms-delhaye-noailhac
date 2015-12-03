@@ -24,9 +24,9 @@ SfmlWorms::SfmlWorms(Worms* worms){
 SfmlWorms::~SfmlWorms(){
 }
 
-bool SfmlWorms::load( sf::Vector2u tileSize)
-{           positionSprite++;
-            if(positionSprite>=(m_tileset.getSize().y / tileSize.y))
+bool SfmlWorms::load( sf::Vector2u tileSize){
+            positionSprite++;
+            if((size_t)positionSprite>=(m_tileset.getSize().y / tileSize.y))
             positionSprite=0;
             //on en déduit sa position dans la texture du tileset
             int tu = positionSprite % (m_tileset.getSize().x / tileSize.x);
