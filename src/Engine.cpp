@@ -88,8 +88,8 @@ void Engine::mineGaz(Etat* etat){
   if (capaUtilise == false){
     int x=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_x();
     int y=etat->listeWormsJoueurs[etat->placeWormsActif].worms->getPosition_y();
-    if (etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType() == Terrain::air){
-      etat->map[x+etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
+    if (etat->map[x-etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->getType() == Terrain::air){
+      etat->map[x-etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()][y]->setType(Terrain::gaz);
       capaUtilise=true;
     }
   }
