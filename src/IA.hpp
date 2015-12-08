@@ -3,20 +3,5 @@
 #include "Etat.hpp"
 #include <cmath>
 #include "Engine.hpp"
-
-class IA {
-public:
-  IA(Etat* mainState, Engine* engine);
-  virtual void initActif (Etat* mainState);
-  virtual bool activeIA();
-
-protected:
-  Etat* mainState;
-  Engine* engine;
-  int x;
-  int y;
-  int placeWormsActif;
-  Joueur::Team team;
-
-};
+#include "IA.h"
 #endif

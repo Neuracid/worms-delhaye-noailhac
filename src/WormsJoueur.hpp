@@ -4,24 +4,5 @@
 #include <vector>
 #include "Joueur.hpp"
 #include "Worms.hpp"
-
-
-
-class WormsJoueur{
-
-public:
-  Joueur* joueur;
-  Worms* worms;
-  void setJoueur(Joueur* nouveau);
-  void setWorms(Worms* nouveau);
-  WormsJoueur();
-  ~WormsJoueur();
-  void oteVie(int nombre);
-
-private:
-
-protected:
-
-
-};
+#include "WormsJoueur.h"
 #endif

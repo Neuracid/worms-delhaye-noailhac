@@ -11,6 +11,14 @@ rm -rf bin
 mkdir -p lib
 mkdir -p build
 
+rm src/*.h
+
+dia2code -d src/ worms.dia
+
+echo "" > src/sf::Drawable.h
+echo "" > src/sf::Transformable.h
+
+
 OS=`uname -a`
 
 if [[ $OS == *"Darwin"* ]]
@@ -30,9 +38,6 @@ then
 		cd ..
 	fi
 fi
-
-cd build
-cmake ..
 
 if [[ $OS == *"debian"* ]]||[[ $OS == *"Debian"* ]]
 then
@@ -78,3 +83,6 @@ then
 		exit
 	fi
 fi
+
+cd build
+cmake ..

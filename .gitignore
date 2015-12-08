@@ -9,4 +9,4 @@ res/musiques/*.mp3
 
 *.gch
 
-src/*.hpp
+src/*.h

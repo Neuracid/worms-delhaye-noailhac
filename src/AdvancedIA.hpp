@@ -1,13 +1,4 @@
 #ifndef ADVANCEDIA_H
 #define ADVANCEDIA_H
-class AdvancedIA {
-
-public:
-
-private:
-
-
-protected:
-
-};
+#include "AdvancedIA.h"
 #endif

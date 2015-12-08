@@ -9,7 +9,7 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)
 # Define sources and executable
 set(EXECUTABLE_NAME "Main")
 file(GLOB SOURCES
-    "src/*.h"
+    "src/*.hpp"
     "src/*.cpp"
 )
 add_executable(${EXECUTABLE_NAME} ${SOURCES})
