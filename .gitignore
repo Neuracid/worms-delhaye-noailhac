@@ -8,3 +8,5 @@ res/musiques/*.mp3
 .gcc-flags.json
 
 *.gch
+
+src/*.hpp
