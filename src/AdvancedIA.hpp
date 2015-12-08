@@ -1,5 +1,5 @@
-#ifndef BLOC_H
-#define BLOC_H
+#ifndef ADVANCEDIA_H
+#define ADVANCEDIA_H
 class AdvancedIA {
 
 public:
