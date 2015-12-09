@@ -3,6 +3,7 @@
 Etat::Etat():map(){
   tempTour = 120;
   placeWormsActif = 0;
+  depart = time(&depart);
   listeWormsJoueurs.resize(0);
 }
 
