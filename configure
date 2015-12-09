@@ -13,11 +13,9 @@ mkdir -p build
 
 rm src/*.h
 
-dia2code -d src/ worms.dia
+dia2code -d src/ worms.dia -cl src/sf -v
 
-echo "" > src/sf::Drawable.h
-echo "" > src/sf::Transformable.h
-
+echo "" > src/sf.h
 
 OS=`uname -a`
 

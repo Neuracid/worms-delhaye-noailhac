@@ -2,6 +2,7 @@
 
 
 SfmlWorms::SfmlWorms(Worms* worms){
+  positionSprite = 0;
   y_new=worms->getPosition_y();
   y_old=y_new;
   x_new=worms->getPosition_x();

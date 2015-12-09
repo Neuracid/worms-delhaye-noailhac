@@ -1,5 +1,12 @@
 #include "Engine.hpp"
 
+
+Engine::Engine(){
+  nbDeplacements=2;
+  capaUtilise=false;
+}
+
+
 //COMMANDES
 bool Engine::deplacement(Etat* etat, int i){
   bool verif=false;

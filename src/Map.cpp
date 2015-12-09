@@ -1,5 +1,9 @@
 #include "Map.hpp"
 
+std::vector<Terrain*>& Map::operator[](size_t i){
+  return matriceTerrain[i];
+}
+
 Map::Map() {
   std::ifstream fichier("../res/txt/MapType1.txt", std::ios::in);
   if(fichier)

@@ -1,6 +1,8 @@
 #include "Etat.hpp"
 
 Etat::Etat():map(){
+  tempTour = 120;
+  placeWormsActif = 0;
   listeWormsJoueurs.resize(0);
 }
 
