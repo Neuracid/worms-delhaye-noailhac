@@ -16,14 +16,10 @@ void SfmlWindow::setFond(){
 }
 
 void SfmlWindow::displayWindow(){
-  engine->regleGravite(etat);
-  engine->regleDeTerrain(etat);
   while (window.isOpen())
   {
       // on dessine le niveau
       window.clear();
-      engine->regleGravite(etat);
-      engine->regleDeTerrain(etat);
       update();
       window.draw(spriteFond);
       window.draw(map);

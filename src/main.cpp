@@ -5,28 +5,38 @@
 #include <future>
 #include <unistd.h>
 
-#define NUM_THREADS     1
+
+Etat etat;
+Engine engine;
 
 bool jeuActif=true;
 
-void lanceThreadIA(NormalIA* ia, Etat* etat,Engine* engine)
+void lanceRules(){
+  while(jeuActif){
+    usleep(50000);
+    engine.regleGravite(&etat);
+    engine.regleDeTerrain(&etat);
+    if (engine.finTour(&etat)){
+      engine.changementDeJoueur(&etat);
+    }
+  }
+}
+
+void lanceThreadIA(NormalIA* ia)
 {
   while(jeuActif){
     usleep(5000000);
-    ia->initActif(etat);
+    ia->initActif(&etat);
     if(ia->activeIA()==true){
       ia->findWormsProche();
       if(ia->attaque()==false && ia->deplacement()==false){
-        engine->changementDeJoueur(etat);
+        engine.changementDeJoueur(&etat);
       }
     }
   }
 }
 
 int main() {
-
-  Etat etat;
-  Engine engine;
   etat.setWormsJoueur(27,9,Joueur::rouge);
   etat.setWormsJoueur(25,8,Joueur::bleu);
   etat.setWormsJoueur(10,5,Joueur::jaune);
@@ -34,9 +44,10 @@ int main() {
   etat.setWormsJoueur(24,7,Joueur::rouge);
   etat.listeJoueursIA.push_back(Joueur::vert);
   etat.listeJoueursIA.push_back(Joueur::rouge);
+  std::future<void> rulles( std::async(lanceRules));
   NormalIA dumb(&etat,&engine);
   SfmlWindow window(&etat, "worms",30,&engine);
-  std::future<void> IA( std::async(lanceThreadIA,&dumb,&etat,&engine));
+  std::future<void> IA( std::async(lanceThreadIA,&dumb));
   window.displayWindow();
   jeuActif=false;
 }
