@@ -9,7 +9,8 @@ SfmlWorms::SfmlWorms(Worms* worms){
   x_new=worms->getPosition_x();
   x_old=x_new;
   etat_new=worms->getType();
-  etat_old=etat_new;
+  etat_new=0;
+  etat_old=1;
   direction_new=worms->getDirection();
   direction_old=direction_new;
   pv_new=worms->getVie();
@@ -27,9 +28,9 @@ SfmlWorms::~SfmlWorms(){
 }
 
 bool SfmlWorms::load( sf::Vector2u tileSize){
+
+            if((size_t)positionSprite+1<(m_tileset.getSize().y / tileSize.y))
             positionSprite++;
-            if((size_t)positionSprite>=(m_tileset.getSize().y / tileSize.y))
-            positionSprite=0;
             //on en déduit sa position dans la texture du tileset
             int tu = positionSprite % (m_tileset.getSize().x / tileSize.x);
             int tv = positionSprite / (m_tileset.getSize().x / tileSize.x);
@@ -92,15 +93,20 @@ bool SfmlWorms::load( sf::Vector2u tileSize){
  }
 
  void SfmlWorms::image(){
-   switch (etat_new) {
-     case 0:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wdie.png");break;
-     case 1:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wpnctop.png");break;
-     case 2:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbowlnk.png");break;
-     case 3:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
-     case 4:m_tileset.loadFromFile("../res/WormsGeneral/Worms/waccuse.png");break;
-     case 5:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wmgnlnk.png");break;
-     default:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
+   if(etat_old!=etat_new){
+     switch (etat_new) {
+       case 0:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wdie.png");break;
+       case 1:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wpnctop.png");break;
+       case 2:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbowlnk.png");break;
+       case 3:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
+       case 4:m_tileset.loadFromFile("../res/WormsGeneral/Worms/waccuse.png");break;
+       case 5:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wmgnlnk.png");break;
+       default:m_tileset.loadFromFile("../res/WormsGeneral/Worms/wbackflp.png");break;
+     }
+     positionSprite=0;
    }
-   if(pv_old>0 && pv_new<=0)
-   m_tileset.loadFromFile("../res/WormsGeneral/Worms/wdie.png");
+   if(pv_old>0 && pv_new<=0){
+     m_tileset.loadFromFile("../res/WormsGeneral/Worms/wdie.png");
+     positionSprite=0;
+   }
  }
