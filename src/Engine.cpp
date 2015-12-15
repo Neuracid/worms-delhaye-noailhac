@@ -4,6 +4,8 @@
 Engine::Engine(){
   nbDeplacements=2;
   capaUtilise=false;
+  bufferAction = new std::queue<Command>();
+  bufferAcquisition = new std::queue<Command>();
 }
 
 
