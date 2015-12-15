@@ -14,6 +14,7 @@ bool jeuActif=true;
 void lanceRules(){
   while(jeuActif){
     usleep(50000);
+    engine.executeAction(&etat);
     engine.regleGravite(&etat);
     engine.regleDeTerrain(&etat);
     if (engine.finTour(&etat)){

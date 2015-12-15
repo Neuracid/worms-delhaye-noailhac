@@ -289,3 +289,52 @@ bool Engine::getCapaUtilise(){
 void Engine::setCapaUtilise(bool capaU){
   capaUtilise=capaU;
 }
+
+void Engine::switchBuffer (){
+  std::queue<Engine::Command>* tmp;
+  tmp=bufferAction;
+  bufferAction=bufferAcquisition;
+  bufferAcquisition=tmp;
+}
+
+void Engine::executeAction (Etat* etat){
+  if(bufferAction->size()==0){
+    switchBuffer();
+  }
+  else{
+    switch(bufferAction->front()){
+      case Command::Kungfu:
+        kungfu(etat);
+        break;
+      case Command::Left:
+        if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==-1)
+        deplacement(etat,etat->placeWormsActif);
+        changementDeDirection(etat,Worms::left);
+        break;
+      case Command::Right:
+        if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==1)
+        deplacement(etat,etat->placeWormsActif);
+        changementDeDirection(etat,Worms::right);
+        break;
+      case Command::Tir:
+        tir(etat);
+        break;
+      case Command::Gaz:
+        mineGaz(etat);
+        break;
+      case Command::Baricader:
+        barricader(etat);
+        break;
+      case Command::Passer:
+        changementDeJoueur(etat);
+        break;
+      case Command::Grappin:
+        grappin(etat);
+        break;
+      case Command::Creuser:
+        creuser(etat);
+        break;
+    }
+    bufferAction->pop();
+  }
+}

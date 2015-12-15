@@ -38,36 +38,32 @@ void SfmlWindow::displayWindow(){
             if (event.type == sf::Event::KeyPressed) {
               switch(event.key.code){
                 case sf::Keyboard::P:
-                          engine->changementDeJoueur(etat);
+                          engine->bufferAcquisition->push(Engine::Passer);
                           break;
                 case sf::Keyboard::G:
-                          engine->mineGaz(etat);
+                          engine->bufferAcquisition->push(Engine::Gaz);
                           break;
                 case sf::Keyboard::C:
-                          engine->creuser(etat);
+                          engine->bufferAcquisition->push(Engine::Creuser);
                           break;
                 case sf::Keyboard::B:
-                          engine->barricader(etat);
+                          engine->bufferAcquisition->push(Engine::Baricader);
                           break;
                 case sf::Keyboard::K:
-                          engine->kungfu(etat);
+                          engine->bufferAcquisition->push(Engine::Kungfu);
                           break;
                 case sf::Keyboard::T:
-                          engine->tir(etat);
+                          engine->bufferAcquisition->push(Engine::Tir);
                           break;
                 case sf:: Keyboard::Right:
-                          if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==1)
-                          engine->deplacement(etat,etat->placeWormsActif);
-                          engine->changementDeDirection(etat,Worms::right);
+                          engine->bufferAcquisition->push(Engine::Right);
                           //printf("%d",engine->getNbDeplacements());
                           break;
                 case sf::Keyboard::E:
-                          engine->grappin(etat);
+                          engine->bufferAcquisition->push(Engine::Grappin);
                           break;
                 case sf:: Keyboard::Left:
-                          if(etat->listeWormsJoueurs[etat->placeWormsActif].worms->getDirection()==-1)
-                          engine->deplacement(etat,etat->placeWormsActif);
-                          engine->changementDeDirection(etat,Worms::left);
+                          engine->bufferAcquisition->push(Engine::Left);
                           //printf("%d",engine->getNbDeplacements());
                           break;
 
@@ -76,9 +72,6 @@ void SfmlWindow::displayWindow(){
               }
             }
           }
-        }
-        if (engine->finTour(etat)){
-          engine->changementDeJoueur(etat);
         }
       }
     }
