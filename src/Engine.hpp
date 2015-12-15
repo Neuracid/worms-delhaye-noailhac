@@ -5,4 +5,5 @@
 #include <iostream>
 #include "Engine.h"
 #include <queue>
+#include <string>
 #endif
