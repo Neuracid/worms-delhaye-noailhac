@@ -9833,7 +9833,7 @@
       <dia:attribute name="attributes">
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#CommandeDB#</dia:string>
+            <dia:string>#commandeDB#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
             <dia:string>#CommandeDB&amp;#</dia:string>
@@ -9881,7 +9881,7 @@
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#UserService#</dia:string>
+            <dia:string>#CommandeService#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -9910,7 +9910,7 @@
           <dia:attribute name="parameters">
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#CommandeDB#</dia:string>
+                <dia:string>#commandeDB#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
                 <dia:string>#CommandeDB&amp;#</dia:string>
@@ -11641,7 +11641,7 @@
         </dia:composite>
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#Commande#</dia:string>
+            <dia:string>#commandes#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
             <dia:string>#map&lt;int,unique_ptr&lt;Commande&gt; &gt;#</dia:string>
@@ -12385,15 +12385,15 @@
         <dia:point val="29.0949,0.860458"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26.9844,0.110458;29.8449,9.63305"/>
+        <dia:rectangle val="26.9844,0.110458;29.8449,8.83305"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="29.0949,0.860458"/>
-        <dia:point val="29.0949,4.79676"/>
-        <dia:point val="27.0344,4.79676"/>
+        <dia:point val="29.0949,4.79675"/>
+        <dia:point val="27.0344,4.79675"/>
         <dia:point val="27.0344,8.03305"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">

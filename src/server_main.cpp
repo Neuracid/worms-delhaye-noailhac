@@ -123,7 +123,7 @@ int main(int argc, char *const *argv)
 //        servicesManager.registerService(make_unique<VersionService>());
 
         CommandeDB CommandeDB;
-        CommandeDB.addCommande(make_unique<Commande>("Paul",23));
+        CommandeDB.addCommande(make_unique<Commande>("Paul"));
 //        servicesManager.registerService(make_unique<CommandeService>(std::ref(CommandeDB)));
 
         struct MHD_Daemon *d;

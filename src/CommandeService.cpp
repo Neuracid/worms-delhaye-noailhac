@@ -2,8 +2,8 @@
 
 #include "CommandeService.hpp"
 
-CommandeService::CommandeService (CommandeDB& CommandeDB) : AbstractService("/Commande"),
-    CommandeDB(CommandeDB) {
+CommandeService::CommandeService (CommandeDB& commandeDB) : AbstractService("/Commande"),
+    commandeDB(commandeDB) {
 
 }
 
